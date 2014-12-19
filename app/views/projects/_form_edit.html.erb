@@ -1,0 +1,46 @@
+<div class="form_modal">
+<table>
+  <tr><td class="supmodal"><h3>Editar Proyecto</h3></td></tr>
+  <tr><td class="space"></td></tr>
+  <tr>
+    <td>
+    <%= bootstrap_form_for(@project, layout: :horizontal) do |f| %>
+      <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+          <ul>
+          <% @project.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.text_field :name, :required => true, :label => 'Nombre' %>
+      </div>
+      <div class="field">
+        <%= f.date_select :start_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre']}, :required => true, :label => 'Fecha de Inicio' %>
+      </div>
+      <div class="field">
+        <%= f.date_select :end_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre']}, :required => true, :label => 'Fecha de Término' %>
+      </div>
+      <div class="field">
+        <%= f.select :resources, [['Seleccionar', false], ['Quiero incluir recursos a mi proyecto', true], ['No quiero incluir recursos a mi proyecto', false]], :label => 'Recursos *' %>
+      </div>
+      <div class="field">
+        <%= f.select :type_resources, [['Seleccionar', ''],['Pesos', 'Pesos'], ['Dolares', 'USD'], ['UF', 'UF'], ['Horas Hombres', 'HH']], :label => 'Tipo de Recursos' %>
+      </div>
+       <div class="field">
+        <%= f.select :report, [['Seleccionar', false], ['Quiero reportar en tiempo real el uso de recursos', true], ['No quiero reportar en tiempo real el uso de recursos', false]], :label => 'Reportar Recursos' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Guardar Cambios" %>
+      </div>
+    <% end %>
+    </td>
+  </tr>
+</table>
+  
+</div>

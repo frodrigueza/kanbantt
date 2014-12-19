@@ -1,0 +1,35 @@
+<!-- VISTA DE REPORTAR DEL MODAL DE TAREAS -->
+
+
+<div class="row title">
+	<div class="col-md-12">
+		Reportar
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<% if @task.has_children? %>
+			No se puede reportar esta tarea porque no es de último nivel
+		
+
+
+		<!-- Si es de último nivel se da la opción reportar -->
+		<% else %>
+			<div class="full little-form">
+				<%= bootstrap_form_for (Report.new(task_id: @task.id, progress: @task.progress.to_i)) do |f| %>
+					<%= f.hidden_field :user_id, value: current_user.id %>
+					<%= f.hidden_field :task_id %>
+			    	<%= f.number_field :progress, :in => 0..100, :step => 1, label: 'Porcentaje de avance'  %>
+
+					<!-- Mostrar el reportar solo si se puede -->
+					<% if @task.project.report && @projecto.resources %>
+						<%= f.number_field :resources, label:'Recursos utilizados hasta este momento (' + @task.project.type_resources.to_s + ')' %>
+					<% end %>
+
+					<%= f.submit "Guardar", :class => "btn-group btn configm" %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>

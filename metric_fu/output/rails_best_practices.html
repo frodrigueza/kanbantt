@@ -1,0 +1,1557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='en' http-equiv='Content-Language' />
+    <title>metrics</title>
+    <style>
+    /*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+    /* --------------------------------------------------------------
+
+   buttons.css
+   * Gives you some great CSS-only buttons.
+
+   Created by Kevin Hale [particletree.com]
+   * particletree.com/features/rediscovering-the-button-element
+
+   See Readme.txt in this folder for instructions.
+
+-------------------------------------------------------------- */
+
+button {
+  display:block;
+  float:left;
+  margin:0 0.583em 0.667em 0;
+  padding:5px 10px 5px 7px;   /* Links */
+
+  border:1px solid #dedede;
+  border-top:1px solid #eee;
+  border-left:1px solid #eee;
+
+  background-color:#f5f5f5;
+  font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size:100%;
+  line-height:130%;
+  text-decoration:none;
+  font-weight:bold;
+  color:#565656;
+  cursor:pointer;
+}
+button {
+  width:auto;
+  overflow:visible;
+  padding:4px 10px 3px 7px;   /* IE6 */
+}
+button[type] {
+  padding:4px 10px 4px 7px;   /* Firefox */
+  line-height:17px;           /* Safari */
+}
+*:first-child+html button[type] {
+  padding:4px 10px 3px 7px;   /* IE7 */
+}
+button img {
+  margin:0 3px -3px 0 !important;
+  padding:0;
+  border:none;
+  width:16px;
+  height:16px;
+  float:none;
+}
+
+
+/* Button colors
+-------------------------------------------------------------- */
+
+/* Standard */
+button:hover {
+  background-color:#dff4ff;
+  border:1px solid #c2e1ef;
+  color:#336699;
+}
+
+/* Positive */
+body .positive {
+  color:#529214;
+}
+button.positive:hover {
+  background-color:#E6EFC2;
+  border:1px solid #C6D880;
+  color:#529214;
+}
+
+/* Negative */
+body .negative {
+  color:#d12f19;
+}
+button.negative:hover {
+  background:#fbe3e4;
+  border:1px solid #fbc2c4;
+  color:#d12f19;
+}
+
+    html {
+  background-color: #e0e0e0; }
+
+body {
+  font-size: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #333333; }
+
+a {
+  color: #ed1556;
+  text-decoration: none; }
+  a:hover {
+    color: #ffffff;
+    background-color: #ed1556; }
+
+#header, #content, #footer {
+  margin: 0 auto;
+  background: #eeeeee;
+  padding: 0 2em;
+  z-index: 0;
+  position: relative;
+  font-size: 1em; }
+
+#header {
+  background: #ffffff; }
+  #header h1 {
+    font-weight: bold;
+    font-size: 1.5em; }
+  #header address.watermark {
+    position: absolute;
+    font-weight: bold;
+    right: 3em;
+    top: 0;
+    font-size: .75em;
+    color: #cccccc; }
+    #header address.watermark a {
+      color: #cccccc;
+      font-weight: bold;
+      font-size: 2em; }
+      #header address.watermark a:hover {
+        background: transparent;
+        color: #aaaaaa; }
+
+#content {
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  #content strong {
+    font-weight: bold; }
+  #content em {
+    font-style: italic; }
+  #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    color: #4e4e4e; }
+  #content h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .75em;
+    padding: .25em 0;
+    line-height: 1.2;
+    border-bottom: 1px solid #c0c0c0; }
+  #content h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1em 0 .2em; }
+  #content h3 {
+    font-weight: bold;
+    font-size: 1.25em;
+    margin: .25em 0; }
+  #content h4, #content h5, #content h6 {
+    font-weight: bold;
+    margin-top: .5em; }
+  #content code, #content pre, #content textarea, #content input {
+    font-family: Monaco, Deja Vu Sans Mono, Inconsolata, Consolas, monospace; }
+  #content form p {
+    margin-top: 1em;
+    position: relative; }
+    #content form p.checkbox label {
+      margin-top: 0 !important; }
+  #content form input.text, #content form textarea {
+    width: 30em;
+    padding: .2em .4em;
+    color: #4e4e4e; }
+  #content form input.text {
+    height: 1.4em; }
+  #content form label {
+    float: left;
+    display: block;
+    margin-top: .5em;
+    width: 8em;
+    margin-right: .75em; }
+  #content form .with_errors label {
+    background: red;
+    color: white;
+    position: relative;
+    top: -.7em; }
+  #content form .with_errors.required label {
+    position: static;
+    margin-right: .25em;
+    padding: 0 .2em; }
+  #content form .with_errors input, #content form .with_errors textarea {
+    border: 2px solid #f22;
+    background: #fee;
+    color: #222222; }
+  #content form .required label {
+    float: none;
+    display: block;
+    width: auto;
+    position: relative;
+    font-weight: bold;
+    margin-top: 1em;
+    text-indent: -.65em; }
+    #content form .required label:before {
+      content: "* ";
+      color: #ed1556; }
+  #content form .required input.text {
+    width: 25.6em;
+    font-size: 24px;
+    font-weight: bold; }
+  #content form .normal {
+    margin-top: 2em; }
+  #content form h2.notifier label {
+    float: none;
+    width: auto;
+    margin-right: 0; }
+    #content form h2.notifier label .warning {
+      font-size: .5em;
+      font-weight: normal;
+      color: #999999; }
+  #content form fieldset {
+    padding-bottom: 1em;
+    margin-left: 1.35em;
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 1em; }
+    #content form fieldset h3 {
+      margin-top: 1em;
+      margin-bottom: 0; }
+    #content form fieldset p.normal {
+      margin-top: 1em; }
+    #content form fieldset p label {
+      width: 6.7em; }
+  #content form p.submit {
+    margin-top: 2em; }
+    #content form p.submit:after {
+      display: block;
+      clear: both;
+      float: none;
+      content: ".";
+      text-indent: -9999em;
+      text-align: left; }
+    #content form p.submit.destroy button,     #content form p.submit.manual-build button {
+      float: none;
+      display: inline; }
+    #content form p.submit.manual-build button {
+      margin-right: 0; }
+  #content #build form, #content #last_build form {
+    font-size: .75em; }
+    #content #build form p.submit,     #content #last_build form p.submit {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: .5em;
+      top: 1.25em; }
+  #content .blank_slate p,   #content .error p {
+    position: relative;
+    top: .3em; }
+  #content .blank_slate h1,   #content .error h1 {
+    border-width: 0;
+    margin: 0;
+    padding: 0; }
+    #content .blank_slate h1 button,     #content .error h1 button {
+      float: none;
+      border: 0 none;
+      background: transparent;
+      display: inline;
+      color: #ed1556;
+      padding: 0.25em 0;
+      margin: 0; }
+      #content .blank_slate h1 button:hover,       #content .error h1 button:hover {
+        background: #ed1556;
+        color: #ffffff; }
+  #content .error dt {
+    margin-top: 1.4em;
+    margin-bottom: .3em;
+    font-size: 1.75em;
+    font-family: Georgia, Times New Roman, serif; }
+  #content .error dd {
+    line-height: 1.4; }
+  #content .error .backtrace {
+    margin: 1em 0;
+    overflow: scroll;
+    height: 30em;
+    border: 1px solid #c0c0c0;
+    line-height: 1.6; }
+  #content #projects {
+    margin: 1em 0 2em;
+    border-top: 1px solid #c0c0c0; }
+    #content #projects li {
+      position: relative;
+      border-bottom: 1px solid #c0c0c0; }
+      #content #projects li.odd {
+        background: #e6e6e6; }
+      #content #projects li.building {
+        background: transparent url(/spinner.gif) no-repeat scroll right; }
+      #content #projects li a {
+        font-size: 2em;
+        padding: .25em;
+        line-height: 1.2;
+        font-weight: bold;
+        display: block; }
+        #content #projects li a.success {
+          color: #337022; }
+        #content #projects li a.failed {
+          color: #ff1100; }
+      #content #projects li .meta {
+        position: absolute;
+        right: .6em;
+        top: 1.5em;
+        font-size: 0.8em;
+        color: #999999;
+        text-align: right; }
+      #content #projects li.building .meta {
+        right: 1.6em; }
+      #content #projects li.success .meta {
+        color: #337022; }
+      #content #projects li.failed .meta {
+        color: #ff1100; }
+  #content #previous_builds li a {
+    display: block;
+    padding: .25em;
+    margin-bottom: .25em;
+    border-width: 1px;
+    border-style: solid; }
+    #content #previous_builds li a strong {
+      font-size: 1.3em; }
+    #content #previous_builds li a .attribution {
+      font-size: .9em; }
+  #content #projects li.success a,   #content #previous_builds li.success a {
+    background-color: #bbf8aa;
+    border-color: #99d688;
+    color: #337022; }
+    #content #projects li.success a .attribution,     #content #previous_builds li.success a .attribution {
+      color: #77b466; }
+    #content #projects li.success a:hover,     #content #previous_builds li.success a:hover {
+      background-color: #ddffcc; }
+  #content #projects li.failed a,   #content #previous_builds li.failed a {
+    background-color: #ffbbaa;
+    border-color: #dd9988;
+    color: #ff1100; }
+    #content #projects li.failed a .attribution,     #content #previous_builds li.failed a .attribution {
+      color: #bb7766; }
+    #content #projects li.failed a:hover,     #content #previous_builds li.failed a:hover {
+      background-color: #ffddcc; }
+  #content #build, #content #last_build {
+    position: relative; }
+    #content #build h1, #content #build blockquote,     #content #last_build h1, #content #last_build blockquote {
+      border-width: 0 1px;
+      border-style: solid; }
+    #content #build h1,     #content #last_build h1 {
+      border-top-width: 1px; }
+    #content #build blockquote,     #content #last_build blockquote {
+      bottom-bottom-width: 1px;
+      line-height: 1.4; }
+    #content #build.success h1, #content #build.success blockquote,     #content #last_build.success h1, #content #last_build.success blockquote {
+      background-color: #bbf8aa;
+      border-color: #99d688 #ccffbb #ccffbb #99d688; }
+    #content #build.success h1,     #content #last_build.success h1 {
+      color: #337022; }
+    #content #build.success .meta,     #content #last_build.success .meta {
+      color: #77b466; }
+    #content #build.failed h1, #content #build.failed blockquote,     #content #last_build.failed h1, #content #last_build.failed blockquote {
+      background-color: #ffbbaa;
+      border-color: #dd9988 #ffccbb #ffccbb #dd9988; }
+    #content #build.failed h1,     #content #last_build.failed h1 {
+      color: #ff1100; }
+    #content #build.failed .meta,     #content #last_build.failed .meta {
+      color: #bb7766; }
+    #content #build h1,     #content #last_build h1 {
+      margin-top: .5em;
+      margin-bottom: 0;
+      padding: .25em;
+      color: #337022; }
+    #content #build blockquote,     #content #last_build blockquote {
+      padding: .75em;
+      margin-bottom: 2em; }
+      #content #build blockquote .meta,       #content #last_build blockquote .meta {
+        margin-top: 1em;
+        display: block;
+        font-size: .9em; }
+    #content #build pre.output,     #content #last_build pre.output {
+      background: #111;
+      color: #fff;
+      padding: .5em;
+      overflow: auto;
+      max-height: 50em;
+      font-size: .825em; }
+      #content #build pre.output .color30,       #content #last_build pre.output .color30 {
+        color: #333; }
+      #content #build pre.output .color31,       #content #last_build pre.output .color31 {
+        color: #e33; }
+      #content #build pre.output .color32,       #content #last_build pre.output .color32 {
+        color: #3e3; }
+      #content #build pre.output .color33,       #content #last_build pre.output .color33 {
+        color: #ee3; }
+      #content #build pre.output .color34,       #content #last_build pre.output .color34 {
+        color: #33e; }
+      #content #build pre.output .color35,       #content #last_build pre.output .color35 {
+        color: #e3e; }
+      #content #build pre.output .color36,       #content #last_build pre.output .color36 {
+        color: #3ee; }
+      #content #build pre.output .color37,       #content #last_build pre.output .color37 {
+        color: #fff; }
+  #content #push_path {
+    display: block;
+    margin-top: 1em;
+    margin-left: 2em; }
+  #content div#graph {
+    width: 100%;
+    height: 600px; }
+
+a.success {
+  color: #bbf8aa; }
+  a.success:hover {
+    background-color: #bbf8aa;
+    color: white; }
+a.failed {
+  color: #ffbbaa; }
+  a.failed:hover {
+    background-color: #ffbbaa;
+    color: white; }
+
+#footer {
+  padding: 1.5em 2.5em;
+  border-top: 1px solid #ccc;
+  font-size: .8em;
+  color: #666;
+  text-align: right; }
+  #footer strong {
+    font-weight: bold; }
+
+    table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #666;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+table tr.light {
+   background: #fff;
+}
+
+table tr.dark {
+  background: #f9f9f9;
+}
+
+table tr:hover {
+  background: #FFFFC0;
+}
+
+table td, table th {
+  padding: 4px;
+  font-size: 11px;
+}
+table th {
+  text-align: center;
+  color: #337022;
+  background: #DDFFCC;
+  font-weight: bold;
+  border: #99D688 1px solid;
+}
+
+table td {
+  border: #d0d0d0 1px solid;
+}
+
+table td.score {
+  text-align: right;
+}
+
+.warning {
+  background: yellow;
+}
+
+    .bluff-tooltip {
+  background: #fff;
+  border: 1px solid #d1edf5;
+  padding: 8px 8px 6px;
+}
+.bluff-tooltip .color {
+  display: block;
+  height: 4px;
+  width: 30px;
+  margin: 0 0 4px;
+  overflow: hidden;
+}
+.bluff-tooltip .data {
+  font-weight: bold;
+}
+    </style>
+    <link REL="SHORTCUT ICON" HREF="/favicon.ico">
+    <script language="javascript" src="utils.js" type="text/javascript"></script>
+    <script language="javascript" src="js-class.js" type="text/javascript"></script>
+    <script language="javascript" src="bluff-min.js" type="text/javascript"></script>
+    <script language="javascript" src="excanvas.js" type="text/javascript"></script>
+    <script language="javascript" src="standalone-framework.js" type="text/javascript"></script>
+    <script language="javascript" src="highcharts.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id='header'>
+      <h1><a href="/">metrics</a> | <a href="index.html">kanbantt</a></h1>
+      <address class='watermark'>
+        built with
+        <a href='https://github.com/metricfu/metric_fu'>MetricFu</a>
+      </address>
+    </div>
+    <div id='content'>
+      <h3>Rails Best Practices Results</h3>
+
+<p><a href="http://github.com/railsbp/rails_best_practices">rails_best_practices</a> is a code metric tool for rails projects.</p>
+
+<div id="graph_container"></div>
+<script language="javascript" src="rails_best_practices.js?1414241700" type="text/javascript"></script>
+
+<table>
+  <tr>
+    <th>File Path</th>
+    <th>Warning</th>
+  </tr>
+  
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb:22</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/21-always-add-db-index>always add db index (comments => [user_id])</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb:32</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/21-always-add-db-index>always add db index (locks => [locker_id])</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb:32</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/21-always-add-db-index>always add db index (locks => [locked_id])</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/db/schema.rb:62</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/21-always-add-db-index>always add db index (reports => [user_id])</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model>move model logic into model (task use_count > 4)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb:7</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model>move model logic into model (@TaskPosition use_count > 4)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb:69</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model>move model logic into model (@task use_count > 4)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb:11</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model>move model logic into model (@user use_count > 4)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb:59</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/11-needless-deep-nesting>needless deep nesting (nested_count > 2)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb:20</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/10-overuse-route-customizations>overuse route customizations (customize_count > 3)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb:51</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/10-overuse-route-customizations>overuse route customizations (customize_count > 3)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/comments_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/comments_helper.rb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/72-remove-empty-helpers>remove empty helpers</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/kanban_board_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/kanban_board_helper.rb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/72-remove-empty-helpers>remove empty helpers</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/projects_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/projects_helper.rb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/72-remove-empty-helpers>remove empty helpers</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/reports_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/reports_helper.rb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/72-remove-empty-helpers>remove empty helpers</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/tasks_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/tasks_helper.rb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/72-remove-empty-helpers>remove empty helpers</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/user_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/user_helper.rb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/72-remove-empty-helpers>remove empty helpers</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb:8</a></td>
+      <td><a href =>remove unused methods (Api::V1::ProgressController#estimated_in_resources_by_week)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb:15</a></td>
+      <td><a href =>remove unused methods (Api::V1::ProgressController#real_in_resources_by_week)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb:22</a></td>
+      <td><a href =>remove unused methods (Api::V1::ProgressController#estimated_in_days_by_week)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb:29</a></td>
+      <td><a href =>remove unused methods (Api::V1::ProgressController#real_in_days_by_week)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb:36</a></td>
+      <td><a href =>remove unused methods (Api::V1::ProgressController#all_progress)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb:3</a></td>
+      <td><a href =>remove unused methods (UserController#newUser)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/comment.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/comment.rb:9</a></td>
+      <td><a href =>remove unused methods (Comment#method_name)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb:24</a></td>
+      <td><a href =>remove unused methods (Project#f_create)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb:182</a></td>
+      <td><a href =>remove unused methods (Project#set_owner)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/report.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/report.rb:5</a></td>
+      <td><a href =>remove unused methods (Report#week_of)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:59</a></td>
+      <td><a href =>remove unused methods (Task#by_level)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:98</a></td>
+      <td><a href =>remove unused methods (Task#progress_f)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:103</a></td>
+      <td><a href =>remove unused methods (Task#expected_start_date_s)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:110</a></td>
+      <td><a href =>remove unused methods (Task#expected_end_date_s)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:137</a></td>
+      <td><a href =>remove unused methods (Task#in_progress)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:143</a></td>
+      <td><a href =>remove unused methods (Task#locked?)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:182</a></td>
+      <td><a href =>remove unused methods (Task#add_predecesors_from_parent)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:188</a></td>
+      <td><a href =>remove unused methods (Task#brothers)</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:196</a></td>
+      <td><a href =>remove unused methods (Task#update_expected_end_date)</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb:2</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb:4</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/comments/_form.html.erb:7</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:17</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:25</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:36</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:40</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:44</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:18</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:18</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:19</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:33</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:33</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:34</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:35</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:36</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal_sub_menu.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal_sub_menu.html.erb:5</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal_sub_menu.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal_sub_menu.html.erb:6</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb:9</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb:11</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb:14</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_gant_tree_view_sub_menu.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_gant_tree_view_sub_menu.html.erb:4</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_gant_tree_view_sub_menu.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_gant_tree_view_sub_menu.html.erb:5</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:11</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:15</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:19</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:23</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:27</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:27</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:30</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_info_table.html.erb:31</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_users_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_users_table.html.erb:10</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb:2</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb:4</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/reports/_form.html.erb:7</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb:2</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb:10</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb:13</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb:16</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb:36</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:2</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:2</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:3</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:5</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:33</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:34</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:39</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:50</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:61</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:72</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:83</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:93</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:94</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb:22</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:3</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:4</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:16</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:32</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:32</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:37</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:37</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:42</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:42</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:47</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:47</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:52</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:52</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb:13</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_config.html.erb:13</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_historial.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_historial.html.erb:23</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:1</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:11</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:15</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:22</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:24</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:26</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_reportar.html.erb:38</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_resumen.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show_resumen.html.erb:6</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form.html.erb:9</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form_assign_project.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form_assign_project.html.erb:13</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form_assign_project.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form_assign_project.html.erb:17</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_users_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_users_table.html.erb:15</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable>replace instance variable with local variable</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb:20</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/86-restrict-auto-generated-routes>restrict auto-generated routes api/v1/projects (only: [:index])</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/86-restrict-auto-generated-routes>restrict auto-generated routes api/v1/projects/tasks (except: [:new, :edit])</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/ability.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/ability.rb:7</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/comment.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/comment.rb:5</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb:117</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb:21</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/users_helper.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/users_helper.rb:5</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/projects_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/projects_controller.rb:22</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb:13</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/users_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/users_controller.rb:16</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/application_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/application_controller.rb:2</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb:3</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb:5</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb:28</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb:18</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb:10</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb:32</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb:61</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/config/routes.rb:36</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/lib/api_constraints.rb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/lib/api_constraints.rb:8</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/gantt/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/gantt/_show.html.erb:9</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/indicators/_show.html.erb:49</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_horizontal.html.erb:37</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_lateral.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/_lateral.html.erb:24</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/application.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/layouts/application.html.erb:19</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_form.html.erb:40</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_users_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_project_users_table.html.erb:13</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_tree_view_item_status_icons.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/_tree_view_item_status_icons.html.erb:12</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/index.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/projects/index.html.erb:23</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form.html.erb:38</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_edit.html.erb:106</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_form_new.html.erb:23</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/_task_show.html.erb:63</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/index.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/tasks/index.html.erb:24</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/user/newUser.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/user/newUser.html.erb:36</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_form.html.erb:34</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_users_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/_users_table.html.erb:11</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/index.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/index.html.erb:27</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/users_table.html.erb'>/Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/views/users/users_table.html.erb:11</a></td>
+      <td><a href =http://rails-bestpractices.com/posts/60-remove-trailing-whitespace>remove trailing whitespace</a></td>
+    </tr>
+    
+  
+</table>
+
+<p>Generated on 2014-10-25 09:55:00 -0300</p>
+
+    </div>
+
+    
+    <script language="javascript" src="bluff_graph.js" type="text/javascript"></script>
+  </body>
+</html>

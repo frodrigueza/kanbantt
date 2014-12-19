@@ -1,0 +1,64 @@
+<!--Menu Lateral-->
+<div class="menulateral">
+    <div class="sup">
+        <div class="table-responsive">
+        <table>
+            <tr>
+                <td rowspan="2" id="td1">
+                    <% profile = current_user.image(current_user.id) %>
+                    <%= image_tag profile, :class => "img-circle" %>
+                </td>
+                <td id="td2"><%= current_user.name %></td>
+            </tr>
+            <tr>
+                <td id="td3">
+                    <%= current_user.role_u %>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><%= image_tag 'kanbantt.png', :class => 'logo' %></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="inf">
+        
+    
+    <div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        <span class="glyphicon glyphicon-list-alt icon1"></span> Proyectos
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse <%= 'in' if @project && @project.id %>">
+      <div class="accordion-inner">
+        <ul id="hh">
+            <% current_user.projects.each do |p| %>
+            <li class="<%= 'actives' if @project && @project.id == p.id %>"><%= link_to p.name, "/projects/#{p.id}/kanban_board" %></li>
+            <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        <span class="glyphicon glyphicon-cog icon1"></span> Administración
+      </a>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTres">
+        <span class="glyphicon glyphicon-off icon1"></span> 
+        <%= link_to('Cerrar Sesión', destroy_user_session_path, :method => :delete) %>
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+

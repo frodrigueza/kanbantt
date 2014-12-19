@@ -1,0 +1,27 @@
+<% task = locals[:task] %>
+<!-- El item lleva el id de la task en el atributo HTML 'id' -->
+<div class="item" id="item_<%= task.id %>">
+	<div class="full">
+		<table class="full">
+			<tr>
+				<td class="content">
+					<div class="full task_name">
+						<!-- link remoto que llama al modal task_show -->
+						<%= link_to_modal task.name, task %>
+					</div>
+					<!-- tiempos restantes y progresos de la tarea -->
+					<%= render 'tasks/task_times', task: task %>
+				</td>
+
+				<!-- Flecha para agregar la siguiente columna -->
+				<!-- Posee un link_to remoto que llama a un archivo AJAX ubicado en projects -->
+				<!-- La class: slow_ajax es para que se bloquee la pantalla al hacer click en él y se desbloquee al tener una respuesta del servidor -->
+				<td class="helper">
+					<%= link_to '<div class="arrow"><span class="glyphicon glyphicon-chevron-right"></span></div>'.html_safe, project_add_tree_view_column_path(parent_id: task.id), {remote: true, id: 'item_' + task.id.to_s + '_link', class:'slow_ajax'}%>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+

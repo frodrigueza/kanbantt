@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kanbantt</title>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" href="../../../assets/dhtmlxgantt.css">	
+ <script src="../../../assets/dhtmlxgantt.js"></script>
+  <script src="../../../assets/ext/dhtmlxgantt_tooltip.js"></script>
+  <script src="../../../assets/ext/dhtmlxgantt_marker.js"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.js"></script>
+  <script src="../../../assets/locale/locale_es.js" charset="utf-8"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://rawgit.com/pablojim/highcharts-ng/master/dist/highcharts-ng.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script> 
+ <%= csrf_meta_tags %>
+</head>
+<body> 
+    <% if current_user %>
+        <%= render 'layouts/logged'%>
+    <% else %>
+        <%= render 'layouts/not_logged' %>
+    <% end %>
+</div>
+</body>
+</html>
+

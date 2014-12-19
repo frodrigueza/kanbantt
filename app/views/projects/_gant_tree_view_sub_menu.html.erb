@@ -1,0 +1,8 @@
+<div class="full horizontal_sub_menu">
+	<table>
+		<tr>
+			<td class="<%= 'active' if params[:action] == 'gantt' %>"><%= link_to 'Gantt', project_gantt_path(@project)%></td>
+			<td class="<%= 'active' if params[:action] == 'tree_view' %>"><%= link_to 'Explorador', project_tree_view_path(@project)%></td>
+		</tr>
+	</table>
+</div>

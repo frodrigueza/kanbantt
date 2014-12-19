@@ -1,0 +1,39 @@
+ <div class="container">
+  <h1>Tareas</h1>
+  <p>Lista de tareas del proyecto <%= @project.name%></p>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th class="col-lg-3">Nombre</th>
+          <th class="col-lg-2">Avance</th>
+          <th class="col-lg-2">Tarea padre</th>
+          <th class="col-lg-2">Nivel</th>
+          <th class="col-lg-1"></th>                   
+        </tr>
+      </thead>
+      <tbody>
+      <% @tasks.each do |task| %>
+        <% refid= 'task' + task.id.to_s %>
+        <% ref= '#'+ refid %>
+       <tr>
+          <td class="td1"><%= task.name %></td>
+          <td><%= task.progress %>%</td>
+          <td><%= task.try(:parent).try(:name) %></td>
+          <td><%= task.level %></td>
+          <td><%= link_to 'X', project_task_path(@project, task), confirm: "¿Estás seguro?", method: :delete %></td>          
+        </tr>
+      <% end %>
+      </tbody>
+    </table>      
+  </div>
+</div>
+
+
+
+
+
+<br>
+
+

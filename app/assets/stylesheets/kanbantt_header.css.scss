@@ -1,0 +1,63 @@
+ @import "colours";
+
+.kanbantt_header{
+	color: white;
+	background: $azul_dos;
+
+	table{
+		width: 100%;
+	}
+
+	.enterprise{
+		width: 30%;
+		padding-left: 10px;
+		.image{
+			float: left;
+			text-align: left;
+		}
+	}
+
+	.kanbantt{
+		padding: 10px 0px;
+		width: 40%;
+		text-align: center;
+		img{
+			width: 15%;
+		}
+	}
+
+	.user_session{
+		width: 30%;
+		padding-right: 10px;
+		.user_image{
+			float: right;
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+
+			img{
+				width: 100%;
+				border-radius: 20px;
+			}
+		}
+
+
+		.user_menu{
+			float: right;
+
+			.btn{
+				background: transparent;
+			}
+
+			.dropdown-toggle{
+				border-left: 1px solid white;
+			}
+
+			.dropdown-menu{
+				right:0 !important;
+				left: auto;
+				top: 45px;
+			}
+		}
+	}
+}

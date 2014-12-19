@@ -1,0 +1,47 @@
+<!-- VISTA OBSERVACIONES DE MODAL TAREA -->
+
+<div class="row title">
+	<div class="col-md-12">
+		Historial de reportes
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="full">
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Fecha</th>
+						<th>Hora</th>
+						<th>Reporte</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @task.reports.each do |report|%>
+						<% if report.progress != 0 %>
+							<tr>
+								<td>Avance</td>
+								<td><%= report.created_at.strftime("%d %b. %Y") %></td>
+								<td><%= report.created_at.strftime("%H:%M")%></td>
+								<td><%= report.progress.to_i %> %</td>
+							</tr>
+						<% end %>
+					<% end %>
+					<% @task.resources_reports.each do |resources|%>
+						<% if resources.resources != 0 %>
+							<tr>
+								<td>Recursos</td>
+								<td><%= resources.created_at.strftime("%d %b. %Y") %></td>
+								<td><%= resources.created_at.strftime("%H:%M")%></td>
+								<td><%= resources.resources.to_i %> <%= @projecto.type_resources %></td>
+							</tr>
+						<% end %>
+					<% end %>
+				</tbody>	
+			</table>
+		</div>
+	</div>
+</div>
+

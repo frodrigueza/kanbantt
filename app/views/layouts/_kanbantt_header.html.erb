@@ -1,0 +1,28 @@
+<div class="full kanbantt_header">
+	<table>
+		<tr>
+			<td class="enterprise">Logo empresa</td>
+			<td class="kanbantt"><%= image_tag('kanbantt_blanco.png')%></td>
+			<td class="user_session">
+				<div class="user_menu">
+					<!-- Split button -->
+					<div class="btn-group">
+						<button type="button user_name" class="btn">
+							<%= current_user.name %>
+						</button>
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><%= link_to('Cerrar Sesión', destroy_user_session_path, :method => :delete) %></li>
+						</ul>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

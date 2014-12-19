@@ -1,0 +1,8 @@
+<!-- Aquí ponemos cuanto queda y que porcentaje de avance tiene la tarea -->
+<div class="<%= css_task_status_color(task) %>">
+		 <%= remaining_days(task) %>
+</div>
+<!-- Porcentaje de avance de las tareas -->
+<div class="">
+	<%= raw progress_or_symbol(task)%>
+</div>

@@ -1,0 +1,51 @@
+<div class="col-md-6">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-lg-5" colspan="2">Informacion del proyecto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fecha inicio</td>
+        <td><%= @project.f_start_date %></td>
+      </tr>
+      <tr>
+        <td>Fecha término</td>
+        <td><%= @project.f_end_date %></td>
+      </tr>
+      <tr>
+        <td>Progreso</td>
+        <td><%= @project.info_progress_as_percentaje[0] %></td>
+      </tr>
+      <tr>
+        <td>Progreso estimado</td>
+        <td><%= @project.info_progress_as_percentaje[1] %></td>
+      </tr>
+      <tr>
+        <td>Número de tareas</td>
+        <td><%= link_to @project.tasks.count, project_tasks_path(@project) %></td>
+      </tr>
+      <tr>
+        <td>Recursos?</td>
+        <td><%= @project.info_project_resources(@project.resources) %></td>
+      </tr>
+      <% if @project.resources %>
+      <tr>
+        <td>Tipo de Recursos</td>
+        <td><%= @project.type_resources %></td>
+      </tr>
+      <tr>
+        <td>Reportar?</td>
+        <td><%= @project.info_project_resources(@project.report) %></td>
+      </tr>
+      <tr>
+        <td>Costo Total</td>
+        <td><%= number_with_delimiter(@project.cost_total_project(@project.resources).round) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+

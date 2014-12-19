@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  expected_start_date: 2014-09-15 16:14:07
+  expected_end_date: 2014-09-15 16:14:07
+  start_date: 2014-09-15 16:14:07
+  end_date: 2014-09-15 16:14:07
+  parent_id: 1
+  level: 1
+  man_hours: 9.99
+  progress: 9.99
+  description: MyString
+  deleted: false
+  project_id: 1
+
+two:
+  name: MyString
+  expected_start_date: 2014-09-15 16:14:07
+  expected_end_date: 2014-09-15 16:14:07
+  start_date: 2014-09-15 16:14:07
+  end_date: 2014-09-15 16:14:07
+  parent_id: 1
+  level: 1
+  man_hours: 9.99
+  progress: 9.99
+  description: MyString
+  deleted: false
+  project_id: 1

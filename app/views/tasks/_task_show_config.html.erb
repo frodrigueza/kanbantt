@@ -1,0 +1,25 @@
+<!-- VISTA OBSERVACIONES DE MODAL TAREA -->
+
+
+<div class="row title">
+	<div class="col-md-9">
+		Configuración
+	</div>
+	<div class="col-md-3 little-form">
+		<div class="right">
+			<%= button_to 'Eliminar tarea', task_delete_confirmation_path(@task),{class: 'btn btn-danger', type:'button', remote: true}%>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="full little-form">
+			<%= render "tasks/form" %>
+		</div>
+	</div>
+</div>
+
+<div class="row separated">
+	<div class="col-md-12">
+	</div>	
+</div>

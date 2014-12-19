@@ -1,0 +1,108 @@
+//creo variable para que sea más fácil cambiarlo después
+@import "colours";
+
+#indicators {width: 1000px;}
+
+#indicators-numbers > span{	
+	padding: 10px;
+	float: left;
+	width: 23.5%;
+	height: 70px;
+
+	.indicators-text{
+		padding-top:5px;
+		font-size:1.3em;
+		color: white;
+		width: 60%;
+		word-wrap: break-word;
+		line-height: 1.1;
+	}
+
+	.indicators-number{
+		padding-top: 5px;
+		width: 38%;
+		font-size: 2em;
+		text-align: right;
+		float: left;
+		color: white;
+		padding-right: 20px;
+		li {list-style-type: none; margin-left:-10px;}
+		#type{font-size:10px;}
+		line-height:1;
+	}
+}
+.left-indicator{
+	background-color: $azul;
+	margin-right: 2%;
+}
+.middle-indicator.negative{
+	background-color: $rojo;
+
+}
+.middle-indicator.positive{
+	background-color: $verde;
+
+}
+.right-indicator{
+	background-color: #809296;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.last-indicator{
+	background-color: $azul_dos;
+	right: 0;
+}
+#indicators-numbers{
+	display:block;
+	margin-top:10px;
+	clear: left;
+	width: 1000px;
+}
+.info_graf{
+	float:right;
+	font-size: 1.6em;
+	top: 0;
+	margin-right: 5px;
+}
+
+.tablaind {
+	.top_ind {background:white; padding:10px; width:100%; text-align: right; font-size: 10px;}
+
+	background: white;
+	border: 1px solid #E6E6E6;
+	margin-top: 20px;
+	margin-bottom: 100px;
+	width: 100%;
+	th {
+		background-color: #BDBDBD; 
+		font-size: 14px;
+		padding: 10px;
+		color: #424242;
+		text-align: center;
+		font-weight: normal; 
+	}
+	td {
+		width: 1px;
+		white-space: nowrap;
+		padding: 10px 20px;
+		text-align: center;
+		border-bottom: 2px solid #E6E6E6;
+		color: #6E6E6E;
+
+	}
+}
+
+.img-ind {
+	border-radius: 50%;
+	width: 35px;
+	border: 1px dotted #A4A4A4; 
+ 	background-color:white;
+}
+
+.description{
+	font-style: italic;
+	font-size:10px;
+	color: #809296;
+}
+

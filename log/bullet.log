@@ -1,0 +1,1339 @@
+2014-11-05 12:51:10[WARN] user: felipe
+/
+N+1 Query detected
+  Project => [:task_positions]
+  Add to your finder: :include => [:task_positions]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/kanban_board_controller.rb:21:in `block in index'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/kanban_board_controller.rb:20:in `index'
+2014-11-05 12:51:10[WARN] user: felipe
+/
+N+1 Query detected
+  TaskPosition => [:task]
+  Add to your finder: :include => [:task]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/_index_projects.html.erb:6:in `_app_views_kanban_board__index_projects_html_erb__2847850849302176322_42170740'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:26:in `block (2 levels) in _app_views_kanban_board_index_html_erb__3876067279612194026_42584540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:22:in `each'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:22:in `block in _app_views_kanban_board_index_html_erb__3876067279612194026_42584540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:3:in `_app_views_kanban_board_index_html_erb__3876067279612194026_42584540'
+2014-11-05 12:51:30[WARN] user: felipe
+/projects/1/kanban_board/index
+N+1 Query detected
+  TaskPosition => [:task]
+  Add to your finder: :include => [:task]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/_index_project.html.erb:6:in `_app_views_kanban_board__index_project_html_erb___1565014014636204859_41582500'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:24:in `block (2 levels) in _app_views_kanban_board_index_html_erb__3876067279612194026_43523800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:22:in `each'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:22:in `block in _app_views_kanban_board_index_html_erb__3876067279612194026_43523800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/kanban_board/index.html.erb:3:in `_app_views_kanban_board_index_html_erb__3876067279612194026_43523800'
+2014-11-05 12:52:26[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:325:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:392:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:391:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:100:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder___4458101316546125740_23070720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4458101316546125740_23070720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-05 12:52:26[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___4458101316546125740_23070720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4458101316546125740_23070720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 08:36:43[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:245:in `children_end'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:214:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:30:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-11 08:36:43[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:71:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:248:in `children_end'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:214:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:30:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-11 08:36:43[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:task_position]
+  Add to your finder: :include => [:task_position]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:415:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:30:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-11 08:38:28[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 08:39:08[WARN] user: felipe
+/projects/7
+Unused Eager Loading detected
+  Task => [:children]
+  Remove from your finder: :include => [:children]
+
+2014-11-11 08:39:08[WARN] user: felipe
+/projects/7
+Unused Eager Loading detected
+  Task => [:children, :project]
+  Remove from your finder: :include => [:children, :project]
+
+2014-11-11 08:40:20[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:245:in `children_end'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:214:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:30:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-11 08:40:20[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:71:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:248:in `children_end'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:214:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:30:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-11 08:40:20[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:task_position]
+  Add to your finder: :include => [:task_position]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:415:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:30:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-11 08:40:29[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 08:40:34[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:95:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 08:40:34[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 08:49:22[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:513:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__2382066471800661611_34674760'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__16628888116321597_104750540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:100:in `delete_confirmation'
+2014-11-11 08:49:47[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:513:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__2382066471800661611_95869060'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__16628888116321597_104750540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:100:in `delete_confirmation'
+2014-11-11 08:52:40[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:513:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__2382066471800661611_69703540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__16628888116321597_104750540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:100:in `delete_confirmation'
+2014-11-11 08:52:50[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:513:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__2382066471800661611_69703540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__16628888116321597_104750540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:100:in `delete_confirmation'
+2014-11-11 08:54:12[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:513:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__2382066471800661611_69703540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__16628888116321597_104750540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:100:in `delete_confirmation'
+2014-11-11 09:00:35[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:513:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:511:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__2382066471800661611_69703540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__16628888116321597_104750540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:100:in `delete_confirmation'
+2014-11-11 09:04:06[WARN] user: felipe
+/projects/7/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:156:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2667840795013709651_66359960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column_item.html.erb:13:in `_app_views_projects__tree_view_column_item_html_erb__3008124086983440392_66405320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:36:in `block in _app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:35:in `_app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:6:in `_app_views_projects_tree_view_html_erb___2461657843725221456_70467400'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:111:in `tree_view'
+2014-11-11 09:04:21[WARN] user: felipe
+/projects/7/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:156:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2667840795013709651_66359960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column_item.html.erb:13:in `_app_views_projects__tree_view_column_item_html_erb__3008124086983440392_66405320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:36:in `block in _app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:35:in `_app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:6:in `_app_views_projects_tree_view_html_erb___2461657843725221456_70467400'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:111:in `tree_view'
+2014-11-11 09:04:30[WARN] user: felipe
+/projects/7/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:156:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2667840795013709651_66359960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column_item.html.erb:13:in `_app_views_projects__tree_view_column_item_html_erb__3008124086983440392_66405320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:36:in `block in _app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:35:in `_app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:6:in `_app_views_projects_tree_view_html_erb___2461657843725221456_70467400'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:111:in `tree_view'
+2014-11-11 09:11:09[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 12:37:04[WARN] user: felipe
+/projects/7/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:156:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2667840795013709651_66359960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column_item.html.erb:13:in `_app_views_projects__tree_view_column_item_html_erb__3008124086983440392_66405320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:36:in `block in _app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:35:in `_app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:6:in `_app_views_projects_tree_view_html_erb___2461657843725221456_88945940'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:111:in `tree_view'
+2014-11-11 12:37:32[WARN] user: felipe
+/projects/7/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:156:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2667840795013709651_66359960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column_item.html.erb:13:in `_app_views_projects__tree_view_column_item_html_erb__3008124086983440392_66405320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:36:in `block in _app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/_tree_view_column.html.erb:35:in `_app_views_projects__tree_view_column_html_erb___2870557576761916224_66269800'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:6:in `_app_views_projects_tree_view_html_erb___2461657843725221456_88945940'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:111:in `tree_view'
+2014-11-11 12:59:32[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 13:00:48[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 13:00:51[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:01:21[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:02:05[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:03:42[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:04:43[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:04:54[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 13:18:25[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 13:22:30[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:23:45[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:24:07[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:25:07[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:33:32[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 13:59:15[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 13:59:18[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 14:00:55[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 14:05:49[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 14:06:43[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 14:07:59[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-11 14:22:17[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:95:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-11 14:22:17[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2593492602052870454_70965040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-13 13:26:43[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 13:26:47[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:317:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:384:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:383:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:95:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-13 13:26:47[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-13 15:57:14[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-13 15:57:20[WARN] user: felipe
+/projects/7/indicators
+Unused Eager Loading detected
+  Task => [:children]
+  Remove from your finder: :include => [:children]
+
+2014-11-13 15:57:20[WARN] user: felipe
+/projects/7/indicators
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 15:57:32[WARN] user: felipe
+/api/progress/estimated_in_resources_by_week?project_id=7
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:264:in `expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:260:in `block in expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:259:in `expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/project.rb:126:in `block (2 levels) in expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/project.rb:125:in `block in expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/project.rb:123:in `expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/progress_calculator.rb:11:in `block in expected_in_resources'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/progress_calculator.rb:10:in `each'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/progress_calculator.rb:10:in `expected_in_resources'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/progress_controller.rb:10:in `estimated_in_resources_by_week'
+2014-11-13 15:57:32[WARN] user: felipe
+/api/progress/estimated_in_resources_by_week?project_id=7
+Unused Eager Loading detected
+  Task => [:children]
+  Remove from your finder: :include => [:children]
+
+2014-11-13 15:57:47[WARN] user: felipe
+/api/progress/real_in_resources_by_week?project_id=7
+Unused Eager Loading detected
+  Task => [:children, :project]
+  Remove from your finder: :include => [:children, :project]
+
+2014-11-13 16:25:14[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 16:25:15[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 16:25:59[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 16:26:09[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-13 17:56:04[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 18:11:30[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-13 18:11:34[WARN] user: felipe
+/projects/7/indicators
+Unused Eager Loading detected
+  Task => [:children]
+  Remove from your finder: :include => [:children]
+
+2014-11-13 18:11:34[WARN] user: felipe
+/projects/7/indicators
+Unused Eager Loading detected
+  Task => [:children, :project]
+  Remove from your finder: :include => [:children, :project]
+
+2014-11-13 18:11:46[WARN] user: felipe
+/api/progress/estimated_in_resources_by_week?project_id=7
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:264:in `expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:260:in `block in expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:259:in `expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/project.rb:126:in `block (2 levels) in expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/project.rb:125:in `block in expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/project.rb:123:in `expected_resources_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/progress_calculator.rb:11:in `block in expected_in_resources'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/progress_calculator.rb:10:in `each'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/progress_calculator.rb:10:in `expected_in_resources'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/progress_controller.rb:10:in `estimated_in_resources_by_week'
+2014-11-13 18:11:46[WARN] user: felipe
+/api/progress/estimated_in_resources_by_week?project_id=7
+Unused Eager Loading detected
+  Task => [:children]
+  Remove from your finder: :include => [:children]
+
+2014-11-13 18:12:02[WARN] user: felipe
+/api/progress/real_in_resources_by_week?project_id=7
+Unused Eager Loading detected
+  Task => [:children, :project]
+  Remove from your finder: :include => [:children, :project]
+
+2014-11-13 18:12:02[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:324:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:405:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:404:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:97:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-13 18:12:02[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___4486143387457785872_40223600'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-13 18:12:54[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-17 21:09:11[WARN] user: felipe
+/projects/7/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-17 21:09:16[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:347:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:428:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:427:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:97:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-17 21:09:16[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-18 00:02:25[WARN] user: felipe
+/projects/7/add_tree_view_column?parent_id=26
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:412:in `days_cost'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:348:in `block in real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:347:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:428:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:427:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:171:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb__1085465259987399930_63984720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:13:in `_app_views_projects_explorer__tree_view_column_item_html_erb__2883047163192350903_64044720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:32:in `block in _app_views_projects_explorer__tree_view_column_html_erb__4020994360928821243_60887980'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:31:in `_app_views_projects_explorer__tree_view_column_html_erb__4020994360928821243_60887980'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb__1604010274881023145_64582680'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:150:in `add_tree_view_column'
+2014-11-18 00:02:27[WARN] user: felipe
+/projects/7/add_tree_view_column?parent_id=27
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:347:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:428:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:427:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:171:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb__1085465259987399930_63984720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:13:in `_app_views_projects_explorer__tree_view_column_item_html_erb__2883047163192350903_64044720'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:32:in `block in _app_views_projects_explorer__tree_view_column_html_erb__4020994360928821243_60887980'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:31:in `_app_views_projects_explorer__tree_view_column_html_erb__4020994360928821243_60887980'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb__1604010274881023145_64582680'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:150:in `add_tree_view_column'
+2014-11-18 00:04:19[WARN] user: felipe
+/projects/7/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:347:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:428:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:427:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:171:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb__1085465259987399930_40839980'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:13:in `_app_views_projects_explorer__tree_view_column_item_html_erb__2883047163192350903_40785040'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:32:in `block in _app_views_projects_explorer__tree_view_column_html_erb__4020994360928821243_62889060'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:31:in `_app_views_projects_explorer__tree_view_column_html_erb__4020994360928821243_62889060'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:6:in `_app_views_projects_tree_view_html_erb___724688419393760580_41334760'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:111:in `tree_view'
+2014-11-18 00:37:19[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-18 00:37:49[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-18 00:38:08[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-18 00:40:50[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-18 00:42:26[WARN] user: felipe
+/api/projects/7/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__1531883051439647807_61937260'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:65:in `all'
+2014-11-18 18:00:38[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:77:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:259:in `children_start'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:247:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-18 18:00:38[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:task_position]
+  Add to your finder: :include => [:task_position]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:449:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-18 18:00:53[WARN] user: felipe
+/projects/1/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:01:00[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:337:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:418:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:417:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:92:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder__148525230484055009_75278320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__148525230484055009_75278320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-18 18:01:00[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder__148525230484055009_75278320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder__148525230484055009_75278320'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-18 18:01:06[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:545:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:547:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:545:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__482800042056117155_42328400'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__685624596978369077_42507640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:104:in `delete_confirmation'
+2014-11-18 18:01:22[WARN] user: felipe
+/projects/1/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:337:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:418:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:417:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:167:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb__573960237294457300_76487120'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb__1435807028433019973_76571700'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb___2650548860160465148_77132640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb___2650548860160465148_77132640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb___1901699379184666804_77198980'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:112:in `tree_view'
+2014-11-18 18:05:29[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:545:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:547:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:545:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__482800042056117155_42328400'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__685624596978369077_42507640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:104:in `delete_confirmation'
+2014-11-18 18:05:45[WARN] user: felipe
+/tasks/15/delete_confirmation
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:545:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:547:in `block in tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:545:in `tasks_below_count'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_delete_confirmation.html.erb:17:in `_app_views_tasks__delete_confirmation_html_erb__482800042056117155_42328400'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/delete_confirmation.js.erb:5:in `_app_views_tasks_delete_confirmation_js_erb__685624596978369077_42507640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:104:in `delete_confirmation'
+2014-11-18 18:38:24[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:77:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:259:in `children_start'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:247:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-18 18:38:24[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:task_position]
+  Add to your finder: :include => [:task_position]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:449:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-18 18:38:44[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:49:34[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:49:51[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:50:22[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:50:40[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:51:27[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:52:41[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:54:50[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:55:37[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-18 18:56:18[WARN] user: felipe
+/projects/2/kanban_board
+Unused Eager Loading detected
+  Task => [:project]
+  Remove from your finder: :include => [:project]
+
+2014-11-19 15:16:41[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:75:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:257:in `children_start'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:245:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-19 15:16:41[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:task_position]
+  Add to your finder: :include => [:task_position]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:431:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-19 15:18:18[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:333:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:400:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:399:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:90:in `progress_f'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:8:in `block in _app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-19 15:18:18[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-19 15:27:28[WARN] user: felipe
+/projects/1/tasks
+N+1 Query detected
+  Task => [:task_position]
+  Add to your finder: :include => [:task_position]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:431:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:55:in `block in create'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:54:in `create'
+2014-11-19 15:27:28[WARN] user: felipe
+/projects/1/tasks
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:440:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:55:in `block in create'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:54:in `create'
+2014-11-19 15:27:28[WARN] user: felipe
+/projects/1/tasks
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:56:in `block (2 levels) in create'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:54:in `create'
+2014-11-19 15:27:29[WARN] user: felipe
+/projects/1/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:333:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:400:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:399:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:165:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2606607240510784403_32171280'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___3093295302292972735_30112680'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__1096291246573110845_45812560'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__1096291246573110845_45812560'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb___1260441775005406354_45864020'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:127:in `tree_view'
+2014-11-19 15:27:44[WARN] user: felipe
+/tasks/68
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:375:in `days_cost'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:375:in `days_cost'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:334:in `block in real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:333:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:400:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:399:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:447:in `set_task_position'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:252:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/tasks_controller.rb:94:in `destroy'
+2014-11-19 15:27:45[WARN] user: felipe
+/projects/1/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:333:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:400:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:399:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:165:in `f_remaining'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___2606607240510784403_32171280'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___3093295302292972735_30112680'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__1096291246573110845_45812560'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__1096291246573110845_45812560'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb___1260441775005406354_45864020'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:127:in `tree_view'
+2014-11-19 15:57:07[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-19 16:07:43[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-19 19:51:38[WARN] user: felipe
+/api/projects/1/tasks/all
+N+1 Query detected
+  Task => [:user]
+  Add to your finder: :include => [:user]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:9:in `block in _app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/api/v1/tasks/all.json.jbuilder:1:in `_app_views_api_v__tasks_all_json_jbuilder___2927896692587456066_63566960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/api/v1/tasks_controller.rb:64:in `all'
+2014-11-20 18:23:59[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:75:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:256:in `children_start'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:244:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block (2 levels) in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:15:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:54:in `create'
+2014-11-27 10:41:00[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:69:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:221:in `children_start'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:209:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block (2 levels) in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:15:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:53:in `create'
+2014-11-27 12:00:22[WARN] user: felipe
+/projects/1/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:297:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:364:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:363:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/helpers/tasks_helper.rb:49:in `remaining_days'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___78025236840805794_67207540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___2787201119746220359_67265860'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb___3640958510818265905_67620080'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb___3640958510818265905_67620080'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb__2635970106963181499_67647900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:133:in `tree_view'
+2014-11-27 12:00:41[WARN] user: felipe
+/projects/1/add_tree_view_column?parent_id=26
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `days_cost'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:298:in `block in real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:297:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:364:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:363:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/helpers/tasks_helper.rb:49:in `remaining_days'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb___78025236840805794_68154620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___2787201119746220359_68194380'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb___3640958510818265905_68901480'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb___3640958510818265905_68901480'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___3548905624830123125_68925340'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:172:in `add_tree_view_column'
+2014-11-27 14:24:56[WARN] user: felipe
+/projects
+N+1 Query detected
+  Task => [:parent]
+  Add to your finder: :include => [:parent]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:69:in `project_or_parent'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:221:in `children_start'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:209:in `update_parent_date'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:52:in `block (2 levels) in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:25:in `block in import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/services/importer.rb:15:in `import'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:53:in `create'
+2014-12-01 00:59:35[WARN] user: felipe
+/projects/2/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:398:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:397:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/helpers/tasks_helper.rb:49:in `remaining_days'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb__4223446816040700599_38170540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_38104620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb__3186506459546061558_25656820'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:135:in `tree_view'
+2014-12-01 00:59:40[WARN] user: felipe
+/projects/2/add_tree_view_column?parent_id=409
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:398:in `block in progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:397:in `progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/helpers/tasks_helper.rb:49:in `remaining_days'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:5:in `_app_views_tasks__task_times_html_erb__4223446816040700599_66486960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_64960640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___1804412290415282523_22991520'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:174:in `add_tree_view_column'
+2014-12-01 00:59:40[WARN] user: felipe
+/projects/2/add_tree_view_column?parent_id=409
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:410:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_66486960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_64960640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___1804412290415282523_22991520'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:174:in `add_tree_view_column'
+2014-12-01 00:59:42[WARN] user: felipe
+/projects/2/add_tree_view_column?parent_id=430
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:410:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_66486960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_64960640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___1804412290415282523_22991520'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:174:in `add_tree_view_column'
+2014-12-01 01:02:04[WARN] user: felipe
+/projects/2/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:414:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_38170540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_38104620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb__3186506459546061558_25656820'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:135:in `tree_view'
+2014-12-01 01:05:31[WARN] user: felipe
+/projects/2/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:414:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_38170540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_38104620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb__3186506459546061558_25656820'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:135:in `tree_view'
+2014-12-01 01:05:40[WARN] user: felipe
+/projects/2/add_tree_view_column?parent_id=409
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:410:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_66486960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_64960640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___1804412290415282523_22991520'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:174:in `add_tree_view_column'
+2014-12-01 01:05:40[WARN] user: felipe
+/projects/2/add_tree_view_column?parent_id=409
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:414:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_66486960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_64960640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___1804412290415282523_22991520'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:174:in `add_tree_view_column'
+2014-12-01 01:05:41[WARN] user: felipe
+/projects/2/add_tree_view_column?parent_id=437
+N+1 Query detected
+  Task => [:project]
+  Add to your finder: :include => [:project]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:410:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_66486960'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_64960640'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_18453900'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/add_tree_view_column.js.erb:13:in `_app_views_projects_add_tree_view_column_js_erb___1804412290415282523_22991520'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:174:in `add_tree_view_column'
+2014-12-01 01:09:32[WARN] user: felipe
+/projects/2/tree_view
+N+1 Query detected
+  Task => [:children]
+  Add to your finder: :include => [:children]
+N+1 Query method call stack
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:339:in `real_days_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/models/task.rb:414:in `info_progress'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/tasks/_task_times.html.erb:8:in `_app_views_tasks__task_times_html_erb__4223446816040700599_38170540'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column_item.html.erb:16:in `_app_views_projects_explorer__tree_view_column_item_html_erb___1299176878858352277_38104620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:36:in `block in _app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/explorer/_tree_view_column.html.erb:35:in `_app_views_projects_explorer__tree_view_column_html_erb__2154652399333429316_14488620'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/views/projects/tree_view.html.erb:7:in `_app_views_projects_tree_view_html_erb__3186506459546061558_25656820'
+  /home/felipe/2014-2-Grupo4-Web/kanbantt/app/controllers/projects_controller.rb:135:in `tree_view'

@@ -1,0 +1,10 @@
+// removemos todos los modals para que no se generen modals repetitivos
+$(".task_delete_modal").remove();
+
+// agregamos el modal al DOM
+$('body').append('<%= escape_javascript(render "tasks/delete_confirmation", locals: { task: @task }) %>');
+
+//Lo abrimos para que aparezca
+$('#delete_modal_' + '<%= @task.id.to_s %>').modal();
+
+

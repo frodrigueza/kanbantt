@@ -1,0 +1,11 @@
+<% tp = locals[:task_positions] %>
+<% col= locals[:column] %>
+
+
+<% if tp.column_id == col.id %>
+	<!-- Buscamos la tarea, el proyecto y el usuario asociado a esta entrada de task_position -->
+	<% task = tp.task %>
+	<% proyecto = task.project%>
+	<% responsable = task.user%>
+	<%= render 'kanban_item', locals:{proyecto: proyecto, responsable: responsable, task: task}%>
+<% end -%>

@@ -1,0 +1,305 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.1.4)
+      actionpack (= 4.1.4)
+      actionview (= 4.1.4)
+      mail (~> 2.5.4)
+    actionpack (4.1.4)
+      actionview (= 4.1.4)
+      activesupport (= 4.1.4)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    actionview (4.1.4)
+      activesupport (= 4.1.4)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+    activemodel (4.1.4)
+      activesupport (= 4.1.4)
+      builder (~> 3.1)
+    activerecord (4.1.4)
+      activemodel (= 4.1.4)
+      activesupport (= 4.1.4)
+      arel (~> 5.0.0)
+    activesupport (4.1.4)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.1)
+      tzinfo (~> 1.1)
+    addressable (2.3.6)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
+    angularjs-rails (1.3.1)
+    arel (5.0.1.20140414130214)
+    arrayfields (4.9.2)
+    awesome_print (1.2.0)
+    bcrypt (3.1.9)
+    better_errors (2.0.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.0.1)
+      sass (~> 3.2)
+    bootstrap-select-rails (1.6.3)
+    bootstrap_form (2.2.0)
+    builder (3.2.2)
+    cancancan (1.9.2)
+    cane (2.6.2)
+      parallel
+    chronic (0.10.2)
+    churn (0.0.35)
+      chronic (>= 0.2.3)
+      hirb
+      json_pure
+      main
+      rest-client (>= 1.6.0)
+      ruby_parser (~> 3.0)
+      sexp_processor (~> 4.1)
+    code_analyzer (0.4.5)
+      sexp_processor
+    code_metrics (0.1.3)
+    coderay (1.1.0)
+    coffee-rails (4.0.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.3.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.8.0)
+    colored (1.2)
+    daemons (1.1.9)
+    debug_inspector (0.0.2)
+    delayed_job (4.0.3)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.2)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    erubis (2.7.0)
+    eventmachine (1.0.3)
+    execjs (2.2.2)
+    fattr (2.2.2)
+    flay (2.5.0)
+      ruby_parser (~> 3.0)
+      sexp_processor (~> 4.0)
+    flog (4.3.0)
+      ruby_parser (~> 3.1, > 3.1.0)
+      sexp_processor (~> 4.4)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
+    gcm (0.0.9)
+      httparty
+      json
+    hike (1.2.3)
+    hirb (0.7.2)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    i18n (0.6.11)
+    jbuilder (2.2.4)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
+    jquery-modal-rails (0.0.4)
+      jquery-ui-rails
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
+      uuidtools
+    jquery-rails (3.1.2)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.2)
+      railties (>= 3.2.16)
+    json (1.8.1)
+    json_pure (1.8.1)
+    kgio (2.9.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    main (6.1.0)
+      arrayfields (>= 4.7.4)
+      chronic (>= 0.6.2)
+      fattr (>= 2.2.0)
+      map (>= 5.1.0)
+    map (6.5.5)
+    metric_fu (4.11.1)
+      cane (~> 2.5, >= 2.5.2)
+      churn (~> 0.0.35)
+      code_metrics (~> 0.1)
+      coderay
+      flay (~> 2.1, >= 2.0.1)
+      flog (~> 4.1, >= 4.1.1)
+      launchy (~> 2.0)
+      metric_fu-Saikuro (~> 1.1, >= 1.1.3)
+      multi_json
+      rails_best_practices (~> 1.14, >= 1.14.3)
+      redcard
+      reek (~> 1.3, >= 1.3.4)
+      roodi (~> 3.1)
+    metric_fu-Saikuro (1.1.3)
+    mime-types (1.25.1)
+    minitest (5.4.2)
+    multi_json (1.10.1)
+    multi_xml (0.5.5)
+    netrc (0.8.0)
+    orm_adapter (0.5.0)
+    paper_trail (3.0.6)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
+    parallel (1.3.3)
+    pg (0.17.1)
+    polyglot (0.3.5)
+    puma (2.9.2)
+      rack (>= 1.1, < 2.0)
+    rack (1.5.2)
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    railroady (1.1.2)
+    rails (4.1.4)
+      actionmailer (= 4.1.4)
+      actionpack (= 4.1.4)
+      actionview (= 4.1.4)
+      activemodel (= 4.1.4)
+      activerecord (= 4.1.4)
+      activesupport (= 4.1.4)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.1.4)
+      sprockets-rails (~> 2.0)
+    rails_best_practices (1.15.4)
+      activesupport
+      awesome_print
+      code_analyzer (>= 0.4.3)
+      colored
+      erubis
+      i18n
+      json
+      require_all
+      ruby-progressbar
+    railties (4.1.4)
+      actionpack (= 4.1.4)
+      activesupport (= 4.1.4)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rainbow (2.0.0)
+    raindrops (0.13.0)
+    rake (10.3.2)
+    rdoc (4.1.2)
+      json (~> 1.4)
+    redcard (1.1.0)
+    reek (1.3.8)
+      rainbow (>= 1.99, < 3.0)
+      ruby2ruby (>= 2.0.8, < 3.0)
+      ruby_parser (~> 3.3)
+      sexp_processor
+    require_all (1.3.2)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    roodi (3.3.1)
+      ruby_parser (~> 3.2, >= 3.2.2)
+    ruby-progressbar (1.7.0)
+    ruby2ruby (2.1.3)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
+    ruby_parser (3.6.3)
+      sexp_processor (~> 4.1)
+    sass (3.2.19)
+    sass-rails (4.0.4)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2.2)
+      sprockets (~> 2.8, < 2.12)
+      sprockets-rails (~> 2.0)
+    sdoc (0.4.1)
+      json (~> 1.7, >= 1.7.7)
+      rdoc (~> 4.0)
+    sexp_processor (4.4.4)
+    sneaky-save (0.1.0)
+      activerecord (>= 3.2.0)
+    sprockets (2.11.3)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.2.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
+    sqlite3 (1.3.10)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
+    thor (0.19.1)
+    thread_safe (0.3.4)
+    tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
+    turbolinks (2.5.1)
+      coffee-rails
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    tzinfo-data (1.2014.9)
+      tzinfo (>= 1.0.0)
+    uglifier (2.5.3)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
+    uuidtools (2.1.5)
+    warden (1.2.3)
+      rack (>= 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ancestry
+  angularjs-rails
+  awesome_print
+  better_errors
+  binding_of_caller
+  bootstrap-sass
+  bootstrap-select-rails
+  bootstrap_form
+  cancancan (~> 1.9)
+  coffee-rails (~> 4.0.0)
+  daemons
+  delayed_job_active_record
+  devise
+  font-awesome-rails
+  gcm
+  hirb
+  jbuilder (~> 2.0)
+  jquery-modal-rails
+  jquery-rails
+  jquery-ui-rails
+  metric_fu
+  paper_trail (~> 3.0.6)
+  pg
+  puma
+  railroady
+  rails (= 4.1.4)
+  sass-rails (~> 4.0.3)
+  sdoc (~> 0.4.0)
+  sneaky-save (~> 0.1.0)
+  sqlite3
+  thin
+  turbolinks
+  tzinfo-data
+  uglifier (>= 1.3.0)
+  unicorn

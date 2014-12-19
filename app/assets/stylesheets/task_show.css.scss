@@ -1,0 +1,100 @@
+ @import "colours";
+
+.task_show{
+	background: white;
+	padding: 0px 20px;
+
+
+	.option.active{
+		color: $azul_tres;
+		text-decoration: underline;
+	}
+
+	.option:hover{
+		color: $azul_tres;
+		text-decoration: underline;
+	}
+	h3{
+		font-size: 16px;
+	}
+
+	.roof{
+		td{
+			padding: 0px 10px;
+			font-size: 12px;
+		}
+		.project_name{
+			background: #045CB3;
+			color: white;
+		}
+		.duration{
+			background: gray;
+			color: white;
+		}
+	}
+
+	.header{
+		padding: 20px 0px 10px 0px;
+		border-bottom: 1px solid #dddddd;
+	}
+	.left_panel{
+		.option{
+			padding: 20px 0px;
+			font-size: 0.9em;
+		}
+	}
+
+	.right_panel{
+		border-left: 1px solid #dddddd;
+		padding: 0px;
+		.title{
+			font-size: 16px;
+			border-bottom: 1px solid #dddddd;
+			color: gray;	
+			padding: 10px 0px;
+			text-align: left;
+		}
+
+		/*resumen*/
+		.graphs{
+			text-align: center;
+
+			.real{
+				color: gray;
+			}
+
+			.expected{
+				color: #045CB3;
+			}
+
+			.titles{
+				td{
+					padding: 20px 0px 10px 0px;
+				}
+			}
+
+			.indicators{
+				font-size: 22px;
+			}
+
+
+			img{
+				width: 40%;
+			}
+		}
+
+		.separated{
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+	}
+
+	.table{
+		th{
+			border-bottom: none;
+		}
+		td{
+			border: none;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+<!-- VISTA RESUMEN DE MODAL TAREA -->
+<div class="row title">
+	<div class="col-md-12">
+		<%= @task.project.resources ? 'Recursos' : 'Tiempo'  %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="full">
+			<table class="graphs">
+				<tr class="titles">
+					<td class="real">Avance real</td>
+					<td class="expected">Avance esperado</td>
+				</tr>
+				<tr>
+					<td class="real">
+						<%= image_tag real_image(@task.info_progress[0].to_i) %>
+					</td>
+					<td class="expected">
+						<%= image_tag expected_image(@task.info_progress[1].to_i) %>
+					</td>
+				</tr>
+				<tr class="indicators">
+					<td class="real"><%= @task.info_progress[0].to_i %> %</td>
+					<td class="expected"><%= @task.info_progress[1].to_i %> %</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+

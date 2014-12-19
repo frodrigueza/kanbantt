@@ -1,0 +1,79 @@
+<style rel="stylesheet" href="jquery.modal.css.scss" type="text/css" media="screen"> </style>
+
+
+<div class="container">
+  <h2>Usuarios
+   <!--si el usuario tiene permiso para crear usuario, entonces se le muestra el link, sino no-->
+    <% if can? :create, User %>
+      <a class="mboton btn-group btn agregar-usuario" href="#newuser" rel="modal:open">
+        <i class="fa fa-plus"></i> Nuevo Usuario
+      </a>
+    <% end %>
+  </h2>
+
+  <div id="newuser" style="display:none; width:600px; max-height: 420px;">
+    <%= render "users/form", :object => [@user = User.new] %>
+  </div>
+
+
+  <div style="clear: both; padding-top:15px;">
+    <% @users.each do |user| %>
+
+    <div id="<%= user.id %>" style="display:none; width:600px; max-height: 420px;">
+      <%= render "users/form_edit", :object => [@user = user] %>
+    </div>
+
+      <% if user.show_user(current_user) %>
+        <div class="user tercio">
+          <div class="<%= user.role%>" ></div>
+          
+              <% if can? :destroy, user %>
+                <div class="eliminar flotar-derecha">              
+                  <!--se le pasa el usuario que se quiere borrar y va al method delete del users controller-->
+                  <%= link_to 'x', user, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+                </div>
+              <% end %>
+            
+              <!-- Se redirige al form_edit de user para editar usuario-->              
+              <% if can? :update, user%>
+                <a href="#<%= user.id %>" rel="modal:open">
+                  <i class='fa fa-pencil-square-o flotar-derecha'></i>
+                </a>
+              <!-- PROBLEMA CON ROLES, USUARIO NO PUEDE EDITARSE A SI MISMO, POR ESO PUSE ESTE ELSIF-->
+              <%elsif current_user.id == user.id%>
+                <a href="#<%= user.id %>" rel="modal:open">
+                  <i class='fa fa-pencil-square-o flotar-derecha'></i>
+                </a> 
+              <% end %>
+
+          <table>
+            <td>
+              <% image = user.image(user.id) %>
+              <%= image_tag image, :class => "img-circle", :style => "margin-right:5px;" %>
+            </td>
+            <td>
+              <div class="nombre">
+              <%= user.name%>
+            </div>    
+            <div class="email">
+              <%= user.email %>
+            </div>
+            <div class="role">
+              <%= user.role_u %>
+            </div>
+            </td>
+          </table>
+
+          <% if can? :update, @user %>
+            <% if user.asignar(current_user)%>
+              <div class="asignar_proyecto flotar-derecha">
+                <!-- link para asignar un proyecto al usuario -->
+                <%= link_to 'Asignar Proyecto', assign_user_path(user) %>
+              </div>
+            <%  end %>
+          <%  end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

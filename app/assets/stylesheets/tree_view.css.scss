@@ -1,0 +1,217 @@
+/*Importamos los colores como variables */
+@import "colours";
+
+
+
+/*Vista del explorador */
+#tree_view{
+	
+	white-space: nowrap; 
+	height: 100%;
+	width: 100%;
+	background: $gris_tres;
+
+	#full_screen_switch{
+		float: right;
+	}
+
+	.header{
+		border-bottom: 1px solid $gris_uno;
+		height: 10%;
+		td{
+			padding: 5px 10px;
+			color: $gris_uno;
+			float: left;
+		}
+		span{
+			cursor: pointer;
+		}
+	}
+
+	#tree_view_content{
+		height: 90%;	
+	}
+
+	.column{
+		margin-right: 2px;
+		display: inline-block;
+		width: 400px;
+		height: 100%;
+		overflow-y: scroll; 
+
+		.header{
+			width: 395px;
+			height: 45;
+			padding: 10px;
+			float: left;
+			background: $azul;
+			font-weight: bold;
+			font-size: 12px;
+			color: white;
+			a{
+				color: white;
+			}
+			td{
+				padding: 10px;
+				color: white;
+			}
+			td:last-child{
+				float: right;
+			}
+			input{
+				color: black;
+			}
+		}
+
+		.item{
+			padding: 10px 0px 10px 10px;
+			width: 100%;
+			text-decoration: none;
+			float: left;
+			position: relative;
+			border-bottom: 1px solid $gris_uno;
+
+			.content{
+
+				font-size: 15px;
+				width: 90%;
+				float: left;
+
+				.task_name {
+					white-space:normal;
+					color: $gris_dos;
+					font-size:12px;
+
+					a{
+						color: $gris_dos;
+						font-size:14px;
+					}
+				}
+
+				span{
+					font-weight: 100;
+					color: gray;
+				}
+			}
+			.helper{
+					width: 25px;
+
+					.arrow{
+						background: white;
+						border-radius: 100px 0px 0px 100px;
+						height: 50px;
+						border: 1px solid $gris_uno;
+						border-right: none;
+						color: $gris_uno;
+
+						span{
+							position: relative;
+							top: 15px;
+							left: 8px;
+							font-weight: bold;
+							a{
+								text-decoration: none;
+							}
+						}
+					}
+
+					.arrow.active{
+						background: $azul_dos;
+						border: 1px solid $azul_dos;
+						color: white;
+					}
+					.arrow.active:hover{
+						background: $azul_dos;
+						border: 1px solid $azul_dos;
+						color: white;	
+					}
+					.arrow:hover{
+						background: $gris_uno;
+						cursor: pointer;
+						color: white;
+					}
+			}
+			.padder{
+				padding: 5px;
+				float: none;
+			}
+		}
+
+				.task_times{
+					font-size: 12px;
+					font-weight: bold;
+					padding-top: 20px;
+
+					td{
+						padding: 1px 5px 1px 5px;
+					}
+					.remaining{
+						border-radius: 5px;
+						color: white;
+						padding-right: 20px;
+					}
+					.remaining.bad{
+						background: $rojo;
+					}
+					.remaining.great{
+						background: $verde;
+					}
+
+					.real_progress{
+						border-right: 1px solid $gris_uno;
+					}
+					.real_progress.bad{
+						color: $rojo;
+					}
+					.real_progress.great{
+						color: $verde;
+					}
+
+					.expected_progress{
+						color: $gris_uno;
+					}
+					.done{
+						color: $verde;
+					}
+				}
+		.item.active{
+			
+		}
+	}
+
+	.task_column{
+		margin-left: -6px;
+	}
+
+	.empty_column{
+		display: inline-block;
+		max-width: 350px;
+		min-width: 150px;
+		height: 1000px;
+		padding: 0px 5px;
+
+
+		.item{
+			width: 100%;
+			text-decoration: none;
+			float: left;
+			position: relative;
+			padding: 0px 5px;
+
+		}
+	}
+}
+
+.full{
+	width: 100%;
+	float: left;
+
+}
+
+.progress{
+	margin: 0px;
+}
+.right{
+	float: right;	
+}
+/* Termino vista explorador */

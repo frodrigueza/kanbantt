@@ -1,0 +1,29 @@
+<!--Vista para reportar recursos al finalizar una tarea-->
+<div class="form_modal">
+<table>
+  <tr>
+    <td class="supform"><h3>Reporta tus recursos</h3></td>
+  </tr>
+  <!-- Si reporto alguna vez le muestra su ultimo reporte -->
+  <% if @task.resources_reports.count != 0 %>
+    <tr><td class="space">Tú último reporte fue el <%= @task.resources_reports.last[:created_at].strftime("%d %b. %Y") %> con un valor de <%= @task.resources_reports.last[:resources].to_i %> <%= @project_object.type_resources %></td></tr>
+  <% else %><tr><td class="space">Es tu primer reporte.</td></tr>
+  <% end %>
+  <tr>
+    <td>
+    <%= bootstrap_form_for([@project_object, @task], layout: :horizontal) do |f| %>
+
+    <!--se piden los campos-->
+      <div class="field">
+        <%= f.number_field :resources, :label =>"Cuantos recursos usaste?" %>
+      </div>
+     
+      <div class="actions">
+        <%= f.submit "Guardar" %>
+      </div>
+    <% end %>
+    </td>
+  </tr>
+</table>
+  
+</div>

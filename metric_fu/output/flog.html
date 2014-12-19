@@ -1,0 +1,8705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='en' http-equiv='Content-Language' />
+    <title>metrics</title>
+    <style>
+    /*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+    /* --------------------------------------------------------------
+
+   buttons.css
+   * Gives you some great CSS-only buttons.
+
+   Created by Kevin Hale [particletree.com]
+   * particletree.com/features/rediscovering-the-button-element
+
+   See Readme.txt in this folder for instructions.
+
+-------------------------------------------------------------- */
+
+button {
+  display:block;
+  float:left;
+  margin:0 0.583em 0.667em 0;
+  padding:5px 10px 5px 7px;   /* Links */
+
+  border:1px solid #dedede;
+  border-top:1px solid #eee;
+  border-left:1px solid #eee;
+
+  background-color:#f5f5f5;
+  font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size:100%;
+  line-height:130%;
+  text-decoration:none;
+  font-weight:bold;
+  color:#565656;
+  cursor:pointer;
+}
+button {
+  width:auto;
+  overflow:visible;
+  padding:4px 10px 3px 7px;   /* IE6 */
+}
+button[type] {
+  padding:4px 10px 4px 7px;   /* Firefox */
+  line-height:17px;           /* Safari */
+}
+*:first-child+html button[type] {
+  padding:4px 10px 3px 7px;   /* IE7 */
+}
+button img {
+  margin:0 3px -3px 0 !important;
+  padding:0;
+  border:none;
+  width:16px;
+  height:16px;
+  float:none;
+}
+
+
+/* Button colors
+-------------------------------------------------------------- */
+
+/* Standard */
+button:hover {
+  background-color:#dff4ff;
+  border:1px solid #c2e1ef;
+  color:#336699;
+}
+
+/* Positive */
+body .positive {
+  color:#529214;
+}
+button.positive:hover {
+  background-color:#E6EFC2;
+  border:1px solid #C6D880;
+  color:#529214;
+}
+
+/* Negative */
+body .negative {
+  color:#d12f19;
+}
+button.negative:hover {
+  background:#fbe3e4;
+  border:1px solid #fbc2c4;
+  color:#d12f19;
+}
+
+    html {
+  background-color: #e0e0e0; }
+
+body {
+  font-size: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #333333; }
+
+a {
+  color: #ed1556;
+  text-decoration: none; }
+  a:hover {
+    color: #ffffff;
+    background-color: #ed1556; }
+
+#header, #content, #footer {
+  margin: 0 auto;
+  background: #eeeeee;
+  padding: 0 2em;
+  z-index: 0;
+  position: relative;
+  font-size: 1em; }
+
+#header {
+  background: #ffffff; }
+  #header h1 {
+    font-weight: bold;
+    font-size: 1.5em; }
+  #header address.watermark {
+    position: absolute;
+    font-weight: bold;
+    right: 3em;
+    top: 0;
+    font-size: .75em;
+    color: #cccccc; }
+    #header address.watermark a {
+      color: #cccccc;
+      font-weight: bold;
+      font-size: 2em; }
+      #header address.watermark a:hover {
+        background: transparent;
+        color: #aaaaaa; }
+
+#content {
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  #content strong {
+    font-weight: bold; }
+  #content em {
+    font-style: italic; }
+  #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    color: #4e4e4e; }
+  #content h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .75em;
+    padding: .25em 0;
+    line-height: 1.2;
+    border-bottom: 1px solid #c0c0c0; }
+  #content h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1em 0 .2em; }
+  #content h3 {
+    font-weight: bold;
+    font-size: 1.25em;
+    margin: .25em 0; }
+  #content h4, #content h5, #content h6 {
+    font-weight: bold;
+    margin-top: .5em; }
+  #content code, #content pre, #content textarea, #content input {
+    font-family: Monaco, Deja Vu Sans Mono, Inconsolata, Consolas, monospace; }
+  #content form p {
+    margin-top: 1em;
+    position: relative; }
+    #content form p.checkbox label {
+      margin-top: 0 !important; }
+  #content form input.text, #content form textarea {
+    width: 30em;
+    padding: .2em .4em;
+    color: #4e4e4e; }
+  #content form input.text {
+    height: 1.4em; }
+  #content form label {
+    float: left;
+    display: block;
+    margin-top: .5em;
+    width: 8em;
+    margin-right: .75em; }
+  #content form .with_errors label {
+    background: red;
+    color: white;
+    position: relative;
+    top: -.7em; }
+  #content form .with_errors.required label {
+    position: static;
+    margin-right: .25em;
+    padding: 0 .2em; }
+  #content form .with_errors input, #content form .with_errors textarea {
+    border: 2px solid #f22;
+    background: #fee;
+    color: #222222; }
+  #content form .required label {
+    float: none;
+    display: block;
+    width: auto;
+    position: relative;
+    font-weight: bold;
+    margin-top: 1em;
+    text-indent: -.65em; }
+    #content form .required label:before {
+      content: "* ";
+      color: #ed1556; }
+  #content form .required input.text {
+    width: 25.6em;
+    font-size: 24px;
+    font-weight: bold; }
+  #content form .normal {
+    margin-top: 2em; }
+  #content form h2.notifier label {
+    float: none;
+    width: auto;
+    margin-right: 0; }
+    #content form h2.notifier label .warning {
+      font-size: .5em;
+      font-weight: normal;
+      color: #999999; }
+  #content form fieldset {
+    padding-bottom: 1em;
+    margin-left: 1.35em;
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 1em; }
+    #content form fieldset h3 {
+      margin-top: 1em;
+      margin-bottom: 0; }
+    #content form fieldset p.normal {
+      margin-top: 1em; }
+    #content form fieldset p label {
+      width: 6.7em; }
+  #content form p.submit {
+    margin-top: 2em; }
+    #content form p.submit:after {
+      display: block;
+      clear: both;
+      float: none;
+      content: ".";
+      text-indent: -9999em;
+      text-align: left; }
+    #content form p.submit.destroy button,     #content form p.submit.manual-build button {
+      float: none;
+      display: inline; }
+    #content form p.submit.manual-build button {
+      margin-right: 0; }
+  #content #build form, #content #last_build form {
+    font-size: .75em; }
+    #content #build form p.submit,     #content #last_build form p.submit {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: .5em;
+      top: 1.25em; }
+  #content .blank_slate p,   #content .error p {
+    position: relative;
+    top: .3em; }
+  #content .blank_slate h1,   #content .error h1 {
+    border-width: 0;
+    margin: 0;
+    padding: 0; }
+    #content .blank_slate h1 button,     #content .error h1 button {
+      float: none;
+      border: 0 none;
+      background: transparent;
+      display: inline;
+      color: #ed1556;
+      padding: 0.25em 0;
+      margin: 0; }
+      #content .blank_slate h1 button:hover,       #content .error h1 button:hover {
+        background: #ed1556;
+        color: #ffffff; }
+  #content .error dt {
+    margin-top: 1.4em;
+    margin-bottom: .3em;
+    font-size: 1.75em;
+    font-family: Georgia, Times New Roman, serif; }
+  #content .error dd {
+    line-height: 1.4; }
+  #content .error .backtrace {
+    margin: 1em 0;
+    overflow: scroll;
+    height: 30em;
+    border: 1px solid #c0c0c0;
+    line-height: 1.6; }
+  #content #projects {
+    margin: 1em 0 2em;
+    border-top: 1px solid #c0c0c0; }
+    #content #projects li {
+      position: relative;
+      border-bottom: 1px solid #c0c0c0; }
+      #content #projects li.odd {
+        background: #e6e6e6; }
+      #content #projects li.building {
+        background: transparent url(/spinner.gif) no-repeat scroll right; }
+      #content #projects li a {
+        font-size: 2em;
+        padding: .25em;
+        line-height: 1.2;
+        font-weight: bold;
+        display: block; }
+        #content #projects li a.success {
+          color: #337022; }
+        #content #projects li a.failed {
+          color: #ff1100; }
+      #content #projects li .meta {
+        position: absolute;
+        right: .6em;
+        top: 1.5em;
+        font-size: 0.8em;
+        color: #999999;
+        text-align: right; }
+      #content #projects li.building .meta {
+        right: 1.6em; }
+      #content #projects li.success .meta {
+        color: #337022; }
+      #content #projects li.failed .meta {
+        color: #ff1100; }
+  #content #previous_builds li a {
+    display: block;
+    padding: .25em;
+    margin-bottom: .25em;
+    border-width: 1px;
+    border-style: solid; }
+    #content #previous_builds li a strong {
+      font-size: 1.3em; }
+    #content #previous_builds li a .attribution {
+      font-size: .9em; }
+  #content #projects li.success a,   #content #previous_builds li.success a {
+    background-color: #bbf8aa;
+    border-color: #99d688;
+    color: #337022; }
+    #content #projects li.success a .attribution,     #content #previous_builds li.success a .attribution {
+      color: #77b466; }
+    #content #projects li.success a:hover,     #content #previous_builds li.success a:hover {
+      background-color: #ddffcc; }
+  #content #projects li.failed a,   #content #previous_builds li.failed a {
+    background-color: #ffbbaa;
+    border-color: #dd9988;
+    color: #ff1100; }
+    #content #projects li.failed a .attribution,     #content #previous_builds li.failed a .attribution {
+      color: #bb7766; }
+    #content #projects li.failed a:hover,     #content #previous_builds li.failed a:hover {
+      background-color: #ffddcc; }
+  #content #build, #content #last_build {
+    position: relative; }
+    #content #build h1, #content #build blockquote,     #content #last_build h1, #content #last_build blockquote {
+      border-width: 0 1px;
+      border-style: solid; }
+    #content #build h1,     #content #last_build h1 {
+      border-top-width: 1px; }
+    #content #build blockquote,     #content #last_build blockquote {
+      bottom-bottom-width: 1px;
+      line-height: 1.4; }
+    #content #build.success h1, #content #build.success blockquote,     #content #last_build.success h1, #content #last_build.success blockquote {
+      background-color: #bbf8aa;
+      border-color: #99d688 #ccffbb #ccffbb #99d688; }
+    #content #build.success h1,     #content #last_build.success h1 {
+      color: #337022; }
+    #content #build.success .meta,     #content #last_build.success .meta {
+      color: #77b466; }
+    #content #build.failed h1, #content #build.failed blockquote,     #content #last_build.failed h1, #content #last_build.failed blockquote {
+      background-color: #ffbbaa;
+      border-color: #dd9988 #ffccbb #ffccbb #dd9988; }
+    #content #build.failed h1,     #content #last_build.failed h1 {
+      color: #ff1100; }
+    #content #build.failed .meta,     #content #last_build.failed .meta {
+      color: #bb7766; }
+    #content #build h1,     #content #last_build h1 {
+      margin-top: .5em;
+      margin-bottom: 0;
+      padding: .25em;
+      color: #337022; }
+    #content #build blockquote,     #content #last_build blockquote {
+      padding: .75em;
+      margin-bottom: 2em; }
+      #content #build blockquote .meta,       #content #last_build blockquote .meta {
+        margin-top: 1em;
+        display: block;
+        font-size: .9em; }
+    #content #build pre.output,     #content #last_build pre.output {
+      background: #111;
+      color: #fff;
+      padding: .5em;
+      overflow: auto;
+      max-height: 50em;
+      font-size: .825em; }
+      #content #build pre.output .color30,       #content #last_build pre.output .color30 {
+        color: #333; }
+      #content #build pre.output .color31,       #content #last_build pre.output .color31 {
+        color: #e33; }
+      #content #build pre.output .color32,       #content #last_build pre.output .color32 {
+        color: #3e3; }
+      #content #build pre.output .color33,       #content #last_build pre.output .color33 {
+        color: #ee3; }
+      #content #build pre.output .color34,       #content #last_build pre.output .color34 {
+        color: #33e; }
+      #content #build pre.output .color35,       #content #last_build pre.output .color35 {
+        color: #e3e; }
+      #content #build pre.output .color36,       #content #last_build pre.output .color36 {
+        color: #3ee; }
+      #content #build pre.output .color37,       #content #last_build pre.output .color37 {
+        color: #fff; }
+  #content #push_path {
+    display: block;
+    margin-top: 1em;
+    margin-left: 2em; }
+  #content div#graph {
+    width: 100%;
+    height: 600px; }
+
+a.success {
+  color: #bbf8aa; }
+  a.success:hover {
+    background-color: #bbf8aa;
+    color: white; }
+a.failed {
+  color: #ffbbaa; }
+  a.failed:hover {
+    background-color: #ffbbaa;
+    color: white; }
+
+#footer {
+  padding: 1.5em 2.5em;
+  border-top: 1px solid #ccc;
+  font-size: .8em;
+  color: #666;
+  text-align: right; }
+  #footer strong {
+    font-weight: bold; }
+
+    table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #666;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+table tr.light {
+   background: #fff;
+}
+
+table tr.dark {
+  background: #f9f9f9;
+}
+
+table tr:hover {
+  background: #FFFFC0;
+}
+
+table td, table th {
+  padding: 4px;
+  font-size: 11px;
+}
+table th {
+  text-align: center;
+  color: #337022;
+  background: #DDFFCC;
+  font-weight: bold;
+  border: #99D688 1px solid;
+}
+
+table td {
+  border: #d0d0d0 1px solid;
+}
+
+table td.score {
+  text-align: right;
+}
+
+.warning {
+  background: yellow;
+}
+
+    .bluff-tooltip {
+  background: #fff;
+  border: 1px solid #d1edf5;
+  padding: 8px 8px 6px;
+}
+.bluff-tooltip .color {
+  display: block;
+  height: 4px;
+  width: 30px;
+  margin: 0 0 4px;
+  overflow: hidden;
+}
+.bluff-tooltip .data {
+  font-weight: bold;
+}
+    </style>
+    <link REL="SHORTCUT ICON" HREF="/favicon.ico">
+    <script language="javascript" src="utils.js" type="text/javascript"></script>
+    <script language="javascript" src="js-class.js" type="text/javascript"></script>
+    <script language="javascript" src="bluff-min.js" type="text/javascript"></script>
+    <script language="javascript" src="excanvas.js" type="text/javascript"></script>
+    <script language="javascript" src="standalone-framework.js" type="text/javascript"></script>
+    <script language="javascript" src="highcharts.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id='header'>
+      <h1><a href="/">metrics</a> | <a href="index.html">kanbantt</a></h1>
+      <address class='watermark'>
+        built with
+        <a href='https://github.com/metricfu/metric_fu'>MetricFu</a>
+      </address>
+    </div>
+    <div id='content'>
+      <h3>Flog Results</h3>
+<p><a href='http://ruby.sadi.st/Flog.html'>Flog</a> measures code complexity.</p>
+
+<div id="graph_container"></div>
+<script language="javascript" src="flog.js?1414241700" type="text/javascript"></script>
+
+<h2>Total Flog score for all methods: 1866.1</h2>
+<h2>Average Flog score for all methods: 10.5</h2>
+
+<table>
+  <tr>
+    <th>File</th>
+    <th>Total score</th>
+    <th>Methods</th>
+    <th>Average score</th>
+    <th>Highest score</th>
+  </tr>
+    
+    <tr>
+      <td><a href="#app_models_task_rb">app/models/task.rb</a></td>
+      <td>614.0</td>
+      <td>41</td>
+      <td>15.0</td>
+      <td>103.6</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_services_importer_rb">app/services/importer.rb</a></td>
+      <td>101.1</td>
+      <td>2</td>
+      <td>50.6</td>
+      <td>96.7</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_projects_controller_rb">app/controllers/projects_controller.rb</a></td>
+      <td>118.3</td>
+      <td>12</td>
+      <td>9.9</td>
+      <td>53.4</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_tasks_controller_rb">app/controllers/tasks_controller.rb</a></td>
+      <td>139.9</td>
+      <td>10</td>
+      <td>14.0</td>
+      <td>49.1</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_api_v_tasks_controller_rb">app/controllers/api/v1/tasks_controller.rb</a></td>
+      <td>84.6</td>
+      <td>8</td>
+      <td>10.6</td>
+      <td>38.1</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_kanban_board_controller_rb">app/controllers/kanban_board_controller.rb</a></td>
+      <td>83.2</td>
+      <td>3</td>
+      <td>27.7</td>
+      <td>34.7</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_services_progress_calculator_rb">app/services/progress_calculator.rb</a></td>
+      <td>124.7</td>
+      <td>9</td>
+      <td>13.9</td>
+      <td>31.7</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_user_controller_rb">app/controllers/user_controller.rb</a></td>
+      <td>29.7</td>
+      <td>2</td>
+      <td>14.8</td>
+      <td>28.3</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_users_controller_rb">app/controllers/users_controller.rb</a></td>
+      <td>94.6</td>
+      <td>11</td>
+      <td>8.6</td>
+      <td>28.2</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_project_rb">app/models/project.rb</a></td>
+      <td>177.1</td>
+      <td>28</td>
+      <td>6.3</td>
+      <td>24.2</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_ability_rb">app/models/ability.rb</a></td>
+      <td>21.6</td>
+      <td>2</td>
+      <td>10.8</td>
+      <td>19.6</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_comments_controller_rb">app/controllers/comments_controller.rb</a></td>
+      <td>55.6</td>
+      <td>8</td>
+      <td>6.9</td>
+      <td>18.3</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_reports_controller_rb">app/controllers/reports_controller.rb</a></td>
+      <td>57.0</td>
+      <td>8</td>
+      <td>7.1</td>
+      <td>18.3</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_report_rb">app/models/report.rb</a></td>
+      <td>17.7</td>
+      <td>2</td>
+      <td>8.8</td>
+      <td>15.5</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_api_v_users_controller_rb">app/controllers/api/v1/users_controller.rb</a></td>
+      <td>14.5</td>
+      <td>2</td>
+      <td>7.2</td>
+      <td>13.5</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_api_v_projects_controller_rb">app/controllers/api/v1/projects_controller.rb</a></td>
+      <td>16.2</td>
+      <td>3</td>
+      <td>5.4</td>
+      <td>13.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_api_v_progress_controller_rb">app/controllers/api/v1/progress_controller.rb</a></td>
+      <td>41.3</td>
+      <td>6</td>
+      <td>6.9</td>
+      <td>11.3</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_services_task_formatter_rb">app/services/task_formatter.rb</a></td>
+      <td>11.0</td>
+      <td>2</td>
+      <td>5.5</td>
+      <td>10.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#"></a></td>
+      <td>9.7</td>
+      <td>1</td>
+      <td>9.7</td>
+      <td>9.7</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_user_rb">app/models/user.rb</a></td>
+      <td>16.0</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>6.3</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#lib_api_constraints_rb">lib/api_constraints.rb</a></td>
+      <td>6.9</td>
+      <td>2</td>
+      <td>3.4</td>
+      <td>4.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_helpers_application_helper_rb">app/helpers/application_helper.rb</a></td>
+      <td>3.7</td>
+      <td>1</td>
+      <td>3.7</td>
+      <td>3.7</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_user_rb">app/models/user.rb</a></td>
+      <td>3.5</td>
+      <td>1</td>
+      <td>3.5</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_project_rb">app/models/project.rb</a></td>
+      <td>3.5</td>
+      <td>1</td>
+      <td>3.5</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_models_task_rb">app/models/task.rb</a></td>
+      <td>3.5</td>
+      <td>1</td>
+      <td>3.5</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#"></a></td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_helpers_users_helper_rb">app/helpers/users_helper.rb</a></td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#app_controllers_api_v_locks_controller_rb">app/controllers/api/v1/locks_controller.rb</a></td>
+      <td>3.2</td>
+      <td>2</td>
+      <td>1.6</td>
+      <td>2.2</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#"></a></td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#"></a></td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#"></a></td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+  
+    <tr>
+      <td><a href="#"></a></td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+  
+</table>
+
+
+  <h2 id="app_models_task_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>app/models/task.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#set_task_position</a></p>
+      <p>Total Score: 103.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>11.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>application</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>config</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>allow_task_position</td>
+          </tr>
+        
+          <tr>
+            <td>9.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>18.9</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>4.6</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>7.9</td>
+            <td>first</td>
+          </tr>
+        
+          <tr>
+            <td>2.9</td>
+            <td>user_id</td>
+          </tr>
+        
+          <tr>
+            <td>7.4</td>
+            <td>to_s</td>
+          </tr>
+        
+          <tr>
+            <td>8.4</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>p</td>
+          </tr>
+        
+          <tr>
+            <td>7.9</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>project_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>5.4</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>0.4</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>last</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>column_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>name</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#update_parent_date</a></p>
+      <p>Total Score: 57.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>6.4</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>project_or_parent</td>
+          </tr>
+        
+          <tr>
+            <td>11.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>class</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_s</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>eql?</td>
+          </tr>
+        
+          <tr>
+            <td>8.0</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>start_date</td>
+          </tr>
+        
+          <tr>
+            <td>5.0</td>
+            <td><</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>update_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>8.6</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>5.0</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>update_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>6.0</td>
+            <td>children_start</td>
+          </tr>
+        
+          <tr>
+            <td>6.4</td>
+            <td>children_end</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#f_remaining</a></p>
+      <p>Total Score: 52.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>5.8</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>0.7</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>12.7</td>
+            <td>remaining</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td><</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>abs</td>
+          </tr>
+        
+          <tr>
+            <td>8.5</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>1.9</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>5.3</td>
+            <td>to_s</td>
+          </tr>
+        
+          <tr>
+            <td>8.8</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>3.9</td>
+            <td>duration</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>-</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Task#none</a></p>
+      <p>Total Score: 35.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>validates</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates_presence_of</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validate</td>
+          </tr>
+        
+          <tr>
+            <td>7.0</td>
+            <td>has_many</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>belongs_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>has_one</td>
+          </tr>
+        
+          <tr>
+            <td>4.8</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>4.8</td>
+            <td>lambda</td>
+          </tr>
+        
+          <tr>
+            <td>4.1</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>scope</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>not</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>order</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>before_save</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>after_save</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>after_create</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#real_resources_progress</a></p>
+      <p>Total Score: 32.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>4.6</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>5.1</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>real_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>reports</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>before</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>last</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>0.5</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>/</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.9</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>end_of_day</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>*</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#real_days_progress</a></p>
+      <p>Total Score: 30.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>4.6</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>7.9</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>days_cost</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>real_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>/</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>reports</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>before</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>last</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>0.5</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>to_f</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#children_end</a></p>
+      <p>Total Score: 25.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>5.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>4.7</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>sort_by</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>last</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.9</td>
+            <td>project_or_parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>first_tasks</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#days_from_start</a></p>
+      <p>Total Score: 24.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td><</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>duration</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>3.6</td>
+            <td>end_of_day</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>-</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>/</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#expected_days_progress</a></p>
+      <p>Total Score: 17.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>6.6</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>2.7</td>
+            <td>days_cost</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>expected_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>/</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>days_from_start</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#duration</a></p>
+      <p>Total Score: 16.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>-</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#add_predecesors_from_parent</a></p>
+      <p>Total Score: 16.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>5.4</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>!=</td>
+          </tr>
+        
+          <tr>
+            <td>3.9</td>
+            <td>lockers</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>puts</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#expected_resources_progress</a></p>
+      <p>Total Score: 13.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>3.7</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>total_resources_cost</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>resources_from_start</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#resources_from_start</a></p>
+      <p>Total Score: 13.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>resources_from_start</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>resources_total_cost</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>days_from_start</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>duration</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>/</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>*</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#delayed</a></p>
+      <p>Total Score: 13.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>2.7</td>
+            <td>now</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td><</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>done</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>!</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#end_date_is_after_start_date</a></p>
+      <p>Total Score: 11.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>blank?</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td><</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>errors</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>add</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#remaining</a></p>
+      <p>Total Score: 10.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>now</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>-</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#resources_total_cost</a></p>
+      <p>Total Score: 10.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>block_pass</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>to_proc_normal</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>map</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>inject</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>resources_cost</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#days_cost</a></p>
+      <p>Total Score: 10.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>block_pass</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>to_proc_normal</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>map</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>inject</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>duration</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#locked?</a></p>
+      <p>Total Score: 9.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>project_or_parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>!=</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>lockers</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>not_done</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>present?</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>parent</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#real_resources_progress_from_task</a></p>
+      <p>Total Score: 8.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>end_of_day</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>real_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#children_start</a></p>
+      <p>Total Score: 8.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>project_or_parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>sort_by</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>first</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#expected_resources_progress_from_task</a></p>
+      <p>Total Score: 8.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>end_of_day</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#progress_esperado</a></p>
+      <p>Total Score: 7.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.7</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>expected_resources_progress_from_task</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#progress</a></p>
+      <p>Total Score: 7.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.7</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>real_resources_progress_from_task</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#f_percent</a></p>
+      <p>Total Score: 6.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>completed?</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>to_s</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>+</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#brothers</a></p>
+      <p>Total Score: 6.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td><<</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#set_level</a></p>
+      <p>Total Score: 6.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>level</td>
+          </tr>
+        
+          <tr>
+            <td>0.6</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>+</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#parent_name</a></p>
+      <p>Total Score: 5.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>try</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>name</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#class_by_advance_percent</a></p>
+      <p>Total Score: 5.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>delayed?</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#in_progress</a></p>
+      <p>Total Score: 5.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td><</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#completed?</a></p>
+      <p>Total Score: 3.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#progress_f</a></p>
+      <p>Total Score: 3.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#has_children?</a></p>
+      <p>Total Score: 3.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>></td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#delayed?</a></p>
+      <p>Total Score: 3.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>now</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td><</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#expected_end_date_s</a></p>
+      <p>Total Score: 3.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>expected_end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>strftime</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#expected_start_date_s</a></p>
+      <p>Total Score: 3.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>expected_start_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>strftime</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#done</a></p>
+      <p>Total Score: 2.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#project_or_parent</a></p>
+      <p>Total Score: 2.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>parent</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>project</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#f_remaining_kanban</a></p>
+      <p>Total Score: 2.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>completed?</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>f_remaining</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#user_name</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>user</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>try</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task#class_for_advance_percent</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>completed?</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_services_importer_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/importer.rb'>app/services/importer.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/importer.rb'>Importer#import</a></p>
+      <p>Total Score: 96.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>10.7</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>26.7</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.9</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>5.0</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>create</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>-</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>7.7</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>5.7</td>
+            <td>p</td>
+          </tr>
+        
+          <tr>
+            <td>10.3</td>
+            <td>children</td>
+          </tr>
+        
+          <tr>
+            <td>9.1</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>count</td>
+          </tr>
+        
+          <tr>
+            <td>5.0</td>
+            <td>name</td>
+          </tr>
+        
+          <tr>
+            <td>10.9</td>
+            <td>parent</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/importer.rb'>Importer#initialize</a></p>
+      <p>Total Score: 4.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>open</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>p</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>from_xml</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_projects_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>app/controllers/projects_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#create</a></p>
+      <p>Total Score: 53.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>11.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>5.6</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>7.5</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>application</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>config</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>path</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>import</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>current_user</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>projects</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>create_kanban</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>projects_path</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>project_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.8</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#update</a></p>
+      <p>Total Score: 17.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>project_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>update</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#add_tree_view_column</a></p>
+      <p>Total Score: 9.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>js</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#destroy</a></p>
+      <p>Total Score: 9.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>projects_url</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>head</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#tree_view</a></p>
+      <p>Total Score: 7.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>js</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#indicators</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#set_project</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#gantt</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#project_params</a></p>
+      <p>Total Score: 3.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>require</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>permit</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>ProjectsController#none</a></p>
+      <p>Total Score: 3.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>load_and_authorize_resource</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>before_action</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>private</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#index</a></p>
+      <p>Total Score: 2.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>current_user</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>projects</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/projects_controller.rb'>ProjectsController#new</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_tasks_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>app/controllers/tasks_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#update</a></p>
+      <p>Total Score: 49.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>6.7</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>9.0</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>8.6</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>task_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>update</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>reports</td>
+          </tr>
+        
+          <tr>
+            <td>3.6</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>current_user</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>request</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>referer</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#create</a></p>
+      <p>Total Score: 27.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>task_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>create</td>
+          </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>project_tree_view_path</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>request</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>referer</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#destroy</a></p>
+      <p>Total Score: 15.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>head</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#new</a></p>
+      <p>Total Score: 14.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.1</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>4.1</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>3.5</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>build</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>html</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#edit</a></p>
+      <p>Total Score: 8.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#set_task</a></p>
+      <p>Total Score: 8.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>project</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#index</a></p>
+      <p>Total Score: 5.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>tasks</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#show</a></p>
+      <p>Total Score: 4.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>project</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>js</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/tasks_controller.rb'>TasksController#task_params</a></p>
+      <p>Total Score: 3.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>require</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>permit</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>TasksController#none</a></p>
+      <p>Total Score: 3.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>load_and_authorize_resource</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>before_action</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>private</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_api_v_tasks_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>app/controllers/api/v1/tasks_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#update</a></p>
+      <p>Total Score: 38.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>8.6</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>4.3</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>4.7</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>request</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>headers</td>
+          </tr>
+        
+          <tr>
+            <td>4.7</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.9</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>project_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>man_hours</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>progress</td>
+          </tr>
+        
+          <tr>
+            <td>3.9</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>head</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#index</a></p>
+      <p>Total Score: 11.8</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>request</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>headers</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks_by_project</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_with</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#update_gantt</a></p>
+      <p>Total Score: 9.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>from_gantt</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>update</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#create</a></p>
+      <p>Total Score: 7.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>from_gantt</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#all</a></p>
+      <p>Total Score: 6.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#destroy</a></p>
+      <p>Total Score: 5.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>head</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/tasks_controller.rb'>Api::V1::TasksController#show</a></p>
+      <p>Total Score: 5.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_with</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Api::V1::TasksController#none</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_kanban_board_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb'>app/controllers/kanban_board_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb'>KanbanBoardController#update</a></p>
+      <p>Total Score: 34.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>10.8</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>8.6</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>7.2</td>
+            <td>split</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>puts</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>first</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb'>KanbanBoardController#index</a></p>
+      <p>Total Score: 24.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>7.1</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.9</td>
+            <td>current_user</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>role</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>sort_by</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>position</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>task_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td><<</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/kanban_board_controller.rb'>KanbanBoardController#all</a></p>
+      <p>Total Score: 23.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>7.4</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>current_user</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>projects</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>5.7</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>3.3</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>sort_by</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>position</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>task_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>find_by_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>puts</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_services_progress_calculator_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>app/services/progress_calculator.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#project_dates</a></p>
+      <p>Total Score: 31.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>9.4</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>4.8</td>
+            <td>start_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>-</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_i</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td><=</td>
+          </tr>
+        
+          <tr>
+            <td>7.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>beginning_of_week</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_a</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>select</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>wday</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>include?</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#progress_by_task</a></p>
+      <p>Total Score: 25.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>expected_resources_progress_from_task</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>real_resources_progress_from_task</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>to_s</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td><<</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#real_in_resources</a></p>
+      <p>Total Score: 18.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>project_dates_to_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>real_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>monday?</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>real_resources_progress_today</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#real_in_days</a></p>
+      <p>Total Score: 17.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>project_dates_to_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>real_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>monday?</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>real_days_progress_today</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#expected_in_days</a></p>
+      <p>Total Score: 12.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>project_dates_to_end</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>expected_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td><<</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#expected_in_resources</a></p>
+      <p>Total Score: 12.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>project_dates_to_end</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td><<</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#project_dates_to_end</a></p>
+      <p>Total Score: 3.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>project_dates</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#project_dates_to_today</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>project_dates</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/progress_calculator.rb'>ProgressCalculator#initialize</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_user_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb'>app/controllers/user_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb'>UserController#create</a></p>
+      <p>Total Score: 28.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>6.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>10.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>4.5</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>root_path</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>redirect_to</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/user_controller.rb'>UserController#newUser</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_users_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>app/controllers/users_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#update</a></p>
+      <p>Total Score: 28.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>8.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.7</td>
+            <td>user_params</td>
+          </tr>
+        
+          <tr>
+            <td>3.7</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>blank?</td>
+          </tr>
+        
+          <tr>
+            <td>2.9</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>delete</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>update</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#assign_to_project</a></p>
+      <p>Total Score: 23.8</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.9</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>4.1</td>
+            <td>projects</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>clear</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>role</td>
+          </tr>
+        
+          <tr>
+            <td>2.3</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>users_path</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>redirect_to</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#create</a></p>
+      <p>Total Score: 18.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>user_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#destroy</a></p>
+      <p>Total Score: 6.8</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>present?</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>redirect_to</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#assign</a></p>
+      <p>Total Score: 5.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#edit</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#user_params</a></p>
+      <p>Total Score: 3.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>require</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>permit</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#show</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#new</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/users_controller.rb'>UsersController#index</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>UsersController#none</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>load_and_authorize_resource</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_project_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>app/models/project.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#expected_days_progress</a></p>
+      <p>Total Score: 24.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.6</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache_key</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>fetch</td>
+          </tr>
+        
+          <tr>
+            <td>7.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>first_tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>days_cost</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>end_of_day</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>expected_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#real_days_progress</a></p>
+      <p>Total Score: 22.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.6</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache_key</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>fetch</td>
+          </tr>
+        
+          <tr>
+            <td>7.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>first_tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>size</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>></td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>days_cost</td>
+          </tr>
+        
+          <tr>
+            <td>3.2</td>
+            <td>+</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>real_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>/</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#total_resources_cost</a></p>
+      <p>Total Score: 11.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache_key</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>fetch</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>first_tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>block_pass</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>to_proc_normal</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>map</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>inject</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#end_date_is_after_start_date</a></p>
+      <p>Total Score: 11.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>blank?</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>start_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td><=</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>errors</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>add</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#real_resources_progress</a></p>
+      <p>Total Score: 11.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache_key</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>fetch</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>first_tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>real_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>+</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#expected_resources_progress</a></p>
+      <p>Total Score: 11.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>cache_key</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>fetch</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>first_tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>to_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>+</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#set_owner</a></p>
+      <p>Total Score: 8.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>current_user</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.8</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#real_resources_progress_today</a></p>
+      <p>Total Score: 7.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>real_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>to_f</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#estimated_resources_progress_today</a></p>
+      <p>Total Score: 7.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>expected_resources_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>to_f</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#real_days_progress_today</a></p>
+      <p>Total Score: 7.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>real_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>to_f</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#estimated_progress_today</a></p>
+      <p>Total Score: 7.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.8</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.8</td>
+            <td>today</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>expected_days_progress</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>*</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>to_f</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Project#none</a></p>
+      <p>Total Score: 6.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates_presence_of</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validate</td>
+          </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>has_many</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#progress_difference</a></p>
+      <p>Total Score: 6.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>real_days_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>estimated_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>-</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#progress_resources_difference</a></p>
+      <p>Total Score: 6.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>real_resources_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>round</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>estimated_resources_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>-</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#create_kanban</a></p>
+      <p>Total Score: 4.9</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>has_children?</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>set_task_position</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#first_tasks</a></p>
+      <p>Total Score: 2.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>in_level</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#f_start_date</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>start_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>strftime</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#progress_as_percentage</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>real_days_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#estimated_progress_as_percentage</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>estimated_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#resources_progress_as_percentage</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>real_resources_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#resources_estimated_progress_as_percentage</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>estimated_resources_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>round</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#f_create</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>projects</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td><<</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#f_end_date</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>end_date</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>strftime</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#update_end_date</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#update_start_date</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#progress_difference_as_percentage</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>progress_difference</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#resources_progress_difference_as_percentage</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>progress_resources_difference</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project#children</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>first_tasks</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_ability_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/ability.rb'>app/models/ability.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/ability.rb'>Ability#initialize</a></p>
+      <p>Total Score: 19.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>3.9</td>
+            <td>role</td>
+          </tr>
+        
+          <tr>
+            <td>3.3</td>
+            <td>==</td>
+          </tr>
+        
+          <tr>
+            <td>5.2</td>
+            <td>can</td>
+          </tr>
+        
+          <tr>
+            <td>5.3</td>
+            <td>cannot</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>id</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Ability#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>include</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_comments_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>app/controllers/comments_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#create</a></p>
+      <p>Total Score: 18.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>comment_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#update</a></p>
+      <p>Total Score: 17.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>comment_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>update</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#destroy</a></p>
+      <p>Total Score: 9.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>comments_url</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>head</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#set_comment</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#comment_params</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>[]</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>CommentsController#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>before_action</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>private</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#index</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/comments_controller.rb'>CommentsController#new</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_reports_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>app/controllers/reports_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#create</a></p>
+      <p>Total Score: 18.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>report_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>save</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#update</a></p>
+      <p>Total Score: 17.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>7.3</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>report_params</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>update</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>4.2</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>errors</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#destroy</a></p>
+      <p>Total Score: 9.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>destroy</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>html</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>reports_url</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>json</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>head</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#set_report</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#report_params</a></p>
+      <p>Total Score: 3.6</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>require</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>permit</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>ReportsController#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>before_action</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>private</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#index</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/reports_controller.rb'>ReportsController#new</a></p>
+      <p>Total Score: 1.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_report_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/report.rb'>app/models/report.rb</a></h2>
+
+    
+      
+      <p><a href=''>Report#none</a></p>
+      <p>Total Score: 15.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>belongs_to</td>
+          </tr>
+        
+          <tr>
+            <td>3.4</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.4</td>
+            <td>lambda</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>all_week</td>
+          </tr>
+        
+          <tr>
+            <td>2.6</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>scope</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>end_of_day</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>default_scope</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>order</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>after_save</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/report.rb'>Report#set_kanban_position</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>task</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>set_task_position</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_api_v_users_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/users_controller.rb'>app/controllers/api/v1/users_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/users_controller.rb'>Api::V1::UsersController#login</a></p>
+      <p>Total Score: 13.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>3.1</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>2.7</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>first</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>valid_password?</td>
+          </tr>
+        
+          <tr>
+            <td>3.5</td>
+            <td>render</td>
+          </tr>
+        
+          <tr>
+            <td>0.7</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Api::V1::UsersController#none</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_api_v_projects_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/projects_controller.rb'>app/controllers/api/v1/projects_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/projects_controller.rb'>Api::V1::ProjectsController#index</a></p>
+      <p>Total Score: 13.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.6</td>
+            <td>request</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>headers</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>where</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>each</td>
+          </tr>
+        
+          <tr>
+            <td>1.7</td>
+            <td>project_id</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>first</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td><<</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_with</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/projects_controller.rb'>Api::V1::ProjectsController#all</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_with</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Api::V1::ProjectsController#none</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_api_v_progress_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>app/controllers/api/v1/progress_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>Api::V1::ProgressController#all_progress</a></p>
+      <p>Total Score: 11.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>6.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>progress_by_task</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>id</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>estimated_resources_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>real_resources_progress_today</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>Api::V1::ProgressController#real_in_days_by_week</a></p>
+      <p>Total Score: 7.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>real_in_days</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>Api::V1::ProgressController#real_in_resources_by_week</a></p>
+      <p>Total Score: 7.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>real_in_resources</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>Api::V1::ProgressController#estimated_in_resources_by_week</a></p>
+      <p>Total Score: 7.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>expected_in_resources</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/progress_controller.rb'>Api::V1::ProgressController#estimated_in_days_by_week</a></p>
+      <p>Total Score: 7.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>3.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>params</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>find</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>expected_in_days</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Api::V1::ProgressController#none</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_services_task_formatter_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/task_formatter.rb'>app/services/task_formatter.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/task_formatter.rb'>TaskFormatter#from_gantt</a></p>
+      <p>Total Score: 10.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>7.4</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>to_f</td>
+          </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>*</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/services/task_formatter.rb'>TaskFormatter#initialize</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id=""><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt'></a></h2>
+
+    
+      
+      <p><a href=''>ApplicationController#none</a></p>
+      <p>Total Score: 9.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.2</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>rescue_from</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>root_url</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>redirect_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>new</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>request</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>format</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>protect_from_forgery</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>before_action</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_user_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/user.rb'>app/models/user.rb</a></h2>
+
+    
+      
+      <p><a href=''>User#none</a></p>
+      <p>Total Score: 6.3</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>0.3</td>
+            <td>lit_fixnum</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>devise</td>
+          </tr>
+        
+          <tr>
+            <td>4.0</td>
+            <td>has_many</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/user.rb'>User#role_u</a></p>
+      <p>Total Score: 5.1</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.5</td>
+            <td>role</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>==</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/user.rb'>User#lp?</a></p>
+      <p>Total Score: 2.4</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>role</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/user.rb'>User#tasks_by_project</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>tasks</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>where</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="lib_api_constraints_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/lib/api_constraints.rb'>lib/api_constraints.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/lib/api_constraints.rb'>ApiConstraints#matches?</a></p>
+      <p>Total Score: 4.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.5</td>
+            <td>headers</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>[]</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>include?</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/lib/api_constraints.rb'>ApiConstraints#initialize</a></p>
+      <p>Total Score: 2.8</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>[]</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_helpers_application_helper_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/application_helper.rb'>app/helpers/application_helper.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/application_helper.rb'>ApplicationHelper#column_class</a></p>
+      <p>Total Score: 3.7</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.4</td>
+            <td>class</td>
+          </tr>
+        
+          <tr>
+            <td>1.2</td>
+            <td>name</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>==</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_user_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/user.rb'>app/models/user.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/user.rb'>User::validates_each#name</a></p>
+      <p>Total Score: 3.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates_each</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>errors</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>add</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_project_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>app/models/project.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/project.rb'>Project::validates_each#name</a></p>
+      <p>Total Score: 3.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates_each</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>errors</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>add</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_models_task_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>app/models/task.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/models/task.rb'>Task::validates_each#name</a></p>
+      <p>Total Score: 3.5</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates_each</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>1.3</td>
+            <td>errors</td>
+          </tr>
+        
+          <tr>
+            <td>1.1</td>
+            <td>add</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id=""><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt'></a></h2>
+
+    
+      
+      <p><a href=''>TaskPosition#none</a></p>
+      <p>Total Score: 3.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>belongs_to</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>validates</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_helpers_users_helper_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/users_helper.rb'>app/helpers/users_helper.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/helpers/users_helper.rb'>UsersHelper#roles_array</a></p>
+      <p>Total Score: 3.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>branch</td>
+          </tr>
+        
+          <tr>
+            <td>2.1</td>
+            <td>==</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id="app_controllers_api_v_locks_controller_rb"><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/locks_controller.rb'>app/controllers/api/v1/locks_controller.rb</a></h2>
+
+    
+      
+      <p><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt/app/controllers/api/v1/locks_controller.rb'>Api::V1::LocksController#all</a></p>
+      <p>Total Score: 2.2</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>assignment</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>all</td>
+          </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>render</td>
+          </tr>
+        
+      </table>
+    
+      
+      <p><a href=''>Api::V1::LocksController#none</a></p>
+      <p>Total Score: 1.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>1.0</td>
+            <td>respond_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id=""><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt'></a></h2>
+
+    
+      
+      <p><a href=''>ProjectUser#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>belongs_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id=""><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt'></a></h2>
+
+    
+      
+      <p><a href=''>Lock#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>belongs_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id=""><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt'></a></h2>
+
+    
+      
+      <p><a href=''>Comment#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>belongs_to</td>
+          </tr>
+        
+      </table>
+    
+
+  <h2 id=""><a href='file:///Users/javieracabello/Proyectos/kanbantt-web/kanbantt'></a></h2>
+
+    
+      
+      <p><a href=''>Column#none</a></p>
+      <p>Total Score: 2.0</p>
+      <table>
+        <tr>
+          <th>Score</th>
+          <th>Operator</th>
+        </tr>
+        
+          <tr>
+            <td>2.0</td>
+            <td>has_many</td>
+          </tr>
+        
+      </table>
+    
+
+
+<p>Generated on 2014-10-25 09:55:00 -0300</p>
+
+    </div>
+
+    
+    <script language="javascript" src="bluff_graph.js" type="text/javascript"></script>
+  </body>
+</html>

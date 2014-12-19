@@ -1,0 +1,17 @@
+<div class="full task_times">
+	<table>
+		<tr>
+			<% if !task.done %>
+				<% if %>
+					<% if remaining_days(task) != "Finalizada" %>
+						<td class="remaining <%= css_task_status_color(task) %>"><%= remaining_days(task) %></td>
+					<% end %>
+					<td class="real_progress <%= css_task_status_color(task) %>"><%= task.info_progress[0] %> % realizado </td>
+					<td class="expected_progress"><%= task.info_progress[1] %> % esperado</td>
+				<% end %>
+			<% else %>
+				<td class="done">Terminada</td>
+			<% end %>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,9 @@
+- Si agregamos una tarea hija, la padre cambia su fecha de inicio y duración segun esta. Pero al eliminarla, el padre no la recalcula
+- En el modal de task, no se cambian las fechas. (implementar form_for)
+- Ajax para despues de creación o edición de tareas, actualizar el partial de la task en la tree view. Igual que como en kanban
+- Al pasar un item a la columna terminado de kanban, el ajax de reporte se llama dos veces, generando dos reportes.
+
+Listos
+- Correjir alto de las columnas y container de la vista explorador
+- Que en el form de tasks salga por defecto la fecha del padre si es para crear.
+- Cambiar todos los modals a link_to_modal

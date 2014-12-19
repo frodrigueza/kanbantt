@@ -1,0 +1,1381 @@
+<html>
+  <head>
+    <style>
+      table { background: #fff; color: #000; }
+.ruby .normal { color: #000; }
+.ruby .comment { color: #005; font-style: italic; }
+.ruby .keyword { color: #A44; font-weight: bold; }
+.ruby .method { color: #44f; }
+.ruby .class { color: #b1713d; }
+.ruby .module { color: #050; }
+.ruby .punct { color: #668; font-weight: bold; }
+.ruby .symbol { color: #00f; }
+.ruby .string { color: #4a4; }
+.ruby .char { color: #F07; }
+.ruby .ident { color: #000; }
+.ruby .constant { color: #b1713d; }
+.ruby .regex { color: #B66; background: #FEF; }
+.ruby .number { color: #F99; }
+.ruby .attribute { color: #f84; }
+.ruby .global { color: #7FB; }
+.ruby .expr { color: #227; }
+.ruby .escape { color: #277; }
+    </style>
+    <title>Analyzed File Report</title>
+  </head>
+  <body>
+    <table cellpadding='0' cellspacing='0' class='ruby'>
+      
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span class="comment">######API#######</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n2" name="n2">2</a></span>require <span class="string"><span class="delimiter">'</span><span class="content">api_constraints</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n3" name="n3">3</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n4" name="n4">4</a></span><span class="comment">#Archivos relevantes para la API</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n5" name="n5">5</a></span><span class="comment">## /lib/api_constraints</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n6" name="n6">6</a></span><span class="comment">## /app/controllers/api  (todo lo que esta dentro de esa carpeta)</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n7" name="n7">7</a></span><span class="comment">#</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n8" name="n8">8</a></span><span class="constant">Rails</span>.application.routes.draw <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n11" name="n11">11</a></span>  <span class="comment">#Aqu creamos rutas para proveer la API de la aplcacin, para ver ms detalles acceder a:</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span class="comment"># http://railscasts.com/episodes/350-rest-api-versioning?view=asciicast</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n13" name="n13">13</a></span>  namespace <span class="symbol">:api</span>, <span class="key">defaults</span>: {<span class="key">format</span>: <span class="string"><span class="delimiter">'</span><span class="content">json</span><span class="delimiter">'</span></span>} <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n14" name="n14">14</a></span>    <span class="comment">#Para la version 1 tenemos este bloque con api constraints especificamos la versin</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span class="comment"># y si es que esta es la que se ocupa por default</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n16" name="n16">16</a></span>    scope <span class="key">module</span>: <span class="symbol">:v1</span>, <span class="key">constraints</span>: <span class="constant">ApiConstraints</span>.new(<span class="key">version</span>: <span class="integer">1</span>, <span class="key">default</span>: <span class="symbol">:true</span>) <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n17" name="n17">17</a></span>      <span class="comment">#Aqu defeinimos las rutas que queremos proveer</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n18" name="n18">18</a></span>      <span class="comment">#por ahora tenemos disponibles los proyectos, tareas y login de usuario</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n19" name="n19">19</a></span>      get <span class="string"><span class="delimiter">'</span><span class="content">/locks/all</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">locks#all</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+             <ul>
+               
+                 <li>overuse route customizations (customize_count > 3) &raquo; rails_best_practices</li>
+               
+                 <li>restrict auto-generated routes api/v1/projects (only: [:index]) &raquo; rails_best_practices</li>
+               
+            </ul>
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>      resources <span class="symbol">:projects</span> <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+             <ul>
+               
+                 <li>restrict auto-generated routes api/v1/projects/tasks (except: [:new, :edit]) &raquo; rails_best_practices</li>
+               
+            </ul>
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n21" name="n21">21</a></span>        resources <span class="symbol">:tasks</span> <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n22" name="n22">22</a></span>          get <span class="string"><span class="delimiter">'</span><span class="content">all</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:collection</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n23" name="n23">23</a></span>          put <span class="string"><span class="delimiter">'</span><span class="content">update_gantt</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:member</span>, <span class="key">action</span>:<span class="string"><span class="delimiter">'</span><span class="content">update_gantt</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n24" name="n24">24</a></span>          delete <span class="string"><span class="delimiter">'</span><span class="content">update_gantt</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:member</span>, <span class="key">action</span>:<span class="string"><span class="delimiter">'</span><span class="content">destroy</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n25" name="n25">25</a></span>          post <span class="string"><span class="delimiter">'</span><span class="content">update_gantt</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:collection</span>, <span class="key">action</span>:<span class="string"><span class="delimiter">'</span><span class="content">create</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n26" name="n26">26</a></span>        <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n27" name="n27">27</a></span>        get <span class="string"><span class="delimiter">'</span><span class="content">all</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:collection</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n28" name="n28">28</a></span>      <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n29" name="n29">29</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>      <span class="comment">#Para android</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n31" name="n31">31</a></span>      resources <span class="symbol">:projects</span>, <span class="key">only</span>: [<span class="symbol">:index</span>] <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n32" name="n32">32</a></span>        resources <span class="symbol">:tasks</span>, <span class="key">only</span>:[<span class="symbol">:index</span>,<span class="symbol">:update</span>,<span class="symbol">:show</span>]
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n33" name="n33">33</a></span>      <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n34" name="n34">34</a></span>      post <span class="string"><span class="delimiter">'</span><span class="content">users/login</span><span class="delimiter">'</span></span>, <span class="key">to</span>: <span class="string"><span class="delimiter">'</span><span class="content">users#login</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n35" name="n35">35</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+             <ul>
+               
+                 <li>remove trailing whitespace &raquo; rails_best_practices</li>
+               
+            </ul>
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n36" name="n36">36</a></span>      get <span class="string"><span class="delimiter">'</span><span class="content">/progress/estimated_in_resources_by_week</span><span class="delimiter">'</span></span> 
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n37" name="n37">37</a></span>      get <span class="string"><span class="delimiter">'</span><span class="content">/progress/real_in_resources_by_week</span><span class="delimiter">'</span></span> 
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n38" name="n38">38</a></span>      get <span class="string"><span class="delimiter">'</span><span class="content">/progress/estimated_in_days_by_week</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n39" name="n39">39</a></span>      get <span class="string"><span class="delimiter">'</span><span class="content">/progress/real_in_days_by_week</span><span class="delimiter">'</span></span> 
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n40" name="n40">40</a></strong></span>      get <span class="string"><span class="delimiter">'</span><span class="content">/progress/all_progress</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n41" name="n41">41</a></span>    <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n42" name="n42">42</a></span>  <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n43" name="n43">43</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n44" name="n44">44</a></span><span class="comment">#######termino API#####</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n45" name="n45">45</a></span>  
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n46" name="n46">46</a></span>  <span class="comment">#metodo creado por la gema devise</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n47" name="n47">47</a></span>  devise_for <span class="symbol">:users</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n48" name="n48">48</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n49" name="n49">49</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n50" name="n50">50</a></strong></span>  <span class="comment">#Resources genera todas las rutas CRUD para cada uno de estos objetos</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+             <ul>
+               
+                 <li>overuse route customizations (customize_count > 3) &raquo; rails_best_practices</li>
+               
+            </ul>
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n51" name="n51">51</a></span>  resources <span class="symbol">:projects</span> <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n52" name="n52">52</a></span>    get <span class="string"><span class="delimiter">'</span><span class="content">tree_view</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n53" name="n53">53</a></span>    get <span class="string"><span class="delimiter">'</span><span class="content">add_tree_view_column</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n54" name="n54">54</a></span>    get <span class="string"><span class="delimiter">'</span><span class="content">gantt</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n55" name="n55">55</a></span>    get <span class="string"><span class="delimiter">'</span><span class="content">indicators</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n56" name="n56">56</a></span>    get <span class="string"><span class="delimiter">'</span><span class="content">kanban_board/index</span><span class="delimiter">'</span></span>, <span class="key">to</span>: <span class="string"><span class="delimiter">'</span><span class="content">kanban_board#index</span><span class="delimiter">'</span></span>, <span class="key">as</span>: <span class="symbol">:kanban_board_index</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n57" name="n57">57</a></span>    post <span class="string"><span class="delimiter">'</span><span class="content">kanban_board/update</span><span class="delimiter">'</span></span>, <span class="key">to</span>: <span class="string"><span class="delimiter">'</span><span class="content">kanban_board#update</span><span class="delimiter">'</span></span>, <span class="key">as</span>: <span class="symbol">:kanban_board_update</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n58" name="n58">58</a></span>    resources <span class="symbol">:tasks</span> <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+             <ul>
+               
+                 <li>needless deep nesting (nested_count > 2) &raquo; rails_best_practices</li>
+               
+            </ul>
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n59" name="n59">59</a></span>      resources <span class="symbol">:reports</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n60" name="n60">60</a></strong></span>    <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n61" name="n61">61</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n62" name="n62">62</a></span>  <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n63" name="n63">63</a></span>  get <span class="string"><span class="delimiter">'</span><span class="content">kanban_board/all</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n64" name="n64">64</a></span>  post <span class="string"><span class="delimiter">'</span><span class="content">kanban_board/update</span><span class="delimiter">'</span></span>, <span class="key">to</span>: <span class="string"><span class="delimiter">'</span><span class="content">kanban_board#update</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n65" name="n65">65</a></span>  resources <span class="symbol">:tasks</span> <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n66" name="n66">66</a></span>    get <span class="string"><span class="delimiter">'</span><span class="content">new_child</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n67" name="n67">67</a></span>  <span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n68" name="n68">68</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n69" name="n69">69</a></span>resources <span class="symbol">:users</span> <span class="keyword">do</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n70" name="n70">70</a></strong></span>  get <span class="string"><span class="delimiter">'</span><span class="content">assign</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:member</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n71" name="n71">71</a></span>  post <span class="string"><span class="delimiter">'</span><span class="content">assign_to_project</span><span class="delimiter">'</span></span>, <span class="key">on</span>: <span class="symbol">:member</span>, <span class="key">action</span>:<span class="string"><span class="delimiter">'</span><span class="content">assign_to_project</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n72" name="n72">72</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n73" name="n73">73</a></span><span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n74" name="n74">74</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n75" name="n75">75</a></span>  <span class="comment"># The priority is based upon order of creation: first created -&gt; highest priority.</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n76" name="n76">76</a></span>  <span class="comment"># See how all your routes lay out with &quot;rake routes&quot;.</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n77" name="n77">77</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n78" name="n78">78</a></span>  <span class="comment"># You can have the root of your site routed with &quot;root&quot;</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n79" name="n79">79</a></span>  <span class="comment">#Esta es la ruta que define donde comienza la aplicacin (Home page)</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><strong><a href="#n80" name="n80">80</a></strong></span>  root <span class="string"><span class="delimiter">'</span><span class="content">kanban_board#all</span><span class="delimiter">'</span></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n81" name="n81">81</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n82" name="n82">82</a></span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+        
+        <tr>
+          <td valign='top'>
+           
+              &nbsp;
+          
+          </td>
+          <td valign='top'>
+            <div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n83" name="n83">83</a></span><span class="keyword">end</span>
+</pre></div>
+</div>
+
+          </td>
+         </tr>
+         
+    </table>
+  </body>
+</html>

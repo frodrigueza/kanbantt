@@ -1,0 +1,32 @@
+// Place all the styles related to the Errors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.number{
+	font-size: 30px;
+	color:white;
+	margin-top: 10px;
+}
+
+.image_container{
+	background-image: url("we_are_sorry.jpg");
+	background-size: contain;
+	max-width: 512px;
+	min-height:234px;
+	max-height: 234px;
+	margin-right: auto;
+	margin-left:auto;
+}
+.error_container{
+	background-color: rgba(155, 158, 155, 0.32);
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-top: 150px;
+	width: 100%;
+	float: left;
+
+}
+
+.explanation{
+	color: #C0BEBE;
+}

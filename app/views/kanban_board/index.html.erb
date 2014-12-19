@@ -1,0 +1,70 @@
+<div id="kanban_board">
+	<div class="row" id="filters">
+		<%= render 'kanban_board/filters'  %>
+	</div>
+	<div class="row">
+
+		<!-- INACTIVO -->
+		<div class="col-md-4 column" id="inactive_kanban_column">
+			<div class="full column_title">
+				<table>
+					<tr>
+						<td><h3>Inactivo</h3></td>
+						<td id="inactive_counter"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="full kanban_column_content">
+				<ul class="full sortable_group">
+					<% @inactive_tasks.each do |t| %>
+						<div id="kanban_item_<%= t.id %>" class="sortable_kanban_item">
+							<%= render 'kanban_item', task: t %>
+						</div>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+
+		<!-- EN PROGRESO -->
+		<div class="col-md-4 column" id="in_progress_kanban_column">
+			<div class="full column_title">
+				<table>
+					<tr>
+						<td><h3>En progreso</h3></td>
+						<td id="inactive_counter"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="full kanban_column_content">
+				<ul class="full sortable_group">
+					<% @in_progress_tasks.each do |t| %>
+						<div id="kanban_item_<%= t.id %>" class="sortable_kanban_item">
+							<%= render 'kanban_item', task: t %>
+						</div>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+
+		<!-- FINALIZADO -->
+		<div class="col-md-4 column" id="done_kanban_column">
+			<div class="full column_title">
+				<table>
+					<tr>
+						<td><h3>Finalizado</h3></td>
+						<td id="inactive_counter"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="full kanban_column_content">
+				<ul class="full sortable_group">
+					<% @done_tasks.each do |t| %>
+						<div id="kanban_item_<%= t.id %>" class="sortable_kanban_item">
+							<%= render 'kanban_item', task: t %>
+						</div>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

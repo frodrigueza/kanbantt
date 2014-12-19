@@ -1,0 +1,43 @@
+<!--vista para que el super admin cree un nuevo usuario-->
+
+<!--para el diseño-->
+<%= bootstrap_form_for(user_newUser_path, layout: :horizontal) do |f| %>
+
+<h2>Crear Usuario</h2>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--se piden los campos-->
+  <div class="field">
+    <%= f.text_field :name, :label => 'Nombre' %>
+  </div>
+ <div class="field">
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.text_field :password, :label => 'Contraseña' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :role, :label => 'Rol' %>
+  </div>
+
+<!--alinea el boton submit-->
+  <div class="col-sm-offset-2 col-sm-10">
+  
+    <%= f.submit %>
+
+  </div>
+<% end %>
+
+
+

@@ -1,0 +1,29 @@
+<!-- padre de la columna -->
+<% parent = locals[:task] %>
+
+	<!-- HTML de cada columna, se hace un IF si es que es la primera columna o una de las siguientes -->
+	<div class="column <%= column_class(parent) %>" id="column_<%= parent.class.name == "Task" ? parent.id : 0 %>">
+		<div class="full">
+			<table class="full header">
+				<tr>
+					<!-- Boton + que permite crear tareas. Por cada columna se crea un modal con el form para agragar tarea a esta -->
+					<td><%= parent.name %></td>
+					<% if parent.class.name == "Task" %>
+						<td><%= link_to_modal '+', new_project_task_path(@project, parent_id: parent.id) %></td>
+					<% elsif parent.class.name == "Project"%>
+						<td><%= link_to_modal '+', new_project_task_path(@project) %></td>
+					<% end %>
+					<!-- fin de los botones -->
+				</tr>
+			</table>
+		</div>
+
+		<!--  fin de los forms -->
+		
+		<!-- Por cada hijo de la variable parent, se hace render de un item de la columna -->
+		<div class="full">
+			<% parent.children.sort_by{ |task| task.progress }.each do |t| %>
+				<%= render 'projects/explorer/tree_view_column_item', locals: {task: t}%>
+			<% end %>
+		</div>
+	</div>		

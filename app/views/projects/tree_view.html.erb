@@ -1,0 +1,9 @@
+<div id="tree_view">
+	<!-- Header de la vista explorador (tree_view) 	 -->
+	<%= render 'projects/explorer/tree_view_header'%>
+	
+	<div class="full" id="tree_view_content">
+		<!-- Se crea una columna inicial que corresponde a las tareas de primer nivel -->
+		<%= render 'projects/explorer/tree_view_column', locals:{ task: @project }%>
+	</div>
+</div>

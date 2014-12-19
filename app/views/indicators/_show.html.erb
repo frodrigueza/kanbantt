@@ -1,0 +1,203 @@
+<div id="indicators">
+
+<!-- Icono de información que abre un modal (parte de abajo de página)-->
+<div class="info_graf"><a href="#ex1" rel="modal:open"><span class="glyphicon glyphicon-question-sign"></a></span></div>
+
+<!-- Cambiar  -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#tiempo" role="tab" data-toggle="tab">Tiempo</a></li> <% aa= '100px' %>
+  <% if @project.resources %>
+  <li><a href="#recursos" role="tab" data-toggle="tab">Recursos</a></li> <% aa= '350px' %>
+    <% if @project.report %>
+        <li><a href="#desempeno" role="tab" data-toggle="tab">Desempeño</a></li> <% aa= '500px' %>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<!-- Contenido de los tabs -->
+<div class="tab-content">
+    <div class="tab-pane fade in active" id="tiempo">
+        <div ng-controller="DaysChartCtrl" class="ng-scope">
+            <highchart id="chart" config="highchartsNG" style="width: 1000px;"></highchart>
+        </div>
+        <div id="indicators-numbers">
+            <span class="left-indicator">
+                <span class="indicators-text col-md-6">Tiempo Real</span>
+                <span class="indicators-number col-md-6"><%=@project.progress_as_percentage %></span>
+            </span>
+            <span class="middle-indicator" data-difference-positive="<%= @project.progress_difference.to_i > 0 %>" >
+                <span class="indicators-text col-md-6">Diferencia</span>
+                <span class="indicators-number col-md-6"><%=@project.progress_difference_as_percentage %></span>
+            </span>
+            <span class="right-indicator">
+                <span class="indicators-text col-md-6">Tiempo Esperado</span>
+                <span class="indicators-number col-md-6"><%=@project.estimated_progress_as_percentage %></span>
+            </span>
+            <span class="last-indicator">
+                <span class="indicators-text  col-md-6">Días de Retraso</span>
+                <span class="indicators-number  col-md-6"><%=@project.days_of_delay %></span>
+            </span>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="recursos">
+        <div ng-controller="ResourcesChartCtrl" class="ng-scope">
+            <highchart id="chart" config="highchartsNG" style="width: 1000px;"></highchart>
+        </div>
+
+        <div id="indicators-numbers">
+            <span class="left-indicator">
+                <span class="indicators-text  col-md-6">Recursos Reales</span>
+                <span class="indicators-number  col-md-6"><%=@project.resources_progress_as_percentage %></span>
+            </span>
+            <span class="middle-indicator" data-difference-positive="<%= @project.progress_resources_difference > 0 %>" >
+                <span class="indicators-text  col-md-6">Diferencia</span>
+                <span class="indicators-number  col-md-6"><%=@project.resources_progress_difference_as_percentage %></span>
+            </span>
+            <span class="right-indicator">
+                <span class="indicators-text  col-md-6">Recursos Esperados</span>
+                <span class="indicators-number  col-md-6"><%=@project.resources_estimated_progress_as_percentage %></span>
+            </span>
+            <span class="last-indicator">
+                <span class="indicators-text  col-md-6">Días de Retraso</span>
+                <span class="indicators-number  col-md-6"><%=@project.days_of_delay %></span>
+            </span>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="desempeno">
+        <div ng-controller="DesempenoChartCtrl" class="ng-scope">
+            <highchart id="chart" config="highchartsNG" style="width: 1000px;"></highchart>
+        </div>
+        <div id="indicators-numbers">
+            <span class="left-indicator">
+                <span class="indicators-text col-md-6">Desempeño Real</span>
+                <span class="indicators-number col-md-6">
+                    <ul><li style="font-size:10px;"><%=@project.performance_real %></li>
+                        <li id="type"><%= @project.type_resources %></li></ul>
+                </span>
+            </span>
+            <span class="middle-indicator" data-difference-positive="<%= @project.progress_difference.to_i > 0 %>" >
+                <span class="indicators-text col-md-6">Diferencia</span>
+                <span class="indicators-number col-md-6">
+                    <ul><li style="font-size:10px;"><%=@project.performance_difference %></li>
+                        <li id="type"><%= @project.type_resources %></li></ul>
+                    </span>
+            </span>
+            <span class="right-indicator">
+                <span class="indicators-text col-md-6">Desempeño Esperado</span>
+                <span class="indicators-number col-md-6">
+                    <ul><li style="font-size:10px;"><%= @project.performance_expected %></li>
+                        <li id="type"><%= @project.type_resources %></li></ul>
+                    </span>
+            </span>
+            <span class="last-indicator">
+                <span class="indicators-text  col-md-6">Días de Retraso</span>
+                <span class="indicators-number  col-md-6"><%=@project.days_of_delay %></span>
+            </span>
+        </div>
+    </div>
+</div>    
+
+
+<!-- Tabla con los usuarios del proyecto.-->
+<div class="table-responsive">
+    <table class="tablaind">
+    <tr>
+        <td class="top_ind" colspan="8">
+            <!--si el usuario tiene permiso para crear usuario, entonces se le muestra el link, sino no-->
+            <% if can? :create, User %>
+            <a class="btn-group btn" href="#newuser" rel="modal:open">
+                <i class="fa fa-plus"></i> Nuevo Usuario
+            </a>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">Nombre</th>
+        <th>Tareas</th>
+        <th>Cargo</th>
+        <th>Email</th>
+        <th colspan="4"></th>
+    </tr>
+
+    <% @project.users.each do |user| %>
+           <% if user.show_user(current_user) %>
+        <tr>
+            <td><%= image_tag 'perfil.jpg', :class => "img-ind" %></td>
+            <td style="width:100%; text-align:left;"><%= user.name %></td>
+            <td>
+                <!-- Se muestra una lista con todas las tareas del usuario -->
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    Ver Tareas <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="font-size:10px;">
+                        <% if user.tasks.count != 0 %>
+                            <% user.tasks.each do |ut| %>
+                            <li><%= ut.name %></li>
+                            <% end %>
+                        <% else %>
+                            <li>No tiene tareas asignadas</li>
+                        <% end %>
+                    </ul>
+                </div>
+            </td>
+            <td><%= user.role_u %></td>
+            <td><%= user.email %></td>
+            <td></td>
+            <td>
+                <!-- Si el usuario puede editar, se da acceso-->
+                <% if can? :update, user%>
+                    <a href="#<%= user.id %>" rel="modal:open">
+                      <i class='fa fa-pencil-square-o flotar-derecha'></i>
+                    </a>
+
+                    <div id="<%= user.id %>" style="display:none; width:600px; height: 420px;">
+                        <%= render "users/form_edit", :object => [@user = user] %>
+                    </div>
+                <% end %>
+            </td>
+            <td>
+                <% if can? :destroy, user %>
+                <%= link_to 'X', user, :method => :delete %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    <% end %>
+    
+    </table>
+</div>
+
+</br>
+</br>
+</br>
+</br>
+
+
+
+</div>
+
+<!-- Información que se muestra al hacer click sobre el icono info-->
+<!-- Modal para crear usuario que se llama al hacer click en el boton nuevo usuario-->
+<div id="newuser" style="display:none; width:800px; max-height: 420px;">
+    <%= render "users/form", :object => [@user = User.new, @project = @project] %>
+</div>
+
+<div id="ex1" style="display:none; max-height: <%= aa %>;">
+    <div class="description">
+    <p>El gráfico de Tiempo muestra la curva de avance esperado que se relaciona con la cantidad de dias que lleva el proyecto del total y la curva de avance real que se calcula de acuerdo a los reportes de avance de las tareas. Se usa como medida la cantidad de días habiles pronosticados para cada tarea.</p>
+
+    <% if @project.resources %>
+    <p>El gráfico de Recursos muestra la curva de recursos esperados que se relaciona con la cantidad de recursos que se deberian haber gastado en relación al tiempo transcurrido y la curva de recursos reales que se calcula de acuerdo a los reportes de avance de las tareas. Se usa como medida el presupuesto pronosticados para cada tarea.</p>
+    
+        <% if @project.report %>
+        <p>El gráfico de Desempeño muestra la cantidad de recursos que se espera gastar dado los reportes de avance versus la cantidad de recursos que se gastaron calculado gracias a los reportes de recursos. Es importante destacar que este gráfico no representa el avance presupuestado del proyecto, muestra el avance real considerando los recursos que se debieron gastar versus los recursos que se gastaron.</p>
+        </div>
+        <% end %>
+    <% end %>
+
+</div>
+
+
+
+

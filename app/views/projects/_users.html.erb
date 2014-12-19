@@ -1,0 +1,19 @@
+<div class="col-md-6">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-lg-5" colspan="2">Usuarios</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @project.users.each do |u| %>
+        <tr>
+          <td><%= u.name %></td>
+          <td><%= u.role_u %></td>          
+        </tr>
+      <% end %>
+      </tbody>
+    </table>      
+  </div>
+</div>

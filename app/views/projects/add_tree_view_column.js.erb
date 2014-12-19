@@ -1,0 +1,17 @@
+$(function(){
+
+	//Removemos todas las columnas despues de la clickeada
+	$('#column_<%= @task.parent_id ? @task.parent_id : 0 %>').nextAll().remove();
+
+	// Removemos el atributo active de class de todos los items de la columna clickeada
+	$('#column_<%= @task.parent_id ? @task.parent_id : 0 %>').find('.item .arrow').removeClass('active');
+
+	//Al item clickeado lo dejamos active
+	$('#item_<%= @task.id %> .arrow').addClass('active');
+
+	//Agregamos el partial column a tree view via append, escape_javascript
+	$('#tree_view_content').append('<%= escape_javascript(render "projects/explorer/tree_view_column", :locals => {:task => @task, display:"none"}) %>');
+
+	// Nos movemos hacia el final de la div tree view para ver completa la columna recien agregada
+	$('#tree_view').animate( { scrollLeft: '+=500' }, 500, 'easeOutQuad' );
+});

@@ -1,0 +1,78 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*Importamos los colores como variables */
+@import "colours";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container{
+	h2 {margin-top:0px; margin-bottom: 10px;}
+	.mboton {margin-bottom:10px; float:right; margin-right: 4%;}
+}
+.user1{
+	background-color:lighten($background,10%);
+}
+.nombre11 {font-size:17px;}
+
+.user{
+	background-color:lighten($background,10%);
+}
+.flotar-derecha{
+	float:right;
+	padding-right: 10px;
+	display:inline-block;
+}
+.flotar-izquierda{
+	float:left;
+	padding-left: 10px;
+	display:inline-block;
+}
+.agregar-usuario{
+	margin-left: 2em;
+	margin-bottom: 0.8em!important;
+}
+.tercio1{
+	padding: 15px;
+	margin-right: 3%;
+	margin-bottom: 20px;
+	width:30%;
+	height: 220px;
+	float: left;
+
+}
+
+.img_project {
+	width: 100%;
+	height: 100px;
+}
+
+.info {
+	display: block;
+	color: #2E2E2E;
+	margin-bottom: 4px;
+
+}
+
+.alert{
+	margin-bottom: 0px !important;
+}
+
+
+.mboton-left{
+	float:left !important;
+	margin-right: 10px !important;
+
+}

@@ -1,0 +1,42 @@
+<!-- MENU HORIZONTAL -->
+<div class="primary_menu">
+    <table class="first_menu_table">
+        <tr>
+            <!-- HOME -->
+            <td class="home"><%= link_to raw('<span class="glyphicon glyphicon-home home-icon"></span>') , root_path %></td>
+
+            <!-- PROJECT SELECTOR -->
+            <td class="dropdown c1 project_selector">
+                <div class="btn-group">
+                    <button type="button" class="btn project_name">
+                        <%= @project ? @project.name : 'Todos los proyectos' %>
+                    </button>
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu projects" role="menu">
+                        <% @projects.each do |p| %>
+                            <li><%= link_to p.name, p %></li>
+                        <% end %>
+                        <li class="divider"></li>
+                        <li><%= link_to 'Todos los proyectos', projects_path() %></li>
+                    </ul>
+                </div>   
+            </td>
+
+            <!-- KANBAN -->
+            <td class="<%= params[:controller] == 'kanban_board' ? 'active' : ''%>">
+                <%= link_to 'Kanban', kanban_board_index_path(project_id: @project ? @project.id : nil)%>
+            </td>
+
+            <!-- GANTT -->
+            <td class="<%= params[:controller] == 'gantt' || params[:action] == 'tree_view' ? 'active' : ''%>">
+                <%= link_to 'Gantt', gantt_path(project_id: @project ? @project.id : nil)%>
+            </td>
+
+            <!-- CONFIGURACION -->
+            <td><%= link_to 'Configuracion' %></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+<%= bootstrap_form_for(@task) do |f| %>
+
+    <!-- Nombre -->
+    <%= f.text_area :name, :required => true, :label => 'Nombre' %>
+
+    <!-- Responsable -->
+    <%= f.select :user_id, @task.project.users.map{|u| [u.name, u.id]}, include_blank: true, label: 'Responsable' %>
+
+    <!-- Padre -->
+    <%= f.hidden_field :parent_id %>
+
+    <!-- Fecha inicio -->
+    <%= f.date_select :expected_start_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], :required => true, label: 'Inicio esperado'} %>
+
+    <!-- Fecha termino -->
+    <%= f.date_select :expected_end_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], :required => true, label: 'Término esperado'} %>
+
+    <!-- Costo en recursos -->
+    <% if @project.resources %>
+      <%= f.number_field :resources_cost, :required => true, :label => 'Costo de la tarea en recursos', :value => 100 %>
+    <% end %>
+
+    <!-- Proyecto -->
+    <%= f.hidden_field :project_id, value: @project.id %>
+
+    <!-- lo haremos remoto para usar AJAX tanto en la vista de explorador como en kanban -->
+    <%= f.submit 'Enviar' %>
+<% end %>

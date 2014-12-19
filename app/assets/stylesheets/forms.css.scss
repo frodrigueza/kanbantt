@@ -1,0 +1,24 @@
+/* Forms Modal */
+/*forms*/
+.form-control{
+	width: auto;
+}
+
+.little-form{
+
+	.form-group{	
+		margin-bottom: 5px;
+	}
+	.form-control, .btn{
+		font-size: 12px;
+		width: auto;
+		padding: 3px 6px;
+		height: auto;
+	}
+	.control-label{
+		font-size: 12px;
+		margin-bottom: 0px;
+		margin-top: 10px;
+	}
+}
+

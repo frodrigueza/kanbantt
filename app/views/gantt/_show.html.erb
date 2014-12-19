@@ -1,0 +1,13 @@
+<div id="gantt">
+    <div ng-controller="GanttCtrl" class="ng-scope gantt-ctrl">
+    	<div class="buttons-container">		    
+		    <button class="btn btn-primary btn-scale active" ng-click="toggleScale()" type="radio" id="month" style="color: #A4A4A4;"> Escala en días</button>
+		    <button class="btn btn-primary btn-scale" ng-click="toggleScale()" type="radio" id="day" style="color: #A4A4A4;"> Escala en meses</button>
+		</div>
+		<% if @project.tasks.count != 0 %>
+			<div id="gantt-container" dhx-gantt data="tasks"></div>
+		<% else %>
+			<br><p class="login-title">Este proyecto no tiene tareas.</p>       	
+       <% end %>
+    </div>
+</div>

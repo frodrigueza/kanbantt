@@ -1,0 +1,7045 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='en' http-equiv='Content-Language' />
+    <title>metrics</title>
+    <style>
+    /*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+    /* --------------------------------------------------------------
+
+   buttons.css
+   * Gives you some great CSS-only buttons.
+
+   Created by Kevin Hale [particletree.com]
+   * particletree.com/features/rediscovering-the-button-element
+
+   See Readme.txt in this folder for instructions.
+
+-------------------------------------------------------------- */
+
+button {
+  display:block;
+  float:left;
+  margin:0 0.583em 0.667em 0;
+  padding:5px 10px 5px 7px;   /* Links */
+
+  border:1px solid #dedede;
+  border-top:1px solid #eee;
+  border-left:1px solid #eee;
+
+  background-color:#f5f5f5;
+  font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size:100%;
+  line-height:130%;
+  text-decoration:none;
+  font-weight:bold;
+  color:#565656;
+  cursor:pointer;
+}
+button {
+  width:auto;
+  overflow:visible;
+  padding:4px 10px 3px 7px;   /* IE6 */
+}
+button[type] {
+  padding:4px 10px 4px 7px;   /* Firefox */
+  line-height:17px;           /* Safari */
+}
+*:first-child+html button[type] {
+  padding:4px 10px 3px 7px;   /* IE7 */
+}
+button img {
+  margin:0 3px -3px 0 !important;
+  padding:0;
+  border:none;
+  width:16px;
+  height:16px;
+  float:none;
+}
+
+
+/* Button colors
+-------------------------------------------------------------- */
+
+/* Standard */
+button:hover {
+  background-color:#dff4ff;
+  border:1px solid #c2e1ef;
+  color:#336699;
+}
+
+/* Positive */
+body .positive {
+  color:#529214;
+}
+button.positive:hover {
+  background-color:#E6EFC2;
+  border:1px solid #C6D880;
+  color:#529214;
+}
+
+/* Negative */
+body .negative {
+  color:#d12f19;
+}
+button.negative:hover {
+  background:#fbe3e4;
+  border:1px solid #fbc2c4;
+  color:#d12f19;
+}
+
+    html {
+  background-color: #e0e0e0; }
+
+body {
+  font-size: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #333333; }
+
+a {
+  color: #ed1556;
+  text-decoration: none; }
+  a:hover {
+    color: #ffffff;
+    background-color: #ed1556; }
+
+#header, #content, #footer {
+  margin: 0 auto;
+  background: #eeeeee;
+  padding: 0 2em;
+  z-index: 0;
+  position: relative;
+  font-size: 1em; }
+
+#header {
+  background: #ffffff; }
+  #header h1 {
+    font-weight: bold;
+    font-size: 1.5em; }
+  #header address.watermark {
+    position: absolute;
+    font-weight: bold;
+    right: 3em;
+    top: 0;
+    font-size: .75em;
+    color: #cccccc; }
+    #header address.watermark a {
+      color: #cccccc;
+      font-weight: bold;
+      font-size: 2em; }
+      #header address.watermark a:hover {
+        background: transparent;
+        color: #aaaaaa; }
+
+#content {
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  #content strong {
+    font-weight: bold; }
+  #content em {
+    font-style: italic; }
+  #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    color: #4e4e4e; }
+  #content h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .75em;
+    padding: .25em 0;
+    line-height: 1.2;
+    border-bottom: 1px solid #c0c0c0; }
+  #content h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1em 0 .2em; }
+  #content h3 {
+    font-weight: bold;
+    font-size: 1.25em;
+    margin: .25em 0; }
+  #content h4, #content h5, #content h6 {
+    font-weight: bold;
+    margin-top: .5em; }
+  #content code, #content pre, #content textarea, #content input {
+    font-family: Monaco, Deja Vu Sans Mono, Inconsolata, Consolas, monospace; }
+  #content form p {
+    margin-top: 1em;
+    position: relative; }
+    #content form p.checkbox label {
+      margin-top: 0 !important; }
+  #content form input.text, #content form textarea {
+    width: 30em;
+    padding: .2em .4em;
+    color: #4e4e4e; }
+  #content form input.text {
+    height: 1.4em; }
+  #content form label {
+    float: left;
+    display: block;
+    margin-top: .5em;
+    width: 8em;
+    margin-right: .75em; }
+  #content form .with_errors label {
+    background: red;
+    color: white;
+    position: relative;
+    top: -.7em; }
+  #content form .with_errors.required label {
+    position: static;
+    margin-right: .25em;
+    padding: 0 .2em; }
+  #content form .with_errors input, #content form .with_errors textarea {
+    border: 2px solid #f22;
+    background: #fee;
+    color: #222222; }
+  #content form .required label {
+    float: none;
+    display: block;
+    width: auto;
+    position: relative;
+    font-weight: bold;
+    margin-top: 1em;
+    text-indent: -.65em; }
+    #content form .required label:before {
+      content: "* ";
+      color: #ed1556; }
+  #content form .required input.text {
+    width: 25.6em;
+    font-size: 24px;
+    font-weight: bold; }
+  #content form .normal {
+    margin-top: 2em; }
+  #content form h2.notifier label {
+    float: none;
+    width: auto;
+    margin-right: 0; }
+    #content form h2.notifier label .warning {
+      font-size: .5em;
+      font-weight: normal;
+      color: #999999; }
+  #content form fieldset {
+    padding-bottom: 1em;
+    margin-left: 1.35em;
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 1em; }
+    #content form fieldset h3 {
+      margin-top: 1em;
+      margin-bottom: 0; }
+    #content form fieldset p.normal {
+      margin-top: 1em; }
+    #content form fieldset p label {
+      width: 6.7em; }
+  #content form p.submit {
+    margin-top: 2em; }
+    #content form p.submit:after {
+      display: block;
+      clear: both;
+      float: none;
+      content: ".";
+      text-indent: -9999em;
+      text-align: left; }
+    #content form p.submit.destroy button,     #content form p.submit.manual-build button {
+      float: none;
+      display: inline; }
+    #content form p.submit.manual-build button {
+      margin-right: 0; }
+  #content #build form, #content #last_build form {
+    font-size: .75em; }
+    #content #build form p.submit,     #content #last_build form p.submit {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: .5em;
+      top: 1.25em; }
+  #content .blank_slate p,   #content .error p {
+    position: relative;
+    top: .3em; }
+  #content .blank_slate h1,   #content .error h1 {
+    border-width: 0;
+    margin: 0;
+    padding: 0; }
+    #content .blank_slate h1 button,     #content .error h1 button {
+      float: none;
+      border: 0 none;
+      background: transparent;
+      display: inline;
+      color: #ed1556;
+      padding: 0.25em 0;
+      margin: 0; }
+      #content .blank_slate h1 button:hover,       #content .error h1 button:hover {
+        background: #ed1556;
+        color: #ffffff; }
+  #content .error dt {
+    margin-top: 1.4em;
+    margin-bottom: .3em;
+    font-size: 1.75em;
+    font-family: Georgia, Times New Roman, serif; }
+  #content .error dd {
+    line-height: 1.4; }
+  #content .error .backtrace {
+    margin: 1em 0;
+    overflow: scroll;
+    height: 30em;
+    border: 1px solid #c0c0c0;
+    line-height: 1.6; }
+  #content #projects {
+    margin: 1em 0 2em;
+    border-top: 1px solid #c0c0c0; }
+    #content #projects li {
+      position: relative;
+      border-bottom: 1px solid #c0c0c0; }
+      #content #projects li.odd {
+        background: #e6e6e6; }
+      #content #projects li.building {
+        background: transparent url(/spinner.gif) no-repeat scroll right; }
+      #content #projects li a {
+        font-size: 2em;
+        padding: .25em;
+        line-height: 1.2;
+        font-weight: bold;
+        display: block; }
+        #content #projects li a.success {
+          color: #337022; }
+        #content #projects li a.failed {
+          color: #ff1100; }
+      #content #projects li .meta {
+        position: absolute;
+        right: .6em;
+        top: 1.5em;
+        font-size: 0.8em;
+        color: #999999;
+        text-align: right; }
+      #content #projects li.building .meta {
+        right: 1.6em; }
+      #content #projects li.success .meta {
+        color: #337022; }
+      #content #projects li.failed .meta {
+        color: #ff1100; }
+  #content #previous_builds li a {
+    display: block;
+    padding: .25em;
+    margin-bottom: .25em;
+    border-width: 1px;
+    border-style: solid; }
+    #content #previous_builds li a strong {
+      font-size: 1.3em; }
+    #content #previous_builds li a .attribution {
+      font-size: .9em; }
+  #content #projects li.success a,   #content #previous_builds li.success a {
+    background-color: #bbf8aa;
+    border-color: #99d688;
+    color: #337022; }
+    #content #projects li.success a .attribution,     #content #previous_builds li.success a .attribution {
+      color: #77b466; }
+    #content #projects li.success a:hover,     #content #previous_builds li.success a:hover {
+      background-color: #ddffcc; }
+  #content #projects li.failed a,   #content #previous_builds li.failed a {
+    background-color: #ffbbaa;
+    border-color: #dd9988;
+    color: #ff1100; }
+    #content #projects li.failed a .attribution,     #content #previous_builds li.failed a .attribution {
+      color: #bb7766; }
+    #content #projects li.failed a:hover,     #content #previous_builds li.failed a:hover {
+      background-color: #ffddcc; }
+  #content #build, #content #last_build {
+    position: relative; }
+    #content #build h1, #content #build blockquote,     #content #last_build h1, #content #last_build blockquote {
+      border-width: 0 1px;
+      border-style: solid; }
+    #content #build h1,     #content #last_build h1 {
+      border-top-width: 1px; }
+    #content #build blockquote,     #content #last_build blockquote {
+      bottom-bottom-width: 1px;
+      line-height: 1.4; }
+    #content #build.success h1, #content #build.success blockquote,     #content #last_build.success h1, #content #last_build.success blockquote {
+      background-color: #bbf8aa;
+      border-color: #99d688 #ccffbb #ccffbb #99d688; }
+    #content #build.success h1,     #content #last_build.success h1 {
+      color: #337022; }
+    #content #build.success .meta,     #content #last_build.success .meta {
+      color: #77b466; }
+    #content #build.failed h1, #content #build.failed blockquote,     #content #last_build.failed h1, #content #last_build.failed blockquote {
+      background-color: #ffbbaa;
+      border-color: #dd9988 #ffccbb #ffccbb #dd9988; }
+    #content #build.failed h1,     #content #last_build.failed h1 {
+      color: #ff1100; }
+    #content #build.failed .meta,     #content #last_build.failed .meta {
+      color: #bb7766; }
+    #content #build h1,     #content #last_build h1 {
+      margin-top: .5em;
+      margin-bottom: 0;
+      padding: .25em;
+      color: #337022; }
+    #content #build blockquote,     #content #last_build blockquote {
+      padding: .75em;
+      margin-bottom: 2em; }
+      #content #build blockquote .meta,       #content #last_build blockquote .meta {
+        margin-top: 1em;
+        display: block;
+        font-size: .9em; }
+    #content #build pre.output,     #content #last_build pre.output {
+      background: #111;
+      color: #fff;
+      padding: .5em;
+      overflow: auto;
+      max-height: 50em;
+      font-size: .825em; }
+      #content #build pre.output .color30,       #content #last_build pre.output .color30 {
+        color: #333; }
+      #content #build pre.output .color31,       #content #last_build pre.output .color31 {
+        color: #e33; }
+      #content #build pre.output .color32,       #content #last_build pre.output .color32 {
+        color: #3e3; }
+      #content #build pre.output .color33,       #content #last_build pre.output .color33 {
+        color: #ee3; }
+      #content #build pre.output .color34,       #content #last_build pre.output .color34 {
+        color: #33e; }
+      #content #build pre.output .color35,       #content #last_build pre.output .color35 {
+        color: #e3e; }
+      #content #build pre.output .color36,       #content #last_build pre.output .color36 {
+        color: #3ee; }
+      #content #build pre.output .color37,       #content #last_build pre.output .color37 {
+        color: #fff; }
+  #content #push_path {
+    display: block;
+    margin-top: 1em;
+    margin-left: 2em; }
+  #content div#graph {
+    width: 100%;
+    height: 600px; }
+
+a.success {
+  color: #bbf8aa; }
+  a.success:hover {
+    background-color: #bbf8aa;
+    color: white; }
+a.failed {
+  color: #ffbbaa; }
+  a.failed:hover {
+    background-color: #ffbbaa;
+    color: white; }
+
+#footer {
+  padding: 1.5em 2.5em;
+  border-top: 1px solid #ccc;
+  font-size: .8em;
+  color: #666;
+  text-align: right; }
+  #footer strong {
+    font-weight: bold; }
+
+    table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #666;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+table tr.light {
+   background: #fff;
+}
+
+table tr.dark {
+  background: #f9f9f9;
+}
+
+table tr:hover {
+  background: #FFFFC0;
+}
+
+table td, table th {
+  padding: 4px;
+  font-size: 11px;
+}
+table th {
+  text-align: center;
+  color: #337022;
+  background: #DDFFCC;
+  font-weight: bold;
+  border: #99D688 1px solid;
+}
+
+table td {
+  border: #d0d0d0 1px solid;
+}
+
+table td.score {
+  text-align: right;
+}
+
+.warning {
+  background: yellow;
+}
+
+    .bluff-tooltip {
+  background: #fff;
+  border: 1px solid #d1edf5;
+  padding: 8px 8px 6px;
+}
+.bluff-tooltip .color {
+  display: block;
+  height: 4px;
+  width: 30px;
+  margin: 0 0 4px;
+  overflow: hidden;
+}
+.bluff-tooltip .data {
+  font-weight: bold;
+}
+    </style>
+    <link REL="SHORTCUT ICON" HREF="/favicon.ico">
+    <script language="javascript" src="utils.js" type="text/javascript"></script>
+    <script language="javascript" src="js-class.js" type="text/javascript"></script>
+    <script language="javascript" src="bluff-min.js" type="text/javascript"></script>
+    <script language="javascript" src="excanvas.js" type="text/javascript"></script>
+    <script language="javascript" src="standalone-framework.js" type="text/javascript"></script>
+    <script language="javascript" src="highcharts.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id='header'>
+      <h1><a href="/">metrics</a> | <a href="index.html">kanbantt</a></h1>
+      <address class='watermark'>
+        built with
+        <a href='https://github.com/metricfu/metric_fu'>MetricFu</a>
+      </address>
+    </div>
+    <div id='content'>
+      <h3>Cane Results</h3>
+
+<p><a href='https://github.com/square/cane'>Cane</a> reports code quality threshold violations.</p>
+
+<div id="graph_container"></div>
+<script language="javascript" src="cane.js?1414241700" type="text/javascript"></script>
+
+
+<h3>Methods exceeding allowed Abc complexity (12)</h3>
+<table>
+  <tr>
+    <th>File</th>
+    <th>Method</th>
+    <th>Complexity</th>
+  </tr>
+  
+  
+    <tr class='light'>
+      <td>app/models/task.rb</td>
+      <td>Task#set_task_position</td>
+      <td>41</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb</td>
+      <td>Importer#import</td>
+      <td>34</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb</td>
+      <td>ProjectsController#create</td>
+      <td>28</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/tasks_controller.rb</td>
+      <td>TasksController#update</td>
+      <td>21</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb</td>
+      <td>ProgressCalculator#project_dates</td>
+      <td>20</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb</td>
+      <td>Task#update_parent_date</td>
+      <td>20</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb</td>
+      <td>KanbanBoardController#all</td>
+      <td>18</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/tasks_controller.rb</td>
+      <td>TasksController#create</td>
+      <td>18</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb</td>
+      <td>KanbanBoardController#index</td>
+      <td>17</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb</td>
+      <td>KanbanBoardController#update</td>
+      <td>17</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb</td>
+      <td>UsersController#update</td>
+      <td>16</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb</td>
+      <td>Api::V1::TasksController#update</td>
+      <td>16</td>
+    </tr>
+    
+  
+</table>
+
+
+<h3>Lines violating style requirements (1043)</h3>
+<table>
+  <tr>
+    <th>File</th>
+    <th>Description</th>
+  </tr>
+  
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/locks_controller.rb:10</td>
+      <td>Line is >80 characters (93)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:12</td>
+      <td>Line is >80 characters (96)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:15</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:16</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:17</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:18</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:19</td>
+      <td>Line is >80 characters (96)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:19</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:20</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:22</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:23</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:24</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:26</td>
+      <td>Line is >80 characters (96)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:27</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:31</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:32</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:33</td>
+      <td>Line is >80 characters (96)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:33</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:34</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:36</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:37</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:38</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:39</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:40</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:41</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:42</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:43</td>
+      <td>Line is >80 characters (98)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:43</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:44</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:46</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/progress_controller.rb:47</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/projects_controller.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/projects_controller.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/projects_controller.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/projects_controller.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/projects_controller.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/projects_controller.rb:14</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/projects_controller.rb:15</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/projects_controller.rb:16</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/projects_controller.rb:22</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/tasks_controller.rb:9</td>
+      <td>Line is >80 characters (96)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb:13</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/tasks_controller.rb:17</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb:22</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/tasks_controller.rb:30</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb:34</td>
+      <td>Line is >80 characters (114)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/tasks_controller.rb:47</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb:51</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/tasks_controller.rb:69</td>
+      <td>Line is >80 characters (93)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb:73</td>
+      <td>Line is >80 characters (99)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/users_controller.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/users_controller.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/users_controller.rb:16</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/users_controller.rb:25</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/application_controller.rb:2</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/application_controller.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/application_controller.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/application_controller.rb:7</td>
+      <td>Line is >80 characters (109)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/application_controller.rb:7</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/application_controller.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/application_controller.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/comments_controller.rb:31</td>
+      <td>Line is >80 characters (89)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/comments_controller.rb:35</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/comments_controller.rb:45</td>
+      <td>Line is >80 characters (89)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/comments_controller.rb:49</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/comments_controller.rb:59</td>
+      <td>Line is >80 characters (93)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/comments_controller.rb:70</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb:3</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb:5</td>
+      <td>Line is >80 characters (104)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb:22</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb:38</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb:51</td>
+      <td>Line is >80 characters (105)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb:54</td>
+      <td>Line is >80 characters (118)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb:55</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb:62</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb:63</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb:71</td>
+      <td>Line is >80 characters (110)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/kanban_board_controller.rb:72</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb:5</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:6</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb:33</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:35</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb:36</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:42</td>
+      <td>Line is >80 characters (103)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb:64</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:80</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb:132</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:134</td>
+      <td>Line is >80 characters (101)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/projects_controller.rb:135</td>
+      <td>Line is >80 characters (183)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:137</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/reports_controller.rb:28</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/reports_controller.rb:35</td>
+      <td>Line is >80 characters (82)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/reports_controller.rb:49</td>
+      <td>Line is >80 characters (82)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/reports_controller.rb:70</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/tasks_controller.rb:18</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/tasks_controller.rb:22</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/tasks_controller.rb:74</td>
+      <td>Line is >80 characters (144)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/tasks_controller.rb:90</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/tasks_controller.rb:101</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/tasks_controller.rb:106</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/tasks_controller.rb:108</td>
+      <td>Line is >80 characters (214)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:9</td>
+      <td>Line is >80 characters (86)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:10</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:15</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:16</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:18</td>
+      <td>Line is >80 characters (182)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:21</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:23</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:24</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:25</td>
+      <td>Line is >80 characters (93)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:27</td>
+      <td>Line is >80 characters (91)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:27</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:28</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:29</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/user_controller.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:4</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb:10</td>
+      <td>Line is >80 characters (103)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:20</td>
+      <td>Line is >80 characters (86)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb:32</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:51</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb:55</td>
+      <td>Line is >80 characters (89)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:59</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb:60</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:67</td>
+      <td>Line is >80 characters (94)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb:68</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:94</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/users_controller.rb:99</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:100</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/application_helper.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/application_helper.rb:4</td>
+      <td>Line is >80 characters (95)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/application_helper.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/application_helper.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/application_helper.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/application_helper.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/application_helper.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/application_helper.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/application_helper.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/application_helper.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/users_helper.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/users_helper.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/users_helper.rb:5</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/users_helper.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/users_helper.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/users_helper.rb:7</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/users_helper.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/users_helper.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/users_helper.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/ability.rb:7</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/ability.rb:16</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/column.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/column.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/comment.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:5</td>
+      <td>Line is >80 characters (106)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/comment.rb:5</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/comment.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/comment.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:10</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/comment.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/lock.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/lock.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:2</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:16</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:17</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:18</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:20</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:21</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:22</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:22</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:23</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:24</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:28</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:31</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:33</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:34</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:35</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:37</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:38</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:39</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:40</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:41</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:42</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:43</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:45</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:46</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:47</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:48</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:50</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:51</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:52</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:53</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:55</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:56</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:57</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:58</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:60</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:61</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:62</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:63</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:66</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:67</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:68</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:70</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:71</td>
+      <td>Line is >80 characters (81)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:71</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:71</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:72</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:74</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:75</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:76</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:77</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:79</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:80</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:81</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:83</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:84</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:85</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:86</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:88</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:89</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:90</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:91</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:93</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:94</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:95</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:97</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:98</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:99</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:100</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:104</td>
+      <td>Line is >80 characters (94)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:104</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:105</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:106</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:107</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:108</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:109</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:111</td>
+      <td>Line is >80 characters (84)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:111</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:112</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:113</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:114</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:115</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:116</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:117</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:117</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:118</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:119</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:120</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:122</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:123</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:124</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:125</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:126</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:127</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:128</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:128</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:129</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:130</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:131</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:133</td>
+      <td>Line is >80 characters (84)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:133</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:134</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:135</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:136</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:137</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:138</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:139</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:140</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:141</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:142</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:143</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:144</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:145</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:146</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:147</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:148</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:149</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:152</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:153</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:154</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:155</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:156</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:157</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:158</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:159</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:160</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:161</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:162</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:163</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:164</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:165</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:166</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:167</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:168</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:170</td>
+      <td>Line is >80 characters (114)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:170</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:171</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:172</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:173</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:174</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:176</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:177</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:178</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:179</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:181</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:182</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:183</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:184</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:185</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:186</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:191</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:192</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:193</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:194</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:195</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:196</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:200</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:201</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:203</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:204</td>
+      <td>Line is >80 characters (83)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:204</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:205</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:205</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project.rb:206</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project_user.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/project_user.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/report.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/report.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/report.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/report.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/report.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/report.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/report.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/report.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/report.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/report.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:20</td>
+      <td>Line is >80 characters (91)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:21</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:26</td>
+      <td>Line is >80 characters (86)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:27</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:27</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:28</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:32</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:33</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:35</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:36</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:38</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:39</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:41</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:42</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:43</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:45</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:46</td>
+      <td>Line is >80 characters (84)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:46</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:47</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:48</td>
+      <td>Line is >80 characters (91)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:48</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:49</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:51</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:52</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:53</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:54</td>
+      <td>Line is >80 characters (89)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:54</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:55</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:57</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:58</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:59</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:60</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:61</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:62</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:64</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:64</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:64</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:65</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:66</td>
+      <td>Line is >80 characters (92)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:66</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:67</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:69</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:69</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:70</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:73</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:74</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:75</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:76</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:80</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:81</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:82</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:83</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:85</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:86</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:87</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:88</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:89</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:90</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:91</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:92</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:93</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:94</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:97</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:98</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:99</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:100</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:102</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:103</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:104</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:104</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:105</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:106</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:107</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:109</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:110</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:111</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:111</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:112</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:113</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:114</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:115</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:115</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:116</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:117</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:119</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:120</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:121</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:123</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:124</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:125</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:126</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:128</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:129</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:131</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:132</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:133</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:134</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:136</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:137</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:138</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:139</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:141</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:142</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:143</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:144</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:145</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:146</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:146</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:147</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:148</td>
+      <td>Line is >80 characters (90)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:148</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:149</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:150</td>
+      <td>Line is >80 characters (85)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:150</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:151</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:152</td>
+      <td>Line is >80 characters (82)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:152</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:153</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:155</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:156</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:158</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:159</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:160</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:161</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:163</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:164</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:165</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:166</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:167</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:168</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:169</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:170</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:171</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:172</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:173</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:174</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:175</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:176</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:177</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:178</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:179</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:180</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:182</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:183</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:184</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:185</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:187</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:188</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:189</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:190</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:191</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:192</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:193</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:194</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:196</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:197</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:197</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:198</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:200</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:201</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:202</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:204</td>
+      <td>Line is >80 characters (87)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:204</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:205</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:206</td>
+      <td>Line is >80 characters (124)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:206</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:206</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:207</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:207</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:208</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:209</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:210</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:211</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:212</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:213</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:214</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:215</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:216</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:217</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:218</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:219</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:220</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:221</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:222</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:223</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:224</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:225</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:225</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:226</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:227</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:228</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:229</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:229</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:230</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:231</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:232</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:233</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:234</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:235</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:235</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:236</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:237</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:238</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:239</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:240</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:241</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:242</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:244</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:246</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:247</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:248</td>
+      <td>Line is >80 characters (91)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:248</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:250</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:252</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:253</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:254</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:255</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:256</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:257</td>
+      <td>Line is >80 characters (90)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:257</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:258</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:259</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:261</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:262</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:263</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:264</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:265</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:266</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:267</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:268</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:268</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:269</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:270</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:270</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:271</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:272</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:273</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:274</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:276</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:277</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:278</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:279</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:280</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:282</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:283</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:284</td>
+      <td>Line is >80 characters (92)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:284</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:285</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:287</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:288</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:289</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:290</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:291</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:292</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:293</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:293</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:294</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:295</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:295</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:296</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:297</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:298</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:298</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:299</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:299</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:300</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:301</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:302</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:302</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:303</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:304</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:305</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:306</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:307</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:308</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:310</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:311</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:312</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:313</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:314</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:315</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:316</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:317</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:318</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:319</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:320</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:321</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:322</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:323</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:324</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:326</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:327</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:328</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:329</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:330</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:331</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:332</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:333</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:334</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:335</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:336</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:337</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:338</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:339</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:340</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:340</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:341</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:341</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:342</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:343</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:344</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:344</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:345</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:346</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:347</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:348</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:349</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:351</td>
+      <td>Line is >80 characters (84)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:351</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:352</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:353</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:354</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:354</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:355</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:356</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:357</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:358</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:359</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:360</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:361</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:362</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:364</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:365</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:366</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:367</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:368</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:369</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:370</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:371</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:372</td>
+      <td>Line is >80 characters (93)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:372</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:373</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:374</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:376</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:376</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:377</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:378</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:379</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:380</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:381</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:382</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:383</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:384</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:386</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:387</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:388</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:389</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:390</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:391</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:392</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:393</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:395</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:396</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:397</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:399</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:400</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:401</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:403</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:404</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:405</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:406</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:408</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:409</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:410</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:411</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:412</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:413</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:414</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:415</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:417</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:417</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:418</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:418</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:419</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:420</td>
+      <td>Line is >80 characters (81)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:420</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:421</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:422</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:423</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:424</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:426</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:427</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:427</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:428</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:429</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:430</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:431</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:432</td>
+      <td>Line is >80 characters (126)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:432</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:433</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:433</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:434</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:435</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:436</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:437</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:438</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:439</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:440</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:441</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:442</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:443</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:443</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:444</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:445</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:446</td>
+      <td>Line is >80 characters (84)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:446</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:447</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:448</td>
+      <td>Line is >80 characters (86)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:448</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:449</td>
+      <td>Line is >80 characters (106)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:449</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:450</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:451</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:452</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:454</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:455</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:456</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:457</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:459</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:460</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:461</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:463</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:464</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:465</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:466</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:467</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:468</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:468</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:469</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:470</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:471</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:472</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:474</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:475</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:476</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:477</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:478</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:479</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:480</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:483</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:484</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:485</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:486</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:487</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:488</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:489</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:491</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:492</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:493</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:495</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:496</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:497</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:498</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:498</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:499</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:500</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:501</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:503</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:504</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:505</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:506</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:507</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:508</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task.rb:509</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task_position.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task_position.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task_position.rb:4</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task_position.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task_position.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task_position.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task_position.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task_position.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task_position.rb:11</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/task_position.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:2</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:2</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:11</td>
+      <td>Line is >80 characters (89)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:22</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:23</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:24</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:27</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:28</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:32</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:33</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:34</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:35</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:36</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:37</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:38</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:40</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:41</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/user.rb:42</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:6</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:15</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:16</td>
+      <td>Line is >80 characters (119)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:16</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:17</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:17</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:18</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:19</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:20</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:22</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:23</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:24</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:25</td>
+      <td>Line is >80 characters (160)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:27</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:28</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:31</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:32</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:33</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:34</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:35</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:36</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:37</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:38</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:39</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:40</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:41</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:42</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:43</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:44</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:45</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:46</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:47</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:48</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:50</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:50</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:51</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/importer.rb:52</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/importer.rb:53</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:7</td>
+      <td>Line is >80 characters (88)</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:11</td>
+      <td>Line is >80 characters (82)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:15</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:16</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:18</td>
+      <td>Line is >80 characters (84)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:18</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:19</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:20</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:21</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:22</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:23</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:24</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:25</td>
+      <td>Line is >80 characters (87)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:25</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:26</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:27</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:29</td>
+      <td>Line is >80 characters (86)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:29</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:30</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:31</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:32</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:33</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:34</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:35</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:36</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:37</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:39</td>
+      <td>Line is >80 characters (122)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:39</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:40</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:41</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:42</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:43</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:44</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:45</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:46</td>
+      <td>Line is >80 characters (82)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:46</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:47</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:48</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:50</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:51</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:52</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:54</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:55</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:56</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:59</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:60</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:61</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:61</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:62</td>
+      <td>Line is >80 characters (107)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:62</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:63</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:64</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:65</td>
+      <td>Line is >80 characters (119)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:65</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:66</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:66</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:67</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:68</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:69</td>
+      <td>Line is >80 characters (82)</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:69</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:70</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:71</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:71</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:72</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:73</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:74</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:76</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:77</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:78</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:79</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:80</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:81</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:82</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:83</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:84</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:88</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/progress_calculator.rb:88</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:3</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:4</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:5</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:7</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:8</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:9</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:10</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:11</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:12</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:13</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:14</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:15</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/task_formatter.rb:16</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:17</td>
+      <td>Line contains hard tabs</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>lib/api_constraints.rb:8</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>lib/api_constraints.rb:9</td>
+      <td>Line contains trailing whitespace</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>lib/api_constraints.rb:11</td>
+      <td>Line is >80 characters (87)</td>
+    </tr>
+    
+  
+</table>
+
+
+
+<h3>Class definitions requiring comments (23)</h3>
+<table>
+  <tr>
+    <th>File</th>
+    <th>Class</th>
+  </tr>
+  
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/locks_controller.rb:4</td>
+      <td>LocksController</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/progress_controller.rb:4</td>
+      <td>ProgressController</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/projects_controller.rb:4</td>
+      <td>ProjectsController</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/api/v1/tasks_controller.rb:5</td>
+      <td>TasksController</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/api/v1/users_controller.rb:5</td>
+      <td>UsersController</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/comments_controller.rb:1</td>
+      <td>CommentsController</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/kanban_board_controller.rb:1</td>
+      <td>KanbanBoardController</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/projects_controller.rb:1</td>
+      <td>ProjectsController</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/reports_controller.rb:1</td>
+      <td>ReportsController</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/tasks_controller.rb:1</td>
+      <td>TasksController</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/controllers/user_controller.rb:1</td>
+      <td>UserController</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/controllers/users_controller.rb:1</td>
+      <td>UsersController</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/helpers/application_helper.rb:1</td>
+      <td>ApplicationHelper</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/helpers/users_helper.rb:1</td>
+      <td>UsersHelper</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/ability.rb:1</td>
+      <td>Ability</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/comment.rb:1</td>
+      <td>Comment</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/project.rb:1</td>
+      <td>Project</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/report.rb:1</td>
+      <td>Report</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/models/task.rb:1</td>
+      <td>Task</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/models/user.rb:1</td>
+      <td>User</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>app/services/progress_calculator.rb:1</td>
+      <td>ProgressCalculator</td>
+    </tr>
+    
+  
+    <tr class='dark'>
+      <td>app/services/task_formatter.rb:1</td>
+      <td>TaskFormatter</td>
+    </tr>
+    
+  
+    <tr class='light'>
+      <td>lib/api_constraints.rb:1</td>
+      <td>ApiConstraints</td>
+    </tr>
+    
+  
+</table>
+
+
+
+<p>Generated on 2014-10-25 09:55:00 -0300</p>
+
+    </div>
+
+    
+    <script language="javascript" src="bluff_graph.js" type="text/javascript"></script>
+  </body>
+</html>

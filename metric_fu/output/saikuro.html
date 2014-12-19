@@ -1,0 +1,5396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta content='en' http-equiv='Content-Language' />
+    <title>metrics</title>
+    <style>
+    /*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+    /* --------------------------------------------------------------
+
+   buttons.css
+   * Gives you some great CSS-only buttons.
+
+   Created by Kevin Hale [particletree.com]
+   * particletree.com/features/rediscovering-the-button-element
+
+   See Readme.txt in this folder for instructions.
+
+-------------------------------------------------------------- */
+
+button {
+  display:block;
+  float:left;
+  margin:0 0.583em 0.667em 0;
+  padding:5px 10px 5px 7px;   /* Links */
+
+  border:1px solid #dedede;
+  border-top:1px solid #eee;
+  border-left:1px solid #eee;
+
+  background-color:#f5f5f5;
+  font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size:100%;
+  line-height:130%;
+  text-decoration:none;
+  font-weight:bold;
+  color:#565656;
+  cursor:pointer;
+}
+button {
+  width:auto;
+  overflow:visible;
+  padding:4px 10px 3px 7px;   /* IE6 */
+}
+button[type] {
+  padding:4px 10px 4px 7px;   /* Firefox */
+  line-height:17px;           /* Safari */
+}
+*:first-child+html button[type] {
+  padding:4px 10px 3px 7px;   /* IE7 */
+}
+button img {
+  margin:0 3px -3px 0 !important;
+  padding:0;
+  border:none;
+  width:16px;
+  height:16px;
+  float:none;
+}
+
+
+/* Button colors
+-------------------------------------------------------------- */
+
+/* Standard */
+button:hover {
+  background-color:#dff4ff;
+  border:1px solid #c2e1ef;
+  color:#336699;
+}
+
+/* Positive */
+body .positive {
+  color:#529214;
+}
+button.positive:hover {
+  background-color:#E6EFC2;
+  border:1px solid #C6D880;
+  color:#529214;
+}
+
+/* Negative */
+body .negative {
+  color:#d12f19;
+}
+button.negative:hover {
+  background:#fbe3e4;
+  border:1px solid #fbc2c4;
+  color:#d12f19;
+}
+
+    html {
+  background-color: #e0e0e0; }
+
+body {
+  font-size: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #333333; }
+
+a {
+  color: #ed1556;
+  text-decoration: none; }
+  a:hover {
+    color: #ffffff;
+    background-color: #ed1556; }
+
+#header, #content, #footer {
+  margin: 0 auto;
+  background: #eeeeee;
+  padding: 0 2em;
+  z-index: 0;
+  position: relative;
+  font-size: 1em; }
+
+#header {
+  background: #ffffff; }
+  #header h1 {
+    font-weight: bold;
+    font-size: 1.5em; }
+  #header address.watermark {
+    position: absolute;
+    font-weight: bold;
+    right: 3em;
+    top: 0;
+    font-size: .75em;
+    color: #cccccc; }
+    #header address.watermark a {
+      color: #cccccc;
+      font-weight: bold;
+      font-size: 2em; }
+      #header address.watermark a:hover {
+        background: transparent;
+        color: #aaaaaa; }
+
+#content {
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  #content strong {
+    font-weight: bold; }
+  #content em {
+    font-style: italic; }
+  #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    color: #4e4e4e; }
+  #content h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: .75em;
+    padding: .25em 0;
+    line-height: 1.2;
+    border-bottom: 1px solid #c0c0c0; }
+  #content h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1em 0 .2em; }
+  #content h3 {
+    font-weight: bold;
+    font-size: 1.25em;
+    margin: .25em 0; }
+  #content h4, #content h5, #content h6 {
+    font-weight: bold;
+    margin-top: .5em; }
+  #content code, #content pre, #content textarea, #content input {
+    font-family: Monaco, Deja Vu Sans Mono, Inconsolata, Consolas, monospace; }
+  #content form p {
+    margin-top: 1em;
+    position: relative; }
+    #content form p.checkbox label {
+      margin-top: 0 !important; }
+  #content form input.text, #content form textarea {
+    width: 30em;
+    padding: .2em .4em;
+    color: #4e4e4e; }
+  #content form input.text {
+    height: 1.4em; }
+  #content form label {
+    float: left;
+    display: block;
+    margin-top: .5em;
+    width: 8em;
+    margin-right: .75em; }
+  #content form .with_errors label {
+    background: red;
+    color: white;
+    position: relative;
+    top: -.7em; }
+  #content form .with_errors.required label {
+    position: static;
+    margin-right: .25em;
+    padding: 0 .2em; }
+  #content form .with_errors input, #content form .with_errors textarea {
+    border: 2px solid #f22;
+    background: #fee;
+    color: #222222; }
+  #content form .required label {
+    float: none;
+    display: block;
+    width: auto;
+    position: relative;
+    font-weight: bold;
+    margin-top: 1em;
+    text-indent: -.65em; }
+    #content form .required label:before {
+      content: "* ";
+      color: #ed1556; }
+  #content form .required input.text {
+    width: 25.6em;
+    font-size: 24px;
+    font-weight: bold; }
+  #content form .normal {
+    margin-top: 2em; }
+  #content form h2.notifier label {
+    float: none;
+    width: auto;
+    margin-right: 0; }
+    #content form h2.notifier label .warning {
+      font-size: .5em;
+      font-weight: normal;
+      color: #999999; }
+  #content form fieldset {
+    padding-bottom: 1em;
+    margin-left: 1.35em;
+    border-bottom: 1px solid #c0c0c0;
+    margin-bottom: 1em; }
+    #content form fieldset h3 {
+      margin-top: 1em;
+      margin-bottom: 0; }
+    #content form fieldset p.normal {
+      margin-top: 1em; }
+    #content form fieldset p label {
+      width: 6.7em; }
+  #content form p.submit {
+    margin-top: 2em; }
+    #content form p.submit:after {
+      display: block;
+      clear: both;
+      float: none;
+      content: ".";
+      text-indent: -9999em;
+      text-align: left; }
+    #content form p.submit.destroy button,     #content form p.submit.manual-build button {
+      float: none;
+      display: inline; }
+    #content form p.submit.manual-build button {
+      margin-right: 0; }
+  #content #build form, #content #last_build form {
+    font-size: .75em; }
+    #content #build form p.submit,     #content #last_build form p.submit {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: .5em;
+      top: 1.25em; }
+  #content .blank_slate p,   #content .error p {
+    position: relative;
+    top: .3em; }
+  #content .blank_slate h1,   #content .error h1 {
+    border-width: 0;
+    margin: 0;
+    padding: 0; }
+    #content .blank_slate h1 button,     #content .error h1 button {
+      float: none;
+      border: 0 none;
+      background: transparent;
+      display: inline;
+      color: #ed1556;
+      padding: 0.25em 0;
+      margin: 0; }
+      #content .blank_slate h1 button:hover,       #content .error h1 button:hover {
+        background: #ed1556;
+        color: #ffffff; }
+  #content .error dt {
+    margin-top: 1.4em;
+    margin-bottom: .3em;
+    font-size: 1.75em;
+    font-family: Georgia, Times New Roman, serif; }
+  #content .error dd {
+    line-height: 1.4; }
+  #content .error .backtrace {
+    margin: 1em 0;
+    overflow: scroll;
+    height: 30em;
+    border: 1px solid #c0c0c0;
+    line-height: 1.6; }
+  #content #projects {
+    margin: 1em 0 2em;
+    border-top: 1px solid #c0c0c0; }
+    #content #projects li {
+      position: relative;
+      border-bottom: 1px solid #c0c0c0; }
+      #content #projects li.odd {
+        background: #e6e6e6; }
+      #content #projects li.building {
+        background: transparent url(/spinner.gif) no-repeat scroll right; }
+      #content #projects li a {
+        font-size: 2em;
+        padding: .25em;
+        line-height: 1.2;
+        font-weight: bold;
+        display: block; }
+        #content #projects li a.success {
+          color: #337022; }
+        #content #projects li a.failed {
+          color: #ff1100; }
+      #content #projects li .meta {
+        position: absolute;
+        right: .6em;
+        top: 1.5em;
+        font-size: 0.8em;
+        color: #999999;
+        text-align: right; }
+      #content #projects li.building .meta {
+        right: 1.6em; }
+      #content #projects li.success .meta {
+        color: #337022; }
+      #content #projects li.failed .meta {
+        color: #ff1100; }
+  #content #previous_builds li a {
+    display: block;
+    padding: .25em;
+    margin-bottom: .25em;
+    border-width: 1px;
+    border-style: solid; }
+    #content #previous_builds li a strong {
+      font-size: 1.3em; }
+    #content #previous_builds li a .attribution {
+      font-size: .9em; }
+  #content #projects li.success a,   #content #previous_builds li.success a {
+    background-color: #bbf8aa;
+    border-color: #99d688;
+    color: #337022; }
+    #content #projects li.success a .attribution,     #content #previous_builds li.success a .attribution {
+      color: #77b466; }
+    #content #projects li.success a:hover,     #content #previous_builds li.success a:hover {
+      background-color: #ddffcc; }
+  #content #projects li.failed a,   #content #previous_builds li.failed a {
+    background-color: #ffbbaa;
+    border-color: #dd9988;
+    color: #ff1100; }
+    #content #projects li.failed a .attribution,     #content #previous_builds li.failed a .attribution {
+      color: #bb7766; }
+    #content #projects li.failed a:hover,     #content #previous_builds li.failed a:hover {
+      background-color: #ffddcc; }
+  #content #build, #content #last_build {
+    position: relative; }
+    #content #build h1, #content #build blockquote,     #content #last_build h1, #content #last_build blockquote {
+      border-width: 0 1px;
+      border-style: solid; }
+    #content #build h1,     #content #last_build h1 {
+      border-top-width: 1px; }
+    #content #build blockquote,     #content #last_build blockquote {
+      bottom-bottom-width: 1px;
+      line-height: 1.4; }
+    #content #build.success h1, #content #build.success blockquote,     #content #last_build.success h1, #content #last_build.success blockquote {
+      background-color: #bbf8aa;
+      border-color: #99d688 #ccffbb #ccffbb #99d688; }
+    #content #build.success h1,     #content #last_build.success h1 {
+      color: #337022; }
+    #content #build.success .meta,     #content #last_build.success .meta {
+      color: #77b466; }
+    #content #build.failed h1, #content #build.failed blockquote,     #content #last_build.failed h1, #content #last_build.failed blockquote {
+      background-color: #ffbbaa;
+      border-color: #dd9988 #ffccbb #ffccbb #dd9988; }
+    #content #build.failed h1,     #content #last_build.failed h1 {
+      color: #ff1100; }
+    #content #build.failed .meta,     #content #last_build.failed .meta {
+      color: #bb7766; }
+    #content #build h1,     #content #last_build h1 {
+      margin-top: .5em;
+      margin-bottom: 0;
+      padding: .25em;
+      color: #337022; }
+    #content #build blockquote,     #content #last_build blockquote {
+      padding: .75em;
+      margin-bottom: 2em; }
+      #content #build blockquote .meta,       #content #last_build blockquote .meta {
+        margin-top: 1em;
+        display: block;
+        font-size: .9em; }
+    #content #build pre.output,     #content #last_build pre.output {
+      background: #111;
+      color: #fff;
+      padding: .5em;
+      overflow: auto;
+      max-height: 50em;
+      font-size: .825em; }
+      #content #build pre.output .color30,       #content #last_build pre.output .color30 {
+        color: #333; }
+      #content #build pre.output .color31,       #content #last_build pre.output .color31 {
+        color: #e33; }
+      #content #build pre.output .color32,       #content #last_build pre.output .color32 {
+        color: #3e3; }
+      #content #build pre.output .color33,       #content #last_build pre.output .color33 {
+        color: #ee3; }
+      #content #build pre.output .color34,       #content #last_build pre.output .color34 {
+        color: #33e; }
+      #content #build pre.output .color35,       #content #last_build pre.output .color35 {
+        color: #e3e; }
+      #content #build pre.output .color36,       #content #last_build pre.output .color36 {
+        color: #3ee; }
+      #content #build pre.output .color37,       #content #last_build pre.output .color37 {
+        color: #fff; }
+  #content #push_path {
+    display: block;
+    margin-top: 1em;
+    margin-left: 2em; }
+  #content div#graph {
+    width: 100%;
+    height: 600px; }
+
+a.success {
+  color: #bbf8aa; }
+  a.success:hover {
+    background-color: #bbf8aa;
+    color: white; }
+a.failed {
+  color: #ffbbaa; }
+  a.failed:hover {
+    background-color: #ffbbaa;
+    color: white; }
+
+#footer {
+  padding: 1.5em 2.5em;
+  border-top: 1px solid #ccc;
+  font-size: .8em;
+  color: #666;
+  text-align: right; }
+  #footer strong {
+    font-weight: bold; }
+
+    table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #666;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+table tr.light {
+   background: #fff;
+}
+
+table tr.dark {
+  background: #f9f9f9;
+}
+
+table tr:hover {
+  background: #FFFFC0;
+}
+
+table td, table th {
+  padding: 4px;
+  font-size: 11px;
+}
+table th {
+  text-align: center;
+  color: #337022;
+  background: #DDFFCC;
+  font-weight: bold;
+  border: #99D688 1px solid;
+}
+
+table td {
+  border: #d0d0d0 1px solid;
+}
+
+table td.score {
+  text-align: right;
+}
+
+.warning {
+  background: yellow;
+}
+
+    .bluff-tooltip {
+  background: #fff;
+  border: 1px solid #d1edf5;
+  padding: 8px 8px 6px;
+}
+.bluff-tooltip .color {
+  display: block;
+  height: 4px;
+  width: 30px;
+  margin: 0 0 4px;
+  overflow: hidden;
+}
+.bluff-tooltip .data {
+  font-weight: bold;
+}
+    </style>
+    <link REL="SHORTCUT ICON" HREF="/favicon.ico">
+    <script language="javascript" src="utils.js" type="text/javascript"></script>
+    <script language="javascript" src="js-class.js" type="text/javascript"></script>
+    <script language="javascript" src="bluff-min.js" type="text/javascript"></script>
+    <script language="javascript" src="excanvas.js" type="text/javascript"></script>
+    <script language="javascript" src="standalone-framework.js" type="text/javascript"></script>
+    <script language="javascript" src="highcharts.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id='header'>
+      <h1><a href="/">metrics</a> | <a href="index.html">kanbantt</a></h1>
+      <address class='watermark'>
+        built with
+        <a href='https://github.com/metricfu/metric_fu'>MetricFu</a>
+      </address>
+    </div>
+    <div id='content'>
+      <h3>Saikuro Results</h3>
+<p><a href='http://saikuro.rubyforge.org/'>Saikuro</a> analyzes ruby code for cyclomatic complexity.</p>
+
+<h2>Analyzed Methods</h2>
+  <table>
+    <tr>
+      <th>Method Name</th>
+      <th>Complexity</th>
+      <th># Lines</th>
+    </tr>
+    
+    <tr>
+      <td>Task#update_parent_date</td>
+      <td>10</td>
+      <td>36</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#create</td>
+      <td>9</td>
+      <td>36</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#update</td>
+      <td>8</td>
+      <td>22</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#update</td>
+      <td>8</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>Task#set_task_position</td>
+      <td>8</td>
+      <td>42</td>
+    </tr>
+    
+    <tr>
+      <td>Importer#import</td>
+      <td>8</td>
+      <td>41</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#update</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#create</td>
+      <td>7</td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#create</td>
+      <td>7</td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#update</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#create</td>
+      <td>7</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#update</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#create</td>
+      <td>7</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>KanbanBoardController#all</td>
+      <td>6</td>
+      <td>21</td>
+    </tr>
+    
+    <tr>
+      <td>Task#f_remaining</td>
+      <td>6</td>
+      <td>16</td>
+    </tr>
+    
+    <tr>
+      <td>Task#real_days_progress</td>
+      <td>5</td>
+      <td>22</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#update</td>
+      <td>5</td>
+      <td>40</td>
+    </tr>
+    
+    <tr>
+      <td>Task#real_resources_progress</td>
+      <td>5</td>
+      <td>20</td>
+    </tr>
+    
+    <tr>
+      <td>UserController#create</td>
+      <td>5</td>
+      <td>22</td>
+    </tr>
+    
+    <tr>
+      <td>Ability#initialize</td>
+      <td>4</td>
+      <td>19</td>
+    </tr>
+    
+    <tr>
+      <td>Task#expected_resources_progress</td>
+      <td>4</td>
+      <td>11</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#project_dates</td>
+      <td>4</td>
+      <td>15</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#destroy</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#assign_to_project</td>
+      <td>4</td>
+      <td>26</td>
+    </tr>
+    
+    <tr>
+      <td>Task#children_end</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#destroy</td>
+      <td>4</td>
+      <td>9</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#destroy</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>KanbanBoardController#index</td>
+      <td>4</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>Project#expected_days_progress</td>
+      <td>4</td>
+      <td>15</td>
+    </tr>
+    
+    <tr>
+      <td>Project#real_days_progress</td>
+      <td>4</td>
+      <td>15</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#destroy</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>KanbanBoardController#update</td>
+      <td>3</td>
+      <td>35</td>
+    </tr>
+    
+    <tr>
+      <td>Project#create_kanban</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    
+    <tr>
+      <td>Project#end_date_is_after_start_date</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Project#real_resources_progress</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>User#role_u</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>Project#expected_resources_progress</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#new</td>
+      <td>3</td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td>Task#class_by_advance_percent</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#real_in_days</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>Task#days_from_start</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#real_in_resources</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>Task#resources_from_start</td>
+      <td>3</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>Task#expected_days_progress</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>UsersHelper#roles_array</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::UsersController#login</td>
+      <td>3</td>
+      <td>14</td>
+    </tr>
+    
+    <tr>
+      <td>Task#brothers</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#add_predecesors_from_parent</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Task#locked?</td>
+      <td>3</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>Task#delayed</td>
+      <td>3</td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td>Task#duration</td>
+      <td>3</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>Task#end_date_is_after_start_date</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#expected_in_days</td>
+      <td>2</td>
+      <td>7</td>
+    </tr>
+    
+    <tr>
+      <td>Task#set_level</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#expected_start_date_s</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>Task#expected_end_date_s</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>ApplicationHelper#column_class</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#children_start</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProjectsController#index</td>
+      <td>2</td>
+      <td>9</td>
+    </tr>
+    
+    <tr>
+      <td>Task#real_resources_progress_from_task</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Task#resources_total_cost</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#days_cost</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#parent_name</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#destroy</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#class_for_advance_percent</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#delayed?</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#f_remaining_kanban</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Task#f_percent</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Project#total_resources_cost</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>User#lp?</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#create</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>Project#set_owner</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#update_gantt</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#set_task</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#expected_in_resources</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#progress_by_task</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#tree_view</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#add_tree_view_column</td>
+      <td>2</td>
+      <td>7</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#show</td>
+      <td>2</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#index</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#project_dates_to_today</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#project_params</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#set_project</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#edit</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#indicators</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#gantt</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#project_dates_to_end</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#index</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#index</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#show</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#edit</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#new</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#show</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController#index</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#all</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController#task_params</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#assign</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Project#update_end_date</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Project#update_start_date</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator#initialize</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController#destroy</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>Importer#initialize</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#index</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#new</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#resources_progress_difference_as_percentage</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#resources_estimated_progress_as_percentage</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#resources_progress_as_percentage</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#progress_difference_as_percentage</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#estimated_progress_as_percentage</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#progress_as_percentage</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#progress_resources_difference</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#progress_difference</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#real_days_progress_today</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#real_resources_progress_today</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#estimated_progress_today</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#estimated_resources_progress_today</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#f_end_date</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#f_start_date</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#children</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#first_tasks</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Project#f_create</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#edit</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#user_params</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#completed?</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#comment_params</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController#show</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>User#tasks_by_project</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>UserController#newUser</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#set_comment</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#user_name</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#progress_esperado</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#progress</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#index</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#show</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProgressController#estimated_in_resources_by_week</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProgressController#real_in_resources_by_week</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProgressController#estimated_in_days_by_week</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProgressController#real_in_days_by_week</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProgressController#all_progress</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>Task#expected_resources_progress_from_task</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#new</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Report#set_kanban_position</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#edit</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#edit</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProjectsController#all</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Task#has_children?</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#update_expected_end_date</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ApiConstraints#initialize</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>ApiConstraints#matches?</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>TaskFormatter#initialize</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#remaining</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>TaskFormatter#from_gantt</td>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>Task#in_progress</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#done</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#new</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController#show</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#set_report</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#progress_f</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Comment#method_name</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController#report_params</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task#project_or_parent</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::LocksController#all</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+  </table>
+
+
+
+<h2>Analyzed Classes</h2>
+  <table>
+    <tr>
+      <th>Class Name</th>
+      <th>Complexity</th>
+      <th># Lines</th>
+    </tr>
+    
+    <tr>
+      <td>Task</td>
+      <td>112</td>
+      <td>509</td>
+    </tr>
+    
+    <tr>
+      <td>Project</td>
+      <td>45</td>
+      <td>208</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsController</td>
+      <td>32</td>
+      <td>138</td>
+    </tr>
+    
+    <tr>
+      <td>TasksController</td>
+      <td>29</td>
+      <td>109</td>
+    </tr>
+    
+    <tr>
+      <td>UsersController</td>
+      <td>27</td>
+      <td>112</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsController</td>
+      <td>24</td>
+      <td>73</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsController</td>
+      <td>24</td>
+      <td>73</td>
+    </tr>
+    
+    <tr>
+      <td>ProgressCalculator</td>
+      <td>19</td>
+      <td>85</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::TasksController</td>
+      <td>13</td>
+      <td>91</td>
+    </tr>
+    
+    <tr>
+      <td>KanbanBoardController</td>
+      <td>13</td>
+      <td>84</td>
+    </tr>
+    
+    <tr>
+      <td>Importer</td>
+      <td>9</td>
+      <td>52</td>
+    </tr>
+    
+    <tr>
+      <td>User</td>
+      <td>8</td>
+      <td>43</td>
+    </tr>
+    
+    <tr>
+      <td>UserController</td>
+      <td>6</td>
+      <td>37</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProgressController</td>
+      <td>5</td>
+      <td>42</td>
+    </tr>
+    
+    <tr>
+      <td>Report</td>
+      <td>4</td>
+      <td>14</td>
+    </tr>
+    
+    <tr>
+      <td>Ability</td>
+      <td>4</td>
+      <td>23</td>
+    </tr>
+    
+    <tr>
+      <td>UsersHelper</td>
+      <td>3</td>
+      <td>9</td>
+    </tr>
+    
+    <tr>
+      <td>ApplicationController</td>
+      <td>3</td>
+      <td>22</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::ProjectsController</td>
+      <td>3</td>
+      <td>21</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::UsersController</td>
+      <td>3</td>
+      <td>21</td>
+    </tr>
+    
+    <tr>
+      <td>ApiConstraints</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td>TaskFormatter</td>
+      <td>2</td>
+      <td>17</td>
+    </tr>
+    
+    <tr>
+      <td>ApplicationHelper</td>
+      <td>2</td>
+      <td>11</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>Task::::::</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>25</td>
+    </tr>
+    
+    <tr>
+      <td>Comment</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>::Crea</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>::::Historial::::Fecha</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    
+    <tr>
+      <td>::Crea::</td>
+      <td>1</td>
+      <td>12</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>Usuarios::Email</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>14</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>Usuarios::Email</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1::LocksController</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+    
+    <tr>
+      <td>::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>ReportsHelper</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>TasksHelper</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>UserHelper</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectsHelper</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>::::::Usuarios</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Column</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>::::Informacion</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Lock</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>ProjectUser</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::::::::::::::</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::::::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::::::</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>TaskPosition</td>
+      <td>0</td>
+      <td>13</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::Toggle::Carta</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::::Toggle</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia::::::::Tiempo::::Tiempo</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia::::::::Tiempo::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia::::::::Tiempo</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia::::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::::Diferencia</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::Recursos</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>::::Escala</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>KanbanBoardHelper</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>CommentsHelper</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>Usuarios</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Aquí</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Usuarios</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>User</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>::Crea</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>::::Historial::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::Historial</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::::</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::::::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>::::::::</td>
+      <td>0</td>
+      <td>7</td>
+    </tr>
+    
+    <tr>
+      <td>Al</td>
+      <td>0</td>
+      <td>20</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::Nueva</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task::::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Task::</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Task</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td>::Nueva::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::Nueva::::</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>::Nueva::::::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>El</td>
+      <td>0</td>
+      <td>15</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>Api</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::::Configuración</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>::::Observaciones</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>::::Observaciones::Usuario</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td>Api</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>Tareas</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Tareas::</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Tareas::::Task</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    
+    <tr>
+      <td>Api::V1</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    
+    <tr>
+      <td>Api</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Tareas::::Task::Avance</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Tareas::::Task::Avance::Nivel</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>Tareas::::Task::Avance::Nivel::</td>
+      <td>0</td>
+      <td>18</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>::</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    
+    <tr>
+      <td>::Nombre</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+    
+  </table>
+
+
+<h2>Analyzed Files</h2>
+
+  
+      
+        <h3>app/models/task.rb</h3>
+        <h4>Class : Task</h4>
+        <h5>Total complexity : 112</h5>
+        <h5>Total lines : 509</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#update_parent_date
+              </td>
+              <td>
+                10
+              </td>
+              <td>
+                36
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#set_task_position
+              </td>
+              <td>
+                8
+              </td>
+              <td>
+                42
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#f_remaining
+              </td>
+              <td>
+                6
+              </td>
+              <td>
+                16
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#real_days_progress
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                22
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#real_resources_progress
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                20
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#children_end
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#expected_resources_progress
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                11
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#end_date_is_after_start_date
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#add_predecesors_from_parent
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#brothers
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#duration
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#locked?
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                13
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#delayed
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                12
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#days_from_start
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#resources_from_start
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                10
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#class_by_advance_percent
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#expected_days_progress
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                13
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#expected_start_date_s
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                4
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#class_for_advance_percent
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#real_resources_progress_from_task
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#parent_name
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#delayed?
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#children_start
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#expected_end_date_s
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                4
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#resources_total_cost
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#days_cost
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#set_level
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#f_percent
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#f_remaining_kanban
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#has_children?
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#update_expected_end_date
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#in_progress
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#done
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#remaining
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#completed?
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#expected_resources_progress_from_task
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#progress_f
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#progress
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#progress_esperado
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#project_or_parent
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Task#user_name
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/models/project.rb</h3>
+        <h4>Class : Project</h4>
+        <h5>Total complexity : 45</h5>
+        <h5>Total lines : 208</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#expected_days_progress
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                15
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#real_days_progress
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                15
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#end_date_is_after_start_date
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#create_kanban
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                7
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#expected_resources_progress
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#real_resources_progress
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#set_owner
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                5
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#total_resources_cost
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                4
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#progress_difference_as_percentage
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#update_end_date
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#resources_progress_difference_as_percentage
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#resources_estimated_progress_as_percentage
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#resources_progress_as_percentage
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#update_start_date
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#estimated_progress_as_percentage
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#progress_as_percentage
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#progress_resources_difference
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#progress_difference
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#real_days_progress_today
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#real_resources_progress_today
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#estimated_progress_today
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#estimated_resources_progress_today
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#f_end_date
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#f_start_date
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#children
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#first_tasks
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Project#f_create
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/projects_controller.rb</h3>
+        <h4>Class : ProjectsController</h4>
+        <h5>Total complexity : 32</h5>
+        <h5>Total lines : 138</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#create
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                36
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#update
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                10
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#destroy
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#add_tree_view_column
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                7
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#tree_view
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#project_params
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#gantt
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#indicators
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#set_project
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#edit
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#new
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#show
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProjectsController#index
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/tasks_controller.rb</h3>
+        <h4>Class : TasksController</h4>
+        <h5>Total complexity : 29</h5>
+        <h5>Total lines : 109</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#update
+              </td>
+              <td>
+                8
+              </td>
+              <td>
+                13
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#create
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                13
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#destroy
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                9
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#new
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                12
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#show
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#set_task
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                5
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#task_params
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#edit
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                4
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TasksController#index
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/users_controller.rb</h3>
+        <h4>Class : UsersController</h4>
+        <h5>Total complexity : 27</h5>
+        <h5>Total lines : 112</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#update
+              </td>
+              <td>
+                8
+              </td>
+              <td>
+                22
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#create
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                13
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#assign_to_project
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                26
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#destroy
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#user_params
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#edit
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#new
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#index
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#show
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersController#assign
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/reports_controller.rb</h3>
+        <h4>Class : ReportsController</h4>
+        <h5>Total complexity : 24</h5>
+        <h5>Total lines : 73</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#create
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                12
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#update
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                10
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#destroy
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#report_params
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#set_report
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#edit
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#new
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#show
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ReportsController#index
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/comments_controller.rb</h3>
+        <h4>Class : CommentsController</h4>
+        <h5>Total complexity : 24</h5>
+        <h5>Total lines : 73</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#create
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                12
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#update
+              </td>
+              <td>
+                7
+              </td>
+              <td>
+                10
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#destroy
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#comment_params
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#set_comment
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#edit
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#new
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#show
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                CommentsController#index
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/services/progress_calculator.rb</h3>
+        <h4>Class : ProgressCalculator</h4>
+        <h5>Total complexity : 19</h5>
+        <h5>Total lines : 85</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#project_dates
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                15
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#real_in_days
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#real_in_resources
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#progress_by_task
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#expected_in_resources
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#expected_in_days
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                7
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#project_dates_to_today
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#project_dates_to_end
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ProgressCalculator#initialize
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+        <h3>app/controllers/api/v1/tasks_controller.rb</h3>
+        <h4>Class : Api::V1::TasksController</h4>
+        <h5>Total complexity : 13</h5>
+        <h5>Total lines : 91</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#update
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                40
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#create
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#update_gantt
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#all
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#show
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#destroy
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                4
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::TasksController#index
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                7
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/kanban_board_controller.rb</h3>
+        <h4>Class : KanbanBoardController</h4>
+        <h5>Total complexity : 13</h5>
+        <h5>Total lines : 84</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                KanbanBoardController#all
+              </td>
+              <td>
+                6
+              </td>
+              <td>
+                21
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                KanbanBoardController#index
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                13
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                KanbanBoardController#update
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                35
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+      
+        <h3>app/services/importer.rb</h3>
+        <h4>Class : Importer</h4>
+        <h5>Total complexity : 9</h5>
+        <h5>Total lines : 52</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Importer#import
+              </td>
+              <td>
+                8
+              </td>
+              <td>
+                41
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Importer#initialize
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/models/user.rb</h3>
+        <h4>Class : User</h4>
+        <h5>Total complexity : 8</h5>
+        <h5>Total lines : 43</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                User#role_u
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                User#lp?
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                User#tasks_by_project
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/controllers/user_controller.rb</h3>
+        <h4>Class : UserController</h4>
+        <h5>Total complexity : 6</h5>
+        <h5>Total lines : 37</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                UserController#create
+              </td>
+              <td>
+                5
+              </td>
+              <td>
+                22
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                UserController#newUser
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+        <h3>app/controllers/api/v1/progress_controller.rb</h3>
+        <h4>Class : Api::V1::ProgressController</h4>
+        <h5>Total complexity : 5</h5>
+        <h5>Total lines : 42</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProgressController#all_progress
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                8
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProgressController#real_in_days_by_week
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                5
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProgressController#estimated_in_days_by_week
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                5
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProgressController#real_in_resources_by_week
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                5
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProgressController#estimated_in_resources_by_week
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                5
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/models/report.rb</h3>
+        <h4>Class : Report</h4>
+        <h5>Total complexity : 4</h5>
+        <h5>Total lines : 14</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Report#set_kanban_position
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/models/ability.rb</h3>
+        <h4>Class : Ability</h4>
+        <h5>Total complexity : 4</h5>
+        <h5>Total lines : 23</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Ability#initialize
+              </td>
+              <td>
+                4
+              </td>
+              <td>
+                19
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/helpers/users_helper.rb</h3>
+        <h4>Class : UsersHelper</h4>
+        <h5>Total complexity : 3</h5>
+        <h5>Total lines : 9</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                UsersHelper#roles_array
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+        <h3>app/controllers/api/v1/projects_controller.rb</h3>
+        <h4>Class : Api::V1::ProjectsController</h4>
+        <h5>Total complexity : 3</h5>
+        <h5>Total lines : 21</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProjectsController#index
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                9
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::ProjectsController#all
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+        <h3>app/controllers/api/v1/users_controller.rb</h3>
+        <h4>Class : Api::V1::UsersController</h4>
+        <h5>Total complexity : 3</h5>
+        <h5>Total lines : 21</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::UsersController#login
+              </td>
+              <td>
+                3
+              </td>
+              <td>
+                14
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>lib/api_constraints.rb</h3>
+        <h4>Class : ApiConstraints</h4>
+        <h5>Total complexity : 2</h5>
+        <h5>Total lines : 12</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                ApiConstraints#matches?
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                ApiConstraints#initialize
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/services/task_formatter.rb</h3>
+        <h4>Class : TaskFormatter</h4>
+        <h5>Total complexity : 2</h5>
+        <h5>Total lines : 17</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                TaskFormatter#from_gantt
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                10
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+                TaskFormatter#initialize
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+        <h3>app/helpers/application_helper.rb</h3>
+        <h4>Class : ApplicationHelper</h4>
+        <h5>Total complexity : 2</h5>
+        <h5>Total lines : 11</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                ApplicationHelper#column_class
+              </td>
+              <td>
+                2
+              </td>
+              <td>
+                6
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+        <h3>app/models/comment.rb</h3>
+        <h4>Class : Comment</h4>
+        <h5>Total complexity : 1</h5>
+        <h5>Total lines : 11</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Comment#method_name
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                2
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+        <h3>app/controllers/api/v1/locks_controller.rb</h3>
+        <h4>Class : Api::V1::LocksController</h4>
+        <h5>Total complexity : 1</h5>
+        <h5>Total lines : 9</h5>
+        <table>
+            <tr>
+              <th>Method</th>
+              <th>Complexity</th>
+              <th># Lines</th>
+            </tr>
+          
+            <tr>
+              <td>
+                Api::V1::LocksController#all
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                3
+              </td>
+            </tr>
+          
+        </table>
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+  
+      
+  
+      
+  
+
+
+<p>Generated on 2014-10-25 09:55:00 -0300</p>
+
+    </div>
+
+    
+    <script language="javascript" src="bluff_graph.js" type="text/javascript"></script>
+  </body>
+</html>

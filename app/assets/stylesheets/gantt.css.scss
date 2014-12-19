@@ -1,0 +1,15 @@
+#gantt{
+	height: 100%;
+
+	.gantt-ctrl{
+		height: 100%;
+
+
+		.buttons-container{
+			height: 10%;
+		}
+		#gantt-container{
+			height: 90% !important;
+		}
+	}
+}

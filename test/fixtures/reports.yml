@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_task: 1
+  progress: 9.99
+  date: 2014-09-15 16:15:26
+
+two:
+  id_task: 1
+  progress: 9.99
+  date: 2014-09-15 16:15:26

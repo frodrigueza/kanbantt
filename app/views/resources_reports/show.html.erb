@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @resources_report.task_id %>
+</p>
+
+<p>
+  <strong>Resources:</strong>
+  <%= @resources_report.resources %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @resources_report.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_resources_report_path(@resources_report) %> |
+<%= link_to 'Back', resources_reports_path %>
