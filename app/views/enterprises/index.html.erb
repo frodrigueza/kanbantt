@@ -1,0 +1,45 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h1>Empresas</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Dueño</th>
+          <th>email</th>
+          <th colspan="5"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @enterprises.each do |enterprise| %>
+          <tr>
+            <td><%= enterprise.name %></td>
+            <td><%= enterprise.boss.f_name %></td>
+            <td><%= enterprise.boss.email %></td>
+            <td><%= link_to 'usuarios', enterprise_users_path(enterprise) %></td>
+            <td><%= link_to 'proyectos', enterprise_projects_path(enterprise) %></td>
+            <td><%= link_to 'detalles', enterprise %></td>
+            <td><%= link_to 'editar', edit_enterprise_path(enterprise) %></td>
+            <td><%= link_to 'eliminar', enterprise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if current_user.super_admin %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to_modal 'Agregar empresa', new_enterprise_path %>
+    </div>
+  </div>
+<% end %>
+

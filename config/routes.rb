@@ -2,7 +2,8 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
-  resources :resources_reports
+
+  resources :assignments
 
   #Aquí creamos rutas para proveer la API de la aplcación, para ver más detalles acceder a:
     # http://railscasts.com/episodes/350-rest-api-versioning?view=asciicast
@@ -70,12 +71,12 @@ Rails.application.routes.draw do
   resources :projects do
     get 'tree_view'
     get 'add_tree_view_column'
-    get 'gantt'
     get 'indicators'
     get 'export'
     get 'kanban_board', to: 'kanban_board#index', as: :kanban_board_index
     get 'gantt', to: 'gantt#index'
     post 'kanban_board/update', to: 'kanban_board#update', as: :kanban_board_update
+    resources :users, only: [:index]
     resources :tasks do
       resources :reports
       resources :comments
@@ -109,5 +110,13 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :reports
+  resources :project_users
+
+
+
+  resources :enterprises do
+    resources :projects
+    resources :users
+  end
 
 end

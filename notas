@@ -1,0 +1,9 @@
+ProjectUser roles
+	1 = Administrador
+	2 = Lastplanner
+
+Recursos
+	0 = tiempo
+	1 = USD
+	2 = UF
+	3 = Horas Hombre

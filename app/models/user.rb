@@ -1,40 +1,44 @@
 class User < ActiveRecord::Base
+	# pertenece a una empresa
+	belongs_to :enterprise
+
+	# es dueño de maximo una empresa
+	has_one :owned_enterprise, class_name:'Enterprise', foreign_key:'boss_id'
 
 	#relación con proyectos
-	has_many :project_users
-	has_many :projects, through: :project_users
+	has_many :assignments, dependent: :destroy
+	has_many :projects, through: :assignments
 	#puede tener muchas tareas
 	has_many :tasks
 	has_many :reports
 	#tiene una api key, esta key debe eliminarse si el usuario es destruido
 	has_many :api_key, dependent: :destroy 
-	#Tiene muchos reportes de recursos
-	has_many :resources_reports
 
-	# Que el nombre este presente al crear/editar el usuario y tenga largo minimo 2
-	validates :name, presence: true, length: { minimum: 2 }
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 	ROLES = %i[super_admin admin last_planner observer]
 
-	def role_u
-		if self.role == 'super_admin'
-			return 'Super Administrador'
-		elsif self.role == 'admin'
-			return 'Administrador'
-		elsif self.role == 'last_planner'
-			return 'Last Planner'
+	def f_name
+		name + ' ' + last_name
+	end
+
+	def is_boss
+		if self.super_admin
+			false
+		elsif self.enterprise.boss == self
+			true
 		else
-			return 'Observador'
+			false
 		end
 	end
 
-	def lp?
-		if self.role == 'last_planner'
-			return true
-		else
-			return false
+	def role_in_project(project)
+		role = ProjectUser.where(user_id: id, project_id: project.id).first.role
+		if role == 1
+			return 'Administrador'
+		elsif role == 2
+			return 'Last planner'
 		end
 	end
 
@@ -86,70 +90,73 @@ class User < ActiveRecord::Base
 	def kanban_inactive_tasks
 		array = []
 
-		# El administrador ve todas las tareas de todos los proyectos
-		if role == "admin"
-			projects.each do |p|
-				p.kanban_inactive_tasks.each do |t|
-					array << t
-				end 
-			end
+		if projects.count > 0
+			# El administrador ve todas las tareas de todos los proyectos
+			if role == "admin"
+				projects.each do |p|
+					p.kanban_inactive_tasks.each do |t|
+						array << t
+					end 
+				end
 
-		# El last_planner solo ve las asignadas a él
-		elsif role == "last_planner"
-			tasks.each do |t|
-				if !t.has_children? && t.progress == 0
-					array << t
+			# El last_planner solo ve las asignadas a él
+			elsif role == "last_planner"
+				tasks.each do |t|
+					if !t.has_children? && t.progress == 0
+						array << t
+					end
 				end
 			end
 		end
-
-		return array
+			return array
 	end
 	def kanban_in_progress_tasks
 		array = []
 
-		# El administrador ve todas las tareas de todos los proyectos
-		if role == "admin"
-			projects.each do |p|
-				p.kanban_in_progress_tasks.each do |t|
-					array << t
-				end 
-			end
+		if projects.count > 0
+			# El administrador ve todas las tareas de todos los proyectos
+			if role == "admin"
+				projects.each do |p|
+					p.kanban_in_progress_tasks.each do |t|
+						array << t
+					end 
+				end
 
-		# El last_planner solo ve las asignadas a él
-		elsif role == "last_planner"
-			tasks.each do |t|
-				progress_aux = t.progress
-				if !t.has_children? && progress_aux != 0 && progress_aux !=100
-					array << t
+			# El last_planner solo ve las asignadas a él
+			elsif role == "last_planner"
+				tasks.each do |t|
+					progress_aux = t.progress
+					if !t.has_children? && progress_aux != 0 && progress_aux !=100
+						array << t
+					end
 				end
 			end
-		end
-
+		end 
 		return array
 	end
 
 	def kanban_done_tasks
 		array = []
 
-		# El administrador ve todas las tareas de todos los proyectos
-		if role == "admin"
-			projects.each do |p|
-				p.kanban_done_tasks.each do |t|
-					array << t
-				end 
-			end
+		if projects.count > 0
+			# El administrador ve todas las tareas de todos los proyectos
+			if role == "admin"
+				projects.each do |p|
+					p.kanban_done_tasks.each do |t|
+						array << t
+					end 
+				end
 
-		# El last_planner solo ve las asignadas a él
-		elsif role == "last_planner"
-			tasks.each do |t|
-				progress_aux = t.progress
-				if !t.has_children? && progress_aux == 100
-					array << t
+			# El last_planner solo ve las asignadas a él
+			elsif role == "last_planner"
+				tasks.each do |t|
+					progress_aux = t.progress
+					if !t.has_children? && progress_aux == 100
+						array << t
+					end
 				end
 			end
 		end
-
 		return array
 	end
 

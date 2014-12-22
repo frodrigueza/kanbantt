@@ -1,0 +1,18 @@
+<%= bootstrap_form_for(@enterprise) do |f| %>
+  <% if @enterprise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@enterprise.errors.count, "error") %> prohibited this enterprise from being saved:</h2>
+
+      <ul>
+      <% @enterprise.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.text_field :name, required: true,label:'Nombre de la empresa' %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

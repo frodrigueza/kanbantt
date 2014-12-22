@@ -11,7 +11,7 @@ class Task < ActiveRecord::Base
 	belongs_to :parent, class_name: 'Task', counter_cache: 'children_count', touch: true
 
 	#Una tarea tiene muchos reportes
-	has_many :reports#, dependent: :destroy
+	has_many :reports, dependent: :destroy
 
 	#Una tarea tiene un dueño
 	belongs_to :user
@@ -22,12 +22,6 @@ class Task < ActiveRecord::Base
 	#Tiene muchos comentarios
 	has_many :comments
 
-	#Tiene muchos reportes de recursos
-	has_many :resources_reports
-
-	#Tiene una posicion dentro de un kanban
-	has_one :task_position, dependent: :destroy
-	has_one :column, through: :task_position
 	after_commit :call_update, on: [:create, :update, :destroy]
 
 	scope :done, -> { where(progress: 100) }
@@ -223,11 +217,6 @@ class Task < ActiveRecord::Base
 		reports.before(date).last
 	end
 
-	#último reporte  de recursos antes de la fecha solicitada
-	def last_resources_report_before(date)
-		resources_reports.before(date).last
-	end
-
 	# días desde que la tarea empezó hasta la fecha
 	# si no ha empezado es 0 y si ya terminó es la duración de la tarea
 	def days_from_start(date)
@@ -295,7 +284,6 @@ class Task < ActiveRecord::Base
 	def destroy_without_callback
 		reports.map(&:delete)
 		comments.map(&:delete)
-		task_position.delete if task_position
 		children.each do |c|
 			c.destroy_without_callback
 		end

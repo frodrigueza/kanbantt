@@ -1,30 +1,12 @@
-<% if flash[:alert] %>
-  <div class="alert alert-danger" role="alert" id="page">
-      <p class="flash-error"><%= flash[:alert] %></p>
-  </div>
-<% end %>
-<div class="container">
-  <div class="full">
+<div class="row">
+  <div class="col-md-12">
     <h1><%= @project.name %></h1>
-  </div>  
-  <div class="row col-md-12">
-    <!-- Boton para Exportar -->
-    <%= link_to 'Exportar', project_export_path(@project), class: "mboton mboton-left btn-group btn" %>
-    <!-- Boton para Editar -->
-    <div class="mboton mboton-left btn-group btn"><a href="#editarp" rel="modal:open">Editar</a></div>
   </div>
-
-
-  <div class="row">
-    <%= render 'info'%>
-    <%= render 'users'%>
-  </div>
-
 </div>
 
-<!-- Modal para editar el proyecto-->
-<div id="editarp" style="display:none; width:600px; max-height:800px;">
-  <%= render 'form_edit', :object =>[@project = @project]%>
+<div class="row">
+    <%= link_to 'Exportar', project_export_path(@project) %>
 </div>
-
-
+<div class="row">
+    <%= link_to 'Usuarios', project_users_path(@project) %>
+</div>

@@ -1,65 +1,22 @@
-<style rel="stylesheet" href="jquery.modal.css.scss" type="text/css" media="screen"> </style>
-
-
-<div class="container">
-  <h2>Proyectos
-    <% if can? :create, Project %>
-  <a class="mboton btn-group btn" href="#newp" rel="modal:open">
-        <i class="fa fa-plus"></i> Nuevo Proyecto
-  </a>
- 
-<% end %>
-  </h2>
-
-
-
-  <div style="clear: both; padding-top:15px;">
-    <% @projects.each do |project| %>
-
-       <div class="user1 tercio1 ">
-          <div class="nombre11">
-            <% if can? :destroy, project %>
-              <div class="eliminar flotar-derecha">
-                <%= link_to 'x', project, method: :delete, data: { confirm: '¿Estás seguro?' } %>
-              </div>
-              <%  end %>
-              <%= link_to project.name, project, :class=>"nombre" %>
-            </div>
-           
-          <div style="padding: 4px;">
-            <% imagen = project.image(project.id).to_s %>
-            <%= image_tag imagen, :class => "img_project" %>
-          </div>
-          <div class="info">
-          Progreso Real: <%= project.info_progress_as_percentaje[0] %>
-        </div>
-        <div class="info">
-          Progreso Estimado: <%= project.info_progress_as_percentaje[1] %>
-        </div>
-
-          
-        </div>
-      <% end %>
-
+<div class="row">
+  <div class="col-md-12">
+    <h1>Proyectos</h1>
   </div>
 </div>
 
+<% if current_user.is_boss %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to_modal 'Nuevo proyecto', new_enterprise_project_path(@enterprise) %>
+    </div>
+  </div>
+<% end %>
 
-
-
-
-<!--si el usuario tiene permiso para crear proyecto, entonces se le muestra el link, sino no-->
-
-
-
-
-
-
-
-<br>
-
-
-
+<div class="row">
+  <% @projects.each do |p| %>
+    <%= render 'project', project: p %>
+  <% end %>
+</div>
 
 
 

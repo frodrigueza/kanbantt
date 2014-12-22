@@ -11,6 +11,9 @@ class KanbanBoardController < ApplicationController
       @inactive_tasks = @project.kanban_inactive_tasks
       @in_progress_tasks = @project.kanban_in_progress_tasks
       @done_tasks = @project.kanban_done_tasks
+    elsif current_user.super_admin
+      # No tiene sentido que el super admin vea el kanban de todas las tareas 
+      redirect_to projects_path
     else
       @inactive_tasks = current_user.kanban_inactive_tasks
       @in_progress_tasks = current_user.kanban_in_progress_tasks

@@ -6,7 +6,13 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects
+    if current_user.super_admin
+      @projects = Project.all
+    elsif current_user.enterprise.boss == current_user
+      @projects = current_user.enterprise.projects
+    else
+      @projects = current_user.projects
+    end
   end
 
   # GET /projects/1
@@ -82,14 +88,7 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         if @project.save
           # @project.calculate_progresses
-          #buscamos al (o los) super_admin
-          @user = User.where(:role => "super_admin")
-
-          #le(s) asignamos el proyecto recien creado
-          @user.each do |user|
-            user.projects << @project
-          end
-          format.html { redirect_to :back }
+          format.html { redirect_to request.referer }
           format.json { render :show, status: :created, location: @project }
         else
           format.html { render :new }
@@ -185,11 +184,7 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :start_date, :end_date, :progress,
-                                    :deleted, :xml_file, :resources, :type_resources, :report,
-                                    task_attributes: [:id, :name, :expected_start_date, :expected_end_date,
-                                                       :start_date, :end_date, :parent_id, :level, :man_hours, :progress, :duration,
-                                                       :description, :deleted, :project_id, :resources])
+    params.require(:project).permit(:name, :start_date, :end_date, :xml_file, :resources_type, :resources_reporting, :enterprise_id)
   end
 
 

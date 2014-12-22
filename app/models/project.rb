@@ -3,9 +3,13 @@ class Project < ActiveRecord::Base
 	#Tiene versionamiento de datos
 	has_paper_trail
 
-	has_many :project_users
-	has_many :tasks
-	has_many :users, through: :project_users
+	has_many :assignments, dependent: :destroy
+	has_many :users, through: :assignments
+
+	has_many :tasks, dependent: :destroy
+
+	has_many :comments, dependent: :destroy
+
 	has_many :days_progresses, dependent: :destroy
 	has_many :resources_progresses, dependent: :destroy
 	has_many :performance_progresses, dependent: :destroy
@@ -181,7 +185,7 @@ class Project < ActiveRecord::Base
 				#Si no tiene hijos se calculan	
 				cost[t.id] = in_resources ? t.resources_cost : t.days_cost
 				real[t.id] = (t.last_report_before(date).try(:progress) || 0 )*cost[t.id]/100
-				qty[t.id] = (t.last_resources_report_before(date).try(:resources) || 0 )
+				qty[t.id] = (t.last_resources_before(date).try(:resources) || 0 )
 				exp[t.id] = t.expected_days_progress(date+1.day)*cost[t.id]
 			end
 		end
@@ -241,7 +245,7 @@ class Project < ActiveRecord::Base
 				qty[t.id] = t.children.map{|ch| qty[ch.id]}.inject(:+)
 			else
 				
-				qty[t.id] = (t.last_resources_report_before(Date.today).try(:resources) || 0 )
+				qty[t.id] = (t.last_resources_before(Date.today).try(:resources) || 0 )
 			end
 		end
 		

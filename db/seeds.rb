@@ -7,18 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-u1 = User.create!(email: 'arturo@gmail.com', password: 'grupo4grupo4',  name: 'Arturo Campos', role: 'super_admin')
-u2 = User.create!(email: 'francisca@gmail.com', password: 'grupo4grupo4',  name: 'Francisca Rojas', role: 'admin')
-u3 = User.create!(email: 'felix@gmail.com', password: 'grupo4grupo4',  name: 'Felix Gonzalez', role: 'last_planner')
-u4 = User.create!(email: 'luis@gmail.com', password: 'grupo4grupo4',  name: 'Luis Rios', role: 'last_planner')
-u5 = User.create!(email: 'camila@gmail.com', password: 'grupo4grupo4',  name: 'Camila Cabello', role: 'last_planner')
-u6 = User.create!(email: 'felipe@gmail.com', password: 'grupo4grupo4',  name: 'Felipe Saavedra', role: 'last_planner')
-u7 = User.create!(email: 'diego@gmail.com', password: 'grupo4grupo4',  name: 'Diego Martinez', role: 'last_planner')
-
-
-c1 = Column.create(name: "Inactivo")
-c2 = Column.create(name: "En progreso")
-c3 = Column.create(name: "Terminado")
+u1 = User.create!(email: 'arturo@gmail.com', password: 'grupo4grupo4',  name: 'Arturo', last_name: 'Campos', super_admin: true)
+# u2 = User.create!(email: 'francisca@gmail.com', password: 'grupo4grupo4',  name: 'Francisca Rojas', role: 'admin')
+# u3 = User.create!(email: 'felix@gmail.com', password: 'grupo4grupo4',  name: 'Felix Gonzalez', role: 'last_planner')
+# u4 = User.create!(email: 'luis@gmail.com', password: 'grupo4grupo4',  name: 'Luis Rios', role: 'last_planner')
+# u5 = User.create!(email: 'camila@gmail.com', password: 'grupo4grupo4',  name: 'Camila Cabello', role: 'last_planner')
+# u6 = User.create!(email: 'felipe@gmail.com', password: 'grupo4grupo4',  name: 'Felipe Saavedra', role: 'last_planner')
+# u7 = User.create!(email: 'diego@gmail.com', password: 'grupo4grupo4',  name: 'Diego Martinez', role: 'last_planner')
 
 
 # p1 = Project.create(name: "Edificio Alcantara", start_date: Time.new(2014, 7, 25), end_date: Time.new(2014, 12, 30) )

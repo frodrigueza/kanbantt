@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218154420) do
+ActiveRecord::Schema.define(version: 20141222163719) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -21,20 +21,28 @@ ActiveRecord::Schema.define(version: 20141218154420) do
     t.datetime "updated_at"
   end
 
-  create_table "columns", force: true do |t|
-    t.string   "name"
+  create_table "assignments", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "assignments", ["project_id"], name: "index_assignments_on_project_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
+
   create_table "comments", force: true do |t|
     t.integer  "task_id"
+    t.integer  "project_id"
+    t.integer  "enterprise_id"
     t.integer  "user_id"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id"
   add_index "comments", ["task_id"], name: "index_comments_on_task_id"
 
   create_table "days_progresses", force: true do |t|
@@ -62,9 +70,9 @@ ActiveRecord::Schema.define(version: 20141218154420) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-  create_table "locks", force: true do |t|
-    t.integer  "locker_id"
-    t.integer  "locked_id"
+  create_table "enterprises", force: true do |t|
+    t.text     "name"
+    t.integer  "boss_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,33 +88,22 @@ ActiveRecord::Schema.define(version: 20141218154420) do
 
   add_index "performance_progresses", ["project_id"], name: "index_performance_progresses_on_project_id"
 
-  create_table "project_users", force: true do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id"
-  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id"
-
   create_table "projects", force: true do |t|
     t.string   "name"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.boolean  "deleted"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "man_hours"
-    t.float    "cost",                default: 0.0
-    t.string   "xml_file"
-    t.integer  "work_hours"
-    t.boolean  "resources",           default: false
-    t.boolean  "report"
-    t.string   "type_resources"
-    t.decimal  "progress",            default: 0.0
     t.datetime "expected_start_date"
     t.datetime "expected_end_date"
+    t.decimal  "progress",            default: 0.0
+    t.integer  "resources_type",      default: 0
+    t.decimal  "resources",           default: 0.0
+    t.decimal  "resources_cost",      default: 0.0
+    t.decimal  "cost"
+    t.string   "xml_file"
+    t.boolean  "resources_reporting", default: false
+    t.integer  "enterprise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pushes", force: true do |t|
@@ -117,16 +114,16 @@ ActiveRecord::Schema.define(version: 20141218154420) do
   end
 
   create_table "reports", force: true do |t|
-    t.integer  "task_id"
     t.decimal  "progress"
+    t.float    "resources"
+    t.integer  "task_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.float    "resources",  default: 0.0
   end
 
-  add_index "reports", ["created_at"], name: "index_reports_on_created_at"
   add_index "reports", ["task_id"], name: "index_reports_on_task_id"
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id"
 
   create_table "resources_progresses", force: true do |t|
     t.date     "date"
@@ -139,52 +136,27 @@ ActiveRecord::Schema.define(version: 20141218154420) do
 
   add_index "resources_progresses", ["project_id"], name: "index_resources_progresses_on_project_id"
 
-  create_table "resources_reports", force: true do |t|
-    t.integer  "task_id"
-    t.decimal  "resources"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "task_positions", force: true do |t|
-    t.integer  "column_id"
-    t.integer  "task_id"
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "task_positions", ["column_id"], name: "index_task_positions_on_column_id"
-  add_index "task_positions", ["project_id"], name: "index_task_positions_on_project_id"
-  add_index "task_positions", ["task_id"], name: "index_task_positions_on_task_id"
-  add_index "task_positions", ["user_id"], name: "index_task_positions_on_user_id"
-
   create_table "tasks", force: true do |t|
     t.string   "name"
-    t.datetime "expected_start_date"
-    t.datetime "expected_end_date"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "parent_id"
+    t.datetime "expected_start_date"
+    t.datetime "expected_end_date"
     t.integer  "level"
-    t.decimal  "man_hours",           default: 0.0
     t.decimal  "progress",            default: 0.0
-    t.string   "description"
+    t.text     "description"
     t.boolean  "deleted"
+    t.boolean  "urgent"
+    t.decimal  "resources",           default: 0.0
+    t.decimal  "resources_cost",      default: 0.0
+    t.decimal  "duration",            default: 0.0
+    t.integer  "map_uid"
+    t.integer  "parent_id"
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "children_count",      default: 0,   null: false
-    t.integer  "reports_count",       default: 0,   null: false
-    t.float    "duration"
     t.integer  "mpp_uid"
-    t.decimal  "resources",           default: 0.0
-    t.float    "resources_cost",      default: 0.0
-    t.boolean  "urgent"
   end
 
   add_index "tasks", ["parent_id"], name: "index_tasks_on_parent_id"
@@ -192,20 +164,22 @@ ActiveRecord::Schema.define(version: 20141218154420) do
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "enterprise_id"
+    t.string   "name"
+    t.string   "last_name"
+    t.boolean  "super_admin",            default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "role"
     t.integer  "api_key_id"
   end
 

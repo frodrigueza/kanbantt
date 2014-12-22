@@ -1,39 +1,13 @@
-<!--vista para que el super admin cree un nuevo usuario-->
-<div class="form_modal">
-<table>
-  <tr>
-    <td class="supform"><h3>Crea un nuevo Usuario</h3></td>
-  </tr>
-  <tr><td class="space"></td></tr>
-  <tr>
-    <td>
-    <%= bootstrap_form_for(@user, layout: :horizontal) do |f| %>
+<%= bootstrap_form_for(@user) do |f| %>
 
-    <!--se piden los campos-->
-      <div class="field">
-        <%= f.text_field :name, :required => true, :label => 'Nombre' %>
-      </div>
-     <div class="field">
-        <%= f.text_field :email, :required => true, :label => 'Correo' %>
-      </div>
-      <div class="field">
-        <%= f.text_field :password, :required => true, :label => 'Contraseña' %>
-      </div>
-      <%= f.hidden_field :project_id, value: @project.id if @project%>
-    <!--drop down menu para roles, donde el 1er string es lo que se muestra y el 2do es lo que se guarda en la bd-->
-      <div class="field">
-      <% if can? :create, User %>
-        <%= f.select :role, options_for_select(roles_array(current_user.role)), :label => 'Rol'%>
-      <% end %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Crear Usuario" %>
-      </div>
-    <% end %>
-    </td>
-  </tr>
-</table>
-  
-</div>
+
+  <%= f.text_field :name, :required => true, :label => 'Nombre' %>
+  <%= f.text_field :last_name, :required => true, :label => 'Apellido' %>
+  <%= f.text_field :email, :required => true, :label => 'Email' %>
+  <%= f.password_field :password, :required => true, :label => 'Contraseña' %>
+  <%= f.password_field :password_confirmation, :required => true, :label => 'Confirmar contraseña' %>
+  <%= f.hidden_field :enterprise_id, value: @user.enterprise_id %>
+  <%= f.submit %>
+<% end %>
 
 

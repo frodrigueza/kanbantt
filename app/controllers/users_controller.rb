@@ -7,34 +7,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  #asigna el usuario a los proyectos que se marcaron en los checkbox
-  #designa a los que no estan marcados
-  def assign_to_project
-    #se obtiene el usuario en cuestion
-    @user = User.find(params[:id])
-
-    #se eliminan todos los proyectos asignados a ese usuario
-    #(para posteriormente asignarle todos los que estan marcados)
-    @user.projects.clear
-
-    #si el usuario al que se le esta asignando o desasignado proyectos es el super_admin
-    if @user.role == "super_admin"
-      #se le asignan todos los proyectos
-      @user.projects << Project.all
-      #sino
-    else
-      #para cada checkbox
-      params['tag'].each do |id_project, tag_value|
-        @project = Project.find(id_project)
-        #si la checkbox esta marcada, se asigna el proyecto
-        if tag_value == "1"
-          @user.projects << @project
-        end
-      end
-    end
-    redirect_to users_path
-  end
-
   # GET /users
   # GET /users.json
   def index
@@ -42,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new(enterprise_id: params[:enterprise_id])
   end
 
   # GET /users/1/edit
@@ -53,15 +25,12 @@ class UsersController < ApplicationController
 
 
   def create
-    #se crea el objeto usuario asignandole los parametros recibidos del form.
-    project_id = params[:user][:project_id]
     @user = User.new(user_params)
-    # Si es creado desde un proyecto en particular, entonces se le asigna ese proyecto
-    assign_project(project_id)
-    @user.name = @user.name.camelize
+    
+    # @user.name = @user.name.camelize
     respond_to do |format|
       if @user.save
-        format.html { redirect_to :back }
+        format.html { redirect_to request.referer }
         format.json { render :show, status: :created, location: '/users' }
       else
         format.html { render 'new' } ## Specify the format in which you are rendering "new" page
@@ -114,7 +83,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
+    params.require(:user).permit(:name, :last_name, :email, :password, :password_confirmation, :enterprise_id)
   end
 
   private

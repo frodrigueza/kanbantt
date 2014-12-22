@@ -11,13 +11,36 @@ class ApplicationController < ActionController::Base
   end
 
   def set_objects
+
+    if current_user
+      # PROYECTOS
+      if current_user.super_admin
+        @projects = Project.all
+      elsif current_user.enterprise.boss == current_user
+        @projects = current_user.enterprise.projects
+      else
+        @projects = current_user.projects
+      end
+    end
+
+    # EMPRESA
+    if params[:enterprise_id]
+      @enterprise = Enterprise.find(params[:enterprise_id])
+    elsif current_user
+      @enterprise = current_user.enterprise
+    end
+
+    # PROJECTO
     if params[:project_id]
       @project = Project.find(params[:project_id])
     end
 
-    if current_user
-      @projects = current_user.projects
+    # USUARIO
+    if params[:user_id]
+      @user = User.find(params[:user_id])
     end
+
+
       
   end
 

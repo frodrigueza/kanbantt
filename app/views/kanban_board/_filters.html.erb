@@ -5,14 +5,3 @@
 		<td>Condicion: <%= select_tag 'status_select_filter', options_for_select(status_filter_options, 'Todos'), { id:'status_select_filter'} %></td>
 	</tr>
 </table>
-
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Todos <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-  	<% time_filter_options.each do |o| %>
-    	<li><a href="#"><%= o %></a></li>
-  	<% end %>
-  </ul>
-</div>
