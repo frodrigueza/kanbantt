@@ -17,12 +17,14 @@
 				<tr>
 					<th>Nombre</th>
 					<th>Rol en el proyecto</th>
+					<th></th>
 				</tr>
 			</thead>
-		<% @user.projects.each do |p| %>
+		<% @user.assignments.each do |a| %>
 			<tr>
-				<td><%= p.name %></td>
-				<td><%= @user.role_in_project(p) %></td>
+				<td><%= a.project.name %></td>
+				<td><%= a.f_role %></td>
+				<td><%= link_to 'Editar asignación', edit_assignment_path(a) %></td>
 			</tr>
 		<% end %>
 		</table>
@@ -30,7 +32,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<%= link_to 'Asignar este usuario a un proyecto' , new_project_user_path(user_id: @user.id)%>
+		<%= link_to_modal 'Asignar este usuario a un proyecto' , new_assignment_path(user_id: @user.id)%>
 	</div>
 </div>
 <div class="row">

@@ -13,7 +13,7 @@ class AssignmentsController < ApplicationController
   end
 
   def new
-    @assignment = Assignment.new
+    @assignment = Assignment.new(project_id: params[:project_id], user_id: params[:user_id])
     respond_with(@assignment)
   end
 

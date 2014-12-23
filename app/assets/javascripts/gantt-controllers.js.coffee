@@ -5,7 +5,7 @@ angular.module('Gantt.gantt-controllers', [])
   #   url = $location.absUrl().split('/')
   #   $scope.projectId = url[4]
   # ]
-	.controller "GanttCtrl", [ "$scope", "Api", '$location', ($scope, Api, $location) ->
+  .controller "GanttCtrl", [ "$scope", "Api", '$location', ($scope, Api, $location) ->
     url = $location.absUrl().split('/')
     $scope.projectId = url[4]
     $scope.projects = false
@@ -17,4 +17,3 @@ angular.module('Gantt.gantt-controllers', [])
       links: [], 
       data: Api.Project.query()
   ]
-

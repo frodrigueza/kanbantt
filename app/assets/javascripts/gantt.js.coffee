@@ -5,9 +5,9 @@ start = ->
   angular.bootstrap "body", ["Gantt"]  if $("#gantt")[0]
  #  $('.horizontal_sub_menu').hide() unless $('#pl4').hasClass('activo')
  #  $('.gantt-menu').hover (->
-	#   $('.horizontal_sub_menu').show()
-	# ), ->
-	#   $('.horizontal_sub_menu').hide() unless $('#pl4').hasClass('activo')
+  #   $('.horizontal_sub_menu').show()
+  # ), ->
+  #   $('.horizontal_sub_menu').hide() unless $('#pl4').hasClass('activo')
 
 # La funcion start se gatilla tanto al cargar inicialmente
 # como al hacer un load con turbolinks
@@ -21,16 +21,16 @@ angular.module('Gantt', ['ngResource', 'ngRoute', 'Gantt.gantt-controllers', 'Ga
 #Pueden servir para arreglar el ruteo
 # app.config(['$routeProvider', '$locationProvider',  ($routeProvider, $locationProvider) ->
 #   $routeProvider.when "/projects/:projectId/gantt/",
-#   	event: "gantt.show"
+#     event: "gantt.show"
 # ])
 
 # app.controller "AppCtrl", ["$scope", "$location","$routeParams", "$route", ($scope, $location, $routeParams, $route) ->
-# 	console.log $routeParams
-# 	$route.reload()
-# 	#console.log $route[0].routes
-# 	#console.log $scope.projectId = $route.routes['/projects/:projectId/gantt/'].keys[0].name
-# 	console.log $route
-# 	$scope.projectId = $routeParams.projectId
+#   console.log $routeParams
+#   $route.reload()
+#   #console.log $route[0].routes
+#   #console.log $scope.projectId = $route.routes['/projects/:projectId/gantt/'].keys[0].name
+#   console.log $route
+#   $scope.projectId = $routeParams.projectId
 # ]
 
 # Métodos para crear un console.last() en consola que entregue el útimo log como objeto

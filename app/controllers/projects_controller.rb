@@ -65,17 +65,17 @@ class ProjectsController < ApplicationController
           proyecto.update_columns(:name => @project_data.name)
         end
 
-        @project.users << current_user
+        current_user.enterprise.projects << @project
         #Si tiene recursos, se guarda el atributo.
         if @project_data.resources
             proyecto.update_columns(:resources => @project_data.resources)
           #Si tiene recursos se guarda también el tipo de recursos
-          if @project_data.type_resources
-            proyecto.update_columns(:type_resources => @project_data.type_resources)
+          if @project_data.resources_type != 0
+            proyecto.update_columns(:resources_type => @project_data.type_resources)
           end
           #Si tiene recursos se guarda si se reporta o no.
-          if @project_data.report
-            proyecto.update_columns(:report => @project_data.report)
+          if @project_data.resources_reporting
+            proyecto.update_columns(:resources_reporting => @project_data.report)
           end
         end
         

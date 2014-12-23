@@ -16,10 +16,13 @@
       </thead>
       <tbody>
         <% @enterprise.users.each do |u| %>
-          <tr>
-            <td><%= u.f_name %></td>
-            <td><%= link_to 'Detalles', u %></td>
-          </tr>
+          <!-- Si es el mismo usuario, no se muestra -->
+          <% if u != current_user %>
+            <tr>
+              <td><%= u.f_name %></td>
+              <td><%= link_to 'Detalles', u %></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
@@ -28,6 +31,6 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= link_to_modal 'Nuevo usuario', new_user_path(enterprise_id: @enterprise.id) %>
+    <%= link_to_modal 'Nuevo usuario para ' + @enterprise.name , new_user_path(enterprise_id: @enterprise.id) %>
   </div>
 </div>

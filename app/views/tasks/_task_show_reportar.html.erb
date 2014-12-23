@@ -23,8 +23,8 @@
 			    	<%= f.number_field :progress, :in => 0..100, :step => 1, label: 'Porcentaje de avance'  %>
 
 					<!-- Mostrar el reportar solo si se puede -->
-					<% if @task.project.report && @projecto.resources %>
-						<%= f.number_field :resources, label:'Recursos utilizados hasta este momento (' + @task.project.type_resources.to_s + ')' %>
+					<% if @task.project.resources_reporting && @projecto.resources_type != 0 %>
+						<%= f.number_field :resources, required: true,label:'Recursos utilizados hasta este momento (' + @task.project.type_resources.to_s + ')' %>
 					<% end %>
 
 					<%= f.submit "Guardar", :class => "btn-group btn configm" %>

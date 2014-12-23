@@ -28,6 +28,18 @@ class Project < ActiveRecord::Base
 		user.projects << self
 	end
 
+	def f_resources_type
+		if resources_type == 0
+			return ''
+		elsif resources_type == 1
+			return 'USD'
+		elsif resources_type == 2
+			return 'UF'
+		elsif resources_type == 3
+			return 'HH'
+		end
+	end
+
 	# devuelve las tareas de primer nivel, es decir que no tienen padres
 	def first_tasks
 		self.tasks.in_level(1)
@@ -185,7 +197,7 @@ class Project < ActiveRecord::Base
 				#Si no tiene hijos se calculan	
 				cost[t.id] = in_resources ? t.resources_cost : t.days_cost
 				real[t.id] = (t.last_report_before(date).try(:progress) || 0 )*cost[t.id]/100
-				qty[t.id] = (t.last_resources_before(date).try(:resources) || 0 )
+				qty[t.id] = (t.last_report_before(date).try(:resources) || 0 )
 				exp[t.id] = t.expected_days_progress(date+1.day)*cost[t.id]
 			end
 		end
@@ -245,7 +257,7 @@ class Project < ActiveRecord::Base
 				qty[t.id] = t.children.map{|ch| qty[ch.id]}.inject(:+)
 			else
 				
-				qty[t.id] = (t.last_resources_before(Date.today).try(:resources) || 0 )
+				qty[t.id] = (t.last_report_before(Date.today).try(:resources) || 0 )
 			end
 		end
 		

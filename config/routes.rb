@@ -3,7 +3,6 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
 
-  resources :assignments
 
   #Aquí creamos rutas para proveer la API de la aplcación, para ver más detalles acceder a:
     # http://railscasts.com/episodes/350-rest-api-versioning?view=asciicast
@@ -80,20 +79,13 @@ Rails.application.routes.draw do
     resources :tasks do
       resources :reports
       resources :comments
-      resources :resources_reports
       get 'update_item_partial', to: 'kanban_board#update_item_partial', as: :kanban_board_update_item_partial
 
     end
   end
 
   resources :tasks do
-    get 'new_child'
     post 'delete_confirmation'
-  end
-
-  resources :users do
-    get 'assign', on: :member
-    post 'assign_to_project', on: :member, action:'assign_to_project'
   end
 
   get 'gantt', to: 'gantt#index'
@@ -110,7 +102,8 @@ Rails.application.routes.draw do
 
   resources :comments
   resources :reports
-  resources :project_users
+  resources :assignments
+  resources :users
 
 
 

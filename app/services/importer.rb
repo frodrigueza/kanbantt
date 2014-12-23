@@ -66,7 +66,7 @@ class Importer
 				last = t
 			end
 			#calcula progresos
-			p.calculate_progresses
+			# p.calculate_progresses
 			return p
 		end
 	end

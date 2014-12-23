@@ -6,9 +6,9 @@
 <!-- Cambiar  -->
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#tiempo" role="tab" data-toggle="tab">Tiempo</a></li> <% aa= '100px' %>
-  <% if @project.resources %>
+  <% if @project.resources != 0 %>
   <li><a href="#recursos" role="tab" data-toggle="tab">Recursos</a></li> <% aa= '350px' %>
-    <% if @project.report %>
+    <% if @project.resources_reporting %>
         <li><a href="#desempeno" role="tab" data-toggle="tab">Desempeño</a></li> <% aa= '500px' %>
     <% end %>
   <% end %>
@@ -73,21 +73,21 @@
                 <span class="indicators-text col-md-6">Desempeño Real</span>
                 <span class="indicators-number col-md-6">
                     <ul><li style="font-size:10px;"><%=@project.performance_real %></li>
-                        <li id="type"><%= @project.type_resources %></li></ul>
+                        <li id="type"><%= @project.f_resources_type %></li></ul>
                 </span>
             </span>
             <span class="middle-indicator" data-difference-positive="<%= @project.progress_difference.to_i > 0 %>" >
                 <span class="indicators-text col-md-6">Diferencia</span>
                 <span class="indicators-number col-md-6">
                     <ul><li style="font-size:10px;"><%=@project.performance_difference %></li>
-                        <li id="type"><%= @project.type_resources %></li></ul>
+                        <li id="type"><%= @project.f_resources_type %></li></ul>
                     </span>
             </span>
             <span class="right-indicator">
                 <span class="indicators-text col-md-6">Desempeño Esperado</span>
                 <span class="indicators-number col-md-6">
                     <ul><li style="font-size:10px;"><%= @project.performance_expected %></li>
-                        <li id="type"><%= @project.type_resources %></li></ul>
+                        <li id="type"><%= @project.f_resources_type %></li></ul>
                     </span>
             </span>
             <span class="last-indicator">
@@ -187,10 +187,10 @@
     <div class="description">
     <p>El gráfico de Tiempo muestra la curva de avance esperado que se relaciona con la cantidad de dias que lleva el proyecto del total y la curva de avance real que se calcula de acuerdo a los reportes de avance de las tareas. Se usa como medida la cantidad de días habiles pronosticados para cada tarea.</p>
 
-    <% if @project.resources %>
+    <% if @project.resources != 0 %>
     <p>El gráfico de Recursos muestra la curva de recursos esperados que se relaciona con la cantidad de recursos que se deberian haber gastado en relación al tiempo transcurrido y la curva de recursos reales que se calcula de acuerdo a los reportes de avance de las tareas. Se usa como medida el presupuesto pronosticados para cada tarea.</p>
     
-        <% if @project.report %>
+        <% if @project.resources_reporting %>
         <p>El gráfico de Desempeño muestra la cantidad de recursos que se espera gastar dado los reportes de avance versus la cantidad de recursos que se gastaron calculado gracias a los reportes de recursos. Es importante destacar que este gráfico no representa el avance presupuestado del proyecto, muestra el avance real considerando los recursos que se debieron gastar versus los recursos que se gastaron.</p>
         </div>
         <% end %>

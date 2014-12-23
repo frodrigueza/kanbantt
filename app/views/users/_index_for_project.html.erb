@@ -15,10 +15,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @project.users.each do |u| %>
+        <% @project.assignments.each do |a| %>
           <tr>
-            <td><%= u.f_name %></td>
-            <td><%= link_to 'Detalles', u %></td>
+            <td><%= a.user.f_name %></td>
+            <td><%= link_to 'eliminar asignación', a, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -28,6 +28,6 @@
 
 <div class="row">
   <div class="col-md-12">
-    <%= link_to 'Asignar este proyecto a un usuario', new_assignment_path(project_id: @project.id) %>
+    <%= link_to_modal 'Asignar este proyecto a un usuario', new_assignment_path(project_id: @project.id) %>
   </div>
 </div>

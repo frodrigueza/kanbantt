@@ -8,7 +8,7 @@ class Task < ActiveRecord::Base
 
 	#Una tarea puede tener muchos hijos, y cada tarea tiene a lo más un padre.
 	has_many :children, foreign_key: 'parent_id', class_name: 'Task'
-	belongs_to :parent, class_name: 'Task', counter_cache: 'children_count', touch: true
+	belongs_to :parent, class_name: 'Task'
 
 	#Una tarea tiene muchos reportes
 	has_many :reports, dependent: :destroy
@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
 	#Tiene muchos comentarios
 	has_many :comments
 
-	after_commit :call_update, on: [:create, :update, :destroy]
+	# after_commit :call_update, on: [:create, :update, :destroy]
 
 	scope :done, -> { where(progress: 100) }
 	scope :not_done, -> { where.not(progress: 100) }
@@ -118,6 +118,12 @@ class Task < ActiveRecord::Base
 	def set_level
 	   self.level = parent ? parent.level + 1 : 1
 	end
+
+	def f_dates
+		array = []
+		array << expected_start_date.strftime("%d %b")
+		array << expected_end_date.strftime("%d %b")
+	end
 	
 	#Verificamos si se cambiaron los plazos de la tarea
 	def date_changed?
@@ -187,6 +193,30 @@ class Task < ActiveRecord::Base
  			duration = ((expected_end_date - expected_start_date)/ (24 * 60 * 60))
  		end
 
+	end
+
+	def duration_in_date
+		if expected_start_date and expected_end_date
+	 		if expected_start_date == expected_end_date
+	 			return 1
+	 		else
+	 			((expected_end_date - expected_start_date)/ (24 * 60 * 60))
+	 		end
+		else
+			duration
+		end
+
+	end
+
+	def resources_reports
+		array = []
+		reports.each do |r|
+			if r.resources != 0
+				array << r
+			end
+		end
+
+		array
 	end
 
 	# entrega las tareas hermanas de una tarea (las hijas de su padre)
@@ -276,6 +306,7 @@ class Task < ActiveRecord::Base
 				c.user = user
 				# usamos sneaky save (sin callbacks) para que no se recalculen los avances del proyecto
 				c.sneaky_save
+				c.check_parent_user
 			end
 		end
 	end
@@ -494,7 +525,7 @@ class Task < ActiveRecord::Base
 
 		# Entrega el real y el esperado actual
 		def info_progress
-			if self.project.resources
+			if self.project.resources != 0
 				real = progress.to_f.round
 				expected = (100*expected_resources_progress_at(Date.today)).to_f.round
 			else
@@ -545,7 +576,7 @@ class Task < ActiveRecord::Base
 			total_children_value_extolled = 0
 			self.children.each do |c|
 				child_value = 0
-				if project.resources
+				if project.resources != 0
 					child_value = c.resources_cost
 				else
 					child_value = c.duration
@@ -556,7 +587,7 @@ class Task < ActiveRecord::Base
 			# vemos cuanto es la duracion (o recursos) total de los hijos
 			total_children_value = 0
 			self.children.each do |c|
-				if project.resources
+				if project.resources != 0
 					total_children_value += c.resources_cost
 				else
 					total_children_value += c.duration

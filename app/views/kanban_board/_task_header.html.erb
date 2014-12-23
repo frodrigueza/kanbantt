@@ -6,11 +6,7 @@
 
 	<% if task.project.resources %>
 		<div class="nombre_usuario" align="center">
-			<%= number_with_delimiter(task.resources_cost.to_i) %> <%= task.project.type_resources %>
+			<%= number_with_delimiter(task.resources_cost.to_i) %> <%= task.project.f_resources_type %>
 		</div>
 	<% end %>
-
-	<!-- <div class="urg_kanban">
-		urgente
-	</div> -->
 </div>
