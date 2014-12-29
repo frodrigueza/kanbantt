@@ -25,26 +25,28 @@
                 </div>   
             </td>
 
-            <!-- KANBAN -->
-            <td class="<%= params[:controller] == 'kanban_board' ? 'active' : ''%>">
-                <%= link_to 'Kanban', kanban_board_index_path(project_id: @project ? @project.id : nil)%>
+            <!-- TAREAS -->
+            <td class="<%= params[:controller] == 'kanban_board' || params[:action] == 'tree_view' ? 'active' : ''%>">
+                    <div class="btn-group simple_dropdown">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        Tareas <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to 'Kanban', kanban_board_index_path(project_id: @project ? @project.id : nil)%></li>
+                        <% if @project %>
+                            <li><%= link_to 'Explorador', project_tree_view_path(@project) %></li>
+                        <% end %>
+                      </ul>
+                    </div>
             </td>
 
             <!-- GANTT -->
-            <td class="<%= params[:controller] == 'gantt' || params[:action] == 'tree_view' ? 'active' : ''%>">
-            <% if !@project %>
-                <%= link_to 'Gantt', gantt_path()%>
-            <% else %>
-                <div class="btn-group simple_dropdown">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Gantt <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><%= link_to 'Clasico', gantt_path(project_id: @project.id) %></li>
-                    <li><%= link_to 'Explorador', project_tree_view_path(@project) %></li>
-                  </ul>
-                </div>
-            <% end %>
+            <td class="<%= params[:controller] == 'gantt' ? 'active' : ''%>">
+                <% if !@project %>
+                    <%= link_to 'Gantt', gantt_path()%>
+                <% else %>
+                    <%= link_to 'Gantt', gantt_path(project_id: @project.id) %>
+                <% end %>
             </td>
 
             <!-- CONFIGURACION -->

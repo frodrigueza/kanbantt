@@ -4,10 +4,10 @@
   <%= f.text_field :name, :required => true, :label => 'Nombre *' %>
 
   <!-- FECHA DE INICIO -->
-  <%= f.date_select :start_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre']}, :required => true, :label => 'Fecha de Inicio' %>
+  <%= f.date_select :expected_start_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre']}, :required => true, :label => 'Fecha de Inicio' %>
 
   <!-- FECHA DE TERMINO -->
-  <%= f.date_select :end_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre']}, :required => true, :label => 'Fecha de Término' %>
+  <%= f.date_select :expected_end_date, {:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre']}, :required => true, :label => 'Fecha de Término' %>
 
   <!-- TIPO DE RECURSOS     -->
   <%= f.select :resources_type, [['Seleccionar', ''],['Tiempo', 0], ['Dolares', 1], ['UF', 2], ['Horas Hombres', 3]], :label => 'Tipo de Recursos' %>

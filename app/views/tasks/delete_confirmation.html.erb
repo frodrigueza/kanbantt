@@ -1,0 +1,15 @@
+
+<h3>Eliminar tarea <%= @task.name %></h3>
+	<p>
+		¿Está seguro?
+	</p>
+	<p>
+	<% if @task.children.count > 0 %>
+		Si elimina esta tarea, también eliminará <%= @task.tasks_below_count %> tareas que se ubican bajo esta.
+	<% else %>
+		Esta tarea no tiene tarea hijas.
+	<% end %>
+	</p>
+
+	<%= button_to 'Eliminar tarea', @task, {method: :delete, class: 'btn btn-danger', type: 'button'} %>
+

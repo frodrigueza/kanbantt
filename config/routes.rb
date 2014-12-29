@@ -85,10 +85,12 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do
-    post 'delete_confirmation'
+    get 'delete_confirmation'
+    get 'fast_report'
   end
 
   get 'gantt', to: 'gantt#index'
+  get 'update_tree_view', to: 'tasks#update_tree_view'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

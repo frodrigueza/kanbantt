@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
-    @report = Report.new
+    @report = Report.new(user_id: params[:user_id], progress: params[:progress], task_id: params[:task_id])
   end
 
   # GET /reports/1/edit
@@ -54,10 +54,12 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
+    @project = @report.project
     @report.destroy
     respond_to do |format|
       format.html { redirect_to request.referer }
       format.json { head :no_content }
+      format.js { render 'tasks/update_tree_view.js.erb'}
     end
   end
 

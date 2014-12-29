@@ -4,13 +4,8 @@
 	<div class="full">
 		<table class="full">
 			<tr>
-				<td class="content">
-					<div class="full task_name">
-						<!-- link remoto que llama al modal task_show -->
-						<%= link_to_modal task.name, task %>
-					</div>
-					<!-- tiempos restantes y progresos de la tarea -->
-					<%= render 'tasks/task_times', task: task %>
+				<td class="content" id="content_<%= task.id %>">
+					<%= render 'projects/explorer/content', task: task %>
 				</td>
 
 				<!-- Flecha para agregar la siguiente columna -->

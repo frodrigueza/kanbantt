@@ -8,6 +8,8 @@
 
 
 u1 = User.create!(email: 'arturo@gmail.com', password: 'grupo4grupo4',  name: 'Arturo', last_name: 'Campos', super_admin: true)
+copec = Enterprise.create(name:'Copec')
+
 # u2 = User.create!(email: 'francisca@gmail.com', password: 'grupo4grupo4',  name: 'Francisca Rojas', role: 'admin')
 # u3 = User.create!(email: 'felix@gmail.com', password: 'grupo4grupo4',  name: 'Felix Gonzalez', role: 'last_planner')
 # u4 = User.create!(email: 'luis@gmail.com', password: 'grupo4grupo4',  name: 'Luis Rios', role: 'last_planner')

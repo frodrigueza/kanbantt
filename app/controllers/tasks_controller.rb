@@ -26,7 +26,9 @@ class TasksController < ApplicationController
     # hay veces que se crean tareas de primer nivel por lo que no tienen parent_id, solo corresponden al proyecto.
     if params[:parent_id]
       @task.expected_start_date = Task.find(params[:parent_id]).expected_start_date
+      @task.expected_end_date = Task.find(params[:parent_id]).expected_end_date
       @task.parent_id = params[:parent_id]
+      @task.user_id = Task.find(params[:parent_id]).user_id
     end
 
     respond_to do |format|
@@ -61,7 +63,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to :back }
-        format.js
+        format.js { render 'update_tree_view.js.erb'}
       else
         format.html { redirect_to request.referer }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -87,7 +89,18 @@ class TasksController < ApplicationController
   def delete_confirmation
     @task = Task.find(params[:task_id])
     respond_to do |format|
-      format.js
+      format.html
+    end
+  end
+
+  def fast_report
+    task = Task.find(params[:task_id])
+    task.fast_report(params[:user_id])
+
+    @project = task.project
+
+    respond_to do |format|
+      format.js { render 'update_tree_view.js.erb'}
     end
   end
 

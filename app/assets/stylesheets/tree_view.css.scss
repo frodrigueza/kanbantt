@@ -75,8 +75,9 @@
 			.content{
 
 				font-size: 15px;
-				width: 90%;
+				width: 360px;
 				float: left;
+				position: relative;
 
 				.task_name {
 					white-space:normal;
@@ -87,6 +88,11 @@
 						color: $gris_dos;
 						font-size:14px;
 					}
+				}
+				.toggle-done-reporter{
+					position: absolute;
+					right: 0;
+					top: 0;
 				}
 
 				span{

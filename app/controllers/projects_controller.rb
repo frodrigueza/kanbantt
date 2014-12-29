@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    
   end
 
   # GET /projects/new
@@ -34,66 +35,20 @@ class ProjectsController < ApplicationController
   # POST /projects.json
 
   def create
-    #Si tiene un archivo e input entonces
+    @project = Project.new(project_params)
+
     if params[:project][:xml_file]
-      @project_data = Project.new(project_params)
-      file_upload = params[:project][:xml_file]
-      # El path donde se va a guardar el archivo
-      Dir.mkdir 'public/uploads' unless File.directory?('public/uploads')
-      upload_path = Rails.root.join('public', 'uploads', file_upload.original_filename)
-      # Si ya existe un archivo con el mismo nombre se crea con un número (i)
-      if File.exist? upload_path.to_s
-        i=1
-        path = upload_path.to_s.insert(-4, "(#{i.to_s})")
-        while File.exist? path do
-          i = i+1
-        end
-        name = file_upload.original_filename.insert(-5, "(#{i.to_s})")
-        upload_path = Rails.root.join('public', 'uploads', name)
-      end
-      # Se crea el archivo en el path
-      File.open(upload_path, 'wb') do |file|
-        file.write(file_upload.read)
-      end
-      i = Importer.new(params[:project][:xml_file].path(), upload_path.to_s)
-      proyecto = i.import
-      current_user.projects << proyecto
+      i = Importer.new(params[:project][:xml_file])
+      i.import(@project)
+    end
 
-      #Si se seleccionan valores al crear el proyecto, se guardan.
-        #Se guarda el nombre      
-        if @project_data.name
-          proyecto.update_columns(:name => @project_data.name)
-        end
-
-        current_user.enterprise.projects << @project
-        #Si tiene recursos, se guarda el atributo.
-        if @project_data.resources
-            proyecto.update_columns(:resources => @project_data.resources)
-          #Si tiene recursos se guarda también el tipo de recursos
-          if @project_data.resources_type != 0
-            proyecto.update_columns(:resources_type => @project_data.type_resources)
-          end
-          #Si tiene recursos se guarda si se reporta o no.
-          if @project_data.resources_reporting
-            proyecto.update_columns(:resources_reporting => @project_data.report)
-          end
-        end
-        
-
-      redirect_to projects_path
-
-    else
-      @project = Project.new(project_params)
-
-      respond_to do |format|
-        if @project.save
-          # @project.calculate_progresses
-          format.html { redirect_to request.referer }
-          format.json { render :show, status: :created, location: @project }
-        else
-          format.html { render :new }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to request.referer }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :new }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -184,7 +139,7 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :start_date, :end_date, :xml_file, :resources_type, :resources_reporting, :enterprise_id)
+    params.require(:project).permit(:name, :start_date, :end_date, :expected_start_date, :expected_end_date, :xml_file, :resources_type, :resources_reporting, :enterprise_id)
   end
 
 

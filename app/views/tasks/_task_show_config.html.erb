@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-md-3 little-form">
 		<div class="right">
-			<%= button_to 'Eliminar tarea', task_delete_confirmation_path(@task),{class: 'btn btn-danger', type:'button', remote: true}%>
+			<%= link_to_modal 'Eliminar tarea', task_delete_confirmation_path(@task),{class: 'btn btn-danger', type:'button'}%>
 		</div>
 	</div>
 </div>

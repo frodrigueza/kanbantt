@@ -9,4 +9,12 @@ module ApplicationHelper
 			return 'project_column'
 		end
 	end
+
+	def f_date(date)
+		if date
+			date.strftime("%d %b %Y")
+		else
+			''
+		end
+	end
 end

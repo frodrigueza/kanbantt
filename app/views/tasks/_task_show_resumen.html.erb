@@ -15,15 +15,15 @@
 				</tr>
 				<tr>
 					<td class="real">
-						<%= image_tag real_image(@task.info_progress[0].to_i) %>
+						<%= image_tag real_image(@task.progress.to_i) %>
 					</td>
 					<td class="expected">
-						<%= image_tag expected_image(@task.info_progress[1].to_i) %>
+						<%= image_tag expected_image(@task.expected_progress.to_i) %>
 					</td>
 				</tr>
 				<tr class="indicators">
-					<td class="real"><%= @task.info_progress[0].to_i %> %</td>
-					<td class="expected"><%= @task.info_progress[1].to_i %> %</td>
+					<td class="real"><%= @task.progress %> %</td>
+					<td class="expected"><%= @task.expected_progress %> %</td>
 				</tr>
 			</table>
 		</div>

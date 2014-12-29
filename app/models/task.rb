@@ -13,6 +13,8 @@ class Task < ActiveRecord::Base
 	#Una tarea tiene muchos reportes
 	has_many :reports, dependent: :destroy
 
+	has_many :indicators, dependent: :destroy
+
 	#Una tarea tiene un dueño
 	belongs_to :user
 
@@ -38,14 +40,13 @@ class Task < ActiveRecord::Base
 	validates_presence_of :expected_end_date
 	validate :end_date_is_after_start_date
 
-	before_create :set_level, :set_duration_from_dates
-
 	# Si cambio el responsable, que toda la descendencia quede con ese responsable	
 	after_save :check_parent_user
+	# after_create :set_duration
 
 	# cada vez que se modifica o elimina una task, actualizamos todo el arbol sobre ella. #######################
-	after_save :update_tree_over_me
-	before_destroy :leave_the_world_in_order
+	# after_save :update_tree_over_me
+	# before_destroy :leave_the_world_in_order
 
 	#Verificamos que la fecha de termino sea menor a la fecha de inicio
 	def end_date_is_after_start_date
@@ -164,7 +165,7 @@ class Task < ActiveRecord::Base
 
 	# boolean si la tarea esta atrasada
 	def delayed
-		if info_progress[0] < info_progress[1]
+		if progress < expected_progress
 			return true
 		end
 
@@ -186,14 +187,24 @@ class Task < ActiveRecord::Base
 		(self.expected_end_date - Time.now)/(60 * 60 * 24).to_i
 	end
 
-	def set_duration_from_dates
- 		if expected_start_date == expected_end_date
- 			duration = 1
- 		else
- 			duration = ((expected_end_date - expected_start_date)/ (24 * 60 * 60))
- 		end
+	
 
-	end
+	# def duration
+	# 	if !has_children?
+	#  		if expected_start_date == expected_end_date
+	#  			self.duration = 1
+	#  		else
+	#  			self.duration = ((expected_end_date - expected_start_date)/ (24 * 60 * 60))
+	#  		end
+	#  	else
+	#  		self.duration = 0
+	#  		children.each do |c|
+	#  			self.duration += c.duration
+	#  		end
+	# 	end
+
+	# 	self.sneaky_save
+	# end
 
 	def duration_in_date
 		if expected_start_date and expected_end_date
@@ -206,17 +217,6 @@ class Task < ActiveRecord::Base
 			duration
 		end
 
-	end
-
-	def resources_reports
-		array = []
-		reports.each do |r|
-			if r.resources != 0
-				array << r
-			end
-		end
-
-		array
 	end
 
 	# entrega las tareas hermanas de una tarea (las hijas de su padre)
@@ -418,236 +418,152 @@ class Task < ActiveRecord::Base
 			end
 		end
 
-		# calcula el progreso estimado de la tarea en base a costos como un % del total
-		# si está lista devuelve el ponderador de la tarea con respecto al proyecto
-		def expected_resources_progress(date)
-			total = project.cost_total_project(true)
-			if total > 0 and full_duration > 0
-				(days_from_start(date)/full_duration)/total
-			else
-				0
+
+
+
+
+	# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
+
+
+
+
+
+
+	# Duracion calculada dinamicamente segun hijos
+	def duration
+		if !has_children?
+			((expected_end_date - expected_start_date)/ (24 * 60 * 60))
+		else
+			aux = 0
+			children.each do |c|
+				aux += c.duration
 			end
-		end
-		# calcula el progreso estimado de la tarea en base a costos
-		def expected_resources_progress_from_task(date)
-			expected_resources_progress(date)/expected_resources_progress(project.end_date.end_of_day)
+
+			return aux 
 		end
 
-		def expected_resources_at(date)
-			if has_children?
-				children.map{|ch| ch.expected_resources_at(date)}.inject(:+) 			
-			else
-				expected_days_progress(date+1.day)*resources_cost
-			end
-		end
-		
-		def expected_resources_progress_at(date)
-			if resources_cost > 0
-				expected_resources_at(date)/resources_cost
-			elsif date > expected_end_date
-				1
-			else
-				0
-			end
-		end
+	end
 
-		# actualizamos todos los recursos arriba de esta task
-		def update_resources_and_duration_over_me
-			# (3) si nos encontramos con una tarea
-			if parent					
-				# (1) primero hacemos que el padre actualize su progreso segun sus hijos (mis hermanos)
-				parent.update_resources_and_duration_from_children
-
-				# (2) y luego que haga lo mismo con su padre y así hasta llegar al projecto
-				parent.update_resources_and_duration_over_me
-			else
-				# (4) como nos encontramos en una tarea de primer nivel, el que tiene que actualizar su progreso es el proyecto.
-				project.update_resources_and_duration_from_children
+	# reportes que contienen recursos
+	def resources_reports
+		array = []
+		reports.each do |r|
+			if r.resources != 0
+				array << r
 			end
 		end
 
-		# Metodo que actualiza los recursos de la tarea segun sus hijos
-		def update_resources_and_duration_from_children
-			if has_children?
-				# costo recursos de los hijos
-				total_children_resources_cost = 0
-				# recursos utilizados hasta ahora por los hijos
-				total_children_resources = 0
-				# duracion total de los hijos
-				total_children_duration = 0
+		array
+	end
 
-				self.children.each do |c|
-					total_children_resources_cost += c.resources_cost ? c.resources_cost : 0.0
-					total_children_resources += c.resources ? c.resources : 0.0
-					total_children_duration += c.duration
-				end
-				resources_cost = total_children_resources_cost
-				resources = total_children_resources
-				duration = total_children_duration
-			else
-				set_duration_from_dates
-			end
+
+	# Progreso real hoy
+	def progress
+		if project.resources_type == 0
+			real_progress_function(Time.now, false)
+		else
+			real_progress_function(Time.now, true)
 		end
+	end
 
-
-
-
-
-
-
-
-
-	# TIEMPO
-
-		# Actualiza las fechas de todas las tareas después de un cambio en una tarea sin hijos
-		# Debe funcionar después de hacer el update (:after_update) de la fecha de un task, ya que así expected_start_date será el 
-		#nuevo que se entrego.	
-
-
-		# calcula el progreso estimado de la tarea en base a dias
-		def expected_days_progress(date)
-			if date > expected_end_date
-				1
-			elsif  full_duration > 0
-				days_from_start(date).to_f/full_duration
-			else
-				0
-			end
+	# Progrso estimado hoy
+	def expected_progress
+		if project.resources_type == 0
+			expected_progress_function(Time.now, false)
+		else
+			expected_progress_function(Time.now, true)
 		end
+	end
 
-
-
-		# calcula el progreso estimado de la tarea en base a días
-		def expected_days_progress_from_task(date)
-			expected_days_progress(date)/expected_days_progress(project.end_date.end_of_day)
-		end
-
-
-		# Entrega el real y el esperado actual
-		def info_progress
-			if self.project.resources != 0
-				real = progress.to_f.round
-				expected = (100*expected_resources_progress_at(Date.today)).to_f.round
-			else
-				real = progress.to_f.round
-				expected = (100*expected_days_progress(Date.today)).to_f.round
-			end
-			return [real, expected]
-		end
-
-
-		# calcula el costo de la tarea en base a dias
-		def days_cost
-			if has_children?
-				children.map(&:days_cost).inject(:+)
-			else
-				duration
-			end
-		end 
-
-
-
-
-		def progress_esperado
-			Rails.cache.fetch("#{cache_key}/progress_esperado/#{Date.today}") do
-				(100*expected_days_progress(Date.today)).to_f.round
-			end
-		end
-
-		# actualizamos todos los progresos arriba de esta task
-		def update_progress_over_me
-			# (3) si nos encontramos con una tarea
-			if parent					
-				# (1) primero hacemos que el padre actualize su progreso segun sus hijos (mis hermanos)
-				parent.update_progress_from_children
-
-				# (2) y luego que haga lo mismo con su padre y así hasta llegar al projecto
-				parent.update_progress_over_me
-			else
-				# (4) como nos encontramos en una tarea de primer nivel, el que tiene que actualizar su progreso es el proyecto.
-				project.update_progress_from_children
-			end
-
-		end
-
-		# Metodo que actualiza el progreso de la tarea segun los progresos de sus hijos
-		def update_progress_from_children
-			# duracion (o recursos) de los hijos ponderados por sus progresos
-			total_children_value_extolled = 0
-			self.children.each do |c|
-				child_value = 0
-				if project.resources != 0
-					child_value = c.resources_cost
+	# Formula que entrega el avance real segun fecha y unidad especificada
+	# date = datetime
+	# in_resources = boolean	
+	def real_progress_function(date, in_resources)
+		if !has_children?
+			if reports.count > 0
+				if last_report_before(date)
+					last_report_before(date).progress
 				else
-					child_value = c.duration
+					0
 				end
-				total_children_value_extolled += c.progress * child_value
+			else
+				0
 			end
-
-			# vemos cuanto es la duracion (o recursos) total de los hijos
+		else
 			total_children_value = 0
-			self.children.each do |c|
-				if project.resources != 0
-					total_children_value += c.resources_cost
-				else
+			total_children_value_extolled = 0
+
+			if !in_resources
+				children.each do |c|
 					total_children_value += c.duration
+					total_children_value_extolled += c.real_progress_function(date, in_resources) * c.duration
+				end
+			else
+				children.each do |c|
+					total_children_value += c.resources_cost
+					total_children_value_extolled += c.real_progress_function(date, in_resources) * c.resources_cost_from_children
 				end
 			end
 
-			# dividimos el ponderado por el total, y sacamos el progreso real
-			if total_children_value > 0
-				self.progress = (total_children_value_extolled.to_f / total_children_value.to_f).to_f
+			return (total_children_value_extolled/total_children_value).to_f.round(1)
+		end
+	end
+
+	# Formula que entrega el avance esperado segun fecha y unidad especificada
+	# date = datetime
+	# in_resources = boolean
+	def expected_progress_function(date, in_resources)
+		if !has_children?
+			if date > expected_end_date
+				100
+			elsif  full_duration > 0
+				((days_from_start(date).to_f/duration)*100).round(1)
 			else
-				self.progress = 0
+				0
 			end
-			self.save
-		end
+		else
+			total_children_value = 0
+			total_children_value_extolled = 0
 
-		# actualizamos todos las fechas arriba de esta task
-		def update_dates_over_me
-			# (3) si nos encontramos con una tarea
-			if parent					
-				# (1) primero hacemos que el padre actualize sus fechas segun sus hijos (mis hermanos)
-				parent.update_dates_from_children
-
-				# (2) y luego que haga lo mismo con su padre y así hasta llegar al projecto
-				parent.update_dates_over_me
+			# si lo piden en tiempo
+			if !in_resources
+				children.each do |c|
+					total_children_value += c.duration
+					total_children_value_extolled += c.expected_progress_function(date, in_resources) * c.duration
+				end
+			# si lo piden en recursos
 			else
-				# (4) como nos encontramos en una tarea de primer nivel, el que tiene que actualizar su progreso es el proyecto.
-				project.update_dates_from_children
+				children.each do |c|
+					total_children_value += c.resources_cost
+					total_children_value_extolled += c.expected_progress_function(date, in_resources) * c.resources_cost_from_children
+				end
 			end
 
-		end
 
-		# actualizamos las fechas de inicio y termino esperado segun las fechas de lo hijos
-		def update_dates_from_children
-			if has_children?
-				# Tomamos la primera fecha de inicio de los hijos como la fecha de inicio del padre
-				self.expected_start_date = (children.sort_by &:expected_start_date).first.expected_start_date
-				# Tomamos la ultima fecha de termino de los hijos como la fecha de termino del padre
-				self.expected_end_date = (children.sort_by &:expected_end_date).last.expected_end_date
-				self.save
+			return (total_children_value_extolled/total_children_value).to_f.round(1)
+		end
+	end
+
+
+	# Costo calculado dinamicamente segun los hijos
+	def resources_cost_from_children
+		if !has_children?
+			resources_cost
+		else
+			suma = 0
+			children.each do |c|
+				suma += c.resources_cost_from_children
 			end
-		end
-			
 
-		# antes de eliminar una task, se le baja la duracion a cero, su progreso a cero 
-		# (se le hace practicamente invisible en los calculos) y se actualiza el arbol sobre el
-		def leave_the_world_in_order
-			progress = 0
-			duration = 0
-			resources = 0
-			resources_cost = 0
-			expected_start_date = nil
-			expected_end_date = nil
-			update_resources_and_duration_over_me
-			update_dates_over_me
-			update_progress_over_me
+			return suma 
 		end
+	end
 
-		def update_tree_over_me
-			update_resources_and_duration_over_me
-			update_dates_over_me
-			update_progress_over_me
-		end
+	# reporte rapido
+	def fast_report(user_id)
+		# Creamos un reporte hecho por el usuario de la sesion
+		reports << Report.create(progress: 100, user_id: user_id)
+	end
 end

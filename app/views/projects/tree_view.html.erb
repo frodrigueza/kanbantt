@@ -4,6 +4,6 @@
 	
 	<div class="full" id="tree_view_content">
 		<!-- Se crea una columna inicial que corresponde a las tareas de primer nivel -->
-		<%= render 'projects/explorer/tree_view_column', locals:{ task: @project }%>
+		<%= render 'projects/explorer/tree_view_column', parent: @project %>
 	</div>
 </div>

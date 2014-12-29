@@ -11,33 +11,29 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th></th>
+						<th>Autor</th>
 						<th>Fecha</th>
 						<th>Hora</th>
-						<th>Reporte</th>
+						<th>Avance</th>
+						<% if @task.project.resources_reporting %>
+							<th>Recursos</th>
+						<% end %>
+						<th></th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<% @task.reports.each do |report|%>
-						<% if report.progress != 0 %>
-							<tr>
-								<td>Avance</td>
-								<td><%= report.created_at.strftime("%d %b. %Y") %></td>
-								<td><%= report.created_at.strftime("%H:%M")%></td>
-								<td><%= report.progress.to_i %> %</td>
-							</tr>
-						<% end %>
-					<% end %>
-					<% @task.resources_reports.each do |resources|%>
-						<% if resources.resources != 0 %>
-							<tr>
-								<td>Recursos</td>
-								<td><%= resources.created_at.strftime("%d %b. %Y") %></td>
-								<td><%= resources.created_at.strftime("%H:%M")%></td>
-								<td><%= resources.resources.to_i %> <%= @projecto.type_resources %></td>
-							</tr>
-						<% end %>
+						<tr>
+							<td><%= report.user.f_name %></td>
+							<td><%= report.created_at.strftime("%d %b. %Y") %></td>
+							<td><%= report.created_at.strftime("%H:%M")%></td>
+							<td><%= report.progress.to_i %> %</td>
+							<% if @task.project.resources_reporting %>
+								<td><%= report.resources.to_f %> %</td>
+							<% end %>
+    						<td><%= link_to 'X', report, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+						</tr>
 					<% end %>
 				</tbody>	
 			</table>

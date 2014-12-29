@@ -11,23 +11,9 @@
 		<table class>
 			<tr>
 				<td class="<%= css_task_status_color(task) %>"><%= remaining_days(task) %></td>
-				<td class="expected_progress"><%= task.info_progress[1] %> %</td>
-				<td class="real_progress <%= css_task_status_color(task) %>"><%= task.info_progress[0] %> %</td>
+				<td class="expected_progress"><%= task.progress %> %</td>
+				<td class="real_progress <%= css_task_status_color(task) %>"><%= task.expected_progress %> %</td>
 			</tr>
 		</table>
 	</div>
 </li>
-
-
-<!-- Modal para reportar -->
-
-<!-- Muestra el modal solo si se puede reportar-->
-<% if task.project.resources_reporting  %>
-	<% rep = "reportar" + task.id.to_s %>
-<% else %>
-	<% rep = "reportar" %>
-<% end %>
-
-<div id="<%= rep %>" style="display:none; max-height: 300px;">
-	<%= render "tasks/form_resources", :object => [task.project = task.project, @task = task ] %>
-</div>

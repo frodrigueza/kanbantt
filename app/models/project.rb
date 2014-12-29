@@ -10,15 +10,13 @@ class Project < ActiveRecord::Base
 
 	has_many :comments, dependent: :destroy
 
-	has_many :days_progresses, dependent: :destroy
-	has_many :resources_progresses, dependent: :destroy
-	has_many :performance_progresses, dependent: :destroy
+	has_many :indicators, dependent: :destroy
 
 	#que el nombre este presente al crear/editar el proyecto y tenga largo minimo 3
 	validates :name, presence: true, length: { minimum: 3 }
 	#validacion para que la fecha de fin sea posterior a la de comienzo
-	validates_presence_of :start_date, :end_date
-	validate :end_date_is_after_start_date
+	validates_presence_of :expected_start_date, :expected_end_date
+	validate :expected_end_date_is_after_expected_start_date
 
 	# recalcular avances cuando se actualiza (cambia una fecha de una tarea, se agrega una o el)
   	before_destroy :destroy_tasks
@@ -40,13 +38,8 @@ class Project < ActiveRecord::Base
 		end
 	end
 
-	# devuelve las tareas de primer nivel, es decir que no tienen padres
-	def first_tasks
-		self.tasks.in_level(1)
-	end
-
 	def children
-		first_tasks
+		tasks.where(parent_id: nil)
 	end
 
 	def has_children?
@@ -186,6 +179,7 @@ class Project < ActiveRecord::Base
 		cost = Hash.new
 		qty = Hash.new
 		exp = Hash.new
+				
 		tasks.includes(:children).by_level.each do |t|
 			if t.has_children? 
 				#Si tiene hijos se calculan como la suma de sus hijos (que se sacan del mismo arreglo)
@@ -202,10 +196,10 @@ class Project < ActiveRecord::Base
 			end
 		end
 		#Para obtener los del proyecto se suman las primeras tareas
-		prog= first_tasks.map{|ch| real[ch.id]}.inject(:+) #Sumo los avances reales de las primeras hijas del proyecto
-		cost= first_tasks.map{|ch| cost[ch.id]}.inject(:+)#Sumo el costo de las primeras hijas del proyecto
-		exp = first_tasks.map{|ch| exp[ch.id]}.inject(:+) #Sumo los avances esperados de las primeras hijas del proyecto
-		qty = first_tasks.map{|ch| qty[ch.id]}.inject(:+) #Sumo las avances reportados en relación a los recursos utilizados.
+		prog = children.map{|ch| real[ch.id]}.inject(:+) #Sumo los avances reales de las primeras hijas del proyecto
+		cost = children.map{|ch| cost[ch.id]}.inject(:+)#Sumo el costo de las primeras hijas del proyecto
+		exp = children.map{|ch| exp[ch.id]}.inject(:+) #Sumo los avances esperados de las primeras hijas del proyecto
+		qty = children.map{|ch| qty[ch.id]}.inject(:+) #Sumo las avances reportados en relación a los recursos utilizados.
 
 		if report
 			#cantidad de recursos presupuestados a gastar en función de lo que se ha avanzado realmente.
@@ -276,10 +270,10 @@ class Project < ActiveRecord::Base
 	end
 
     # Validación
-	def end_date_is_after_start_date
-	  return if end_date.blank? || start_date.blank?
+	def expected_end_date_is_after_expected_start_date
+	  return if expected_end_date.blank? || expected_start_date.blank?
 
-	  if end_date <= start_date
+	  if expected_end_date <= expected_start_date
 	    errors.add(:end_date, "La fecha de término debe ser posterior a la de inicio")
 	  end 
 	end
@@ -296,12 +290,12 @@ class Project < ActiveRecord::Base
 	# días hábiles desde que el proyecto empezó hasta la fecha
 	# si no ha empezado es 0 y si ya terminó es la duración del proyecto
 	def days_from_start(date)
-		if date < start_date
+		if date < expected_start_date
 			0
-		elsif date > end_date
+		elsif date > expected_end_date
 			duration
 		else
-			weekdays_betweeen(start_date,date.to_date-1)
+			weekdays_betweeen(expected_start_date,date.to_date-1)
 		end
 	end
 
@@ -313,14 +307,14 @@ class Project < ActiveRecord::Base
 	end
 
 	def duration
-		weekdays_betweeen(start_date,end_date)
+		weekdays_betweeen(expected_start_date, expected_end_date)
 	end
 
 	def weekdays_betweeen(start,finish)
 		(start.to_date..finish.to_date).select {|d| (1..5).include?(d.wday) }.size
 	end
 
-	# Método que se llama cuando se crea un reporte en alguna tarea del proyecto
+	# # Método que se llama cuando se crea un reporte en alguna tarea del proyecto
 	# y actualiza el avance a la fecha.
 	# def update_progresses
 	# 	p "Actualizando progresos proyecto #{name}..."
@@ -334,16 +328,16 @@ class Project < ActiveRecord::Base
 	# end
 
 	# # Método para limpiar avances guardados del proyecto y calcularlos de nuevo
-	# def calculate_progresses
-	# 	p "Calculando progresos proyecto #{name}..."
-	# 	days_progresses.destroy_all
-	# 	pc = ProgressCalculator.new(self)
-	# 	pc.days_progress
-	# 	resources_progresses.destroy_all
-	# 	pc.resources_progress
-	# 	performance_progresses.destroy_all
-	# 	pc.performance_progress
-	# end
+	def calculate_progresses
+		p "Calculando progresos proyecto #{name}..."
+		days_progresses.destroy_all
+		pc = ProgressCalculator.new(self)
+		pc.days_progress
+		# resources_progresses.destroy_all
+		# pc.resources_progress
+		# performance_progresses.destroy_all
+		# pc.performance_progress
+	end
 	# handle_asynchronously :calculate_progresses
 
 	########################### KANBAN
@@ -379,67 +373,145 @@ class Project < ActiveRecord::Base
 
 	########################### FIN KANBAN
 
-	# Metodo que actualiza el progreso del proyecto segun los progresos de sus hijos de primer nivel
-	def update_progress_from_children
-		if has_children?
-			# duracion (o recursos) de los hijos ponderados por sus progresos
-			total_children_value_extolled = 0
-			self.children.each do |c|
-				child_value = 0
-				if resources
-					child_value = c.resources_cost
-				else
-					child_value = c.duration
-				end
-				total_children_value_extolled += c.progress * child_value
-			end
+	# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-			# vemos cuanto es la duracion (o recursos) total de los hijos
-			total_children_value = 0
-			self.children.each do |c|
-				if resources
-					total_children_value += c.resources_cost ? c.resources_cost : 0.0
-				else
-					total_children_value += c.duration
-				end
-			end
 
-			# dividimos el ponderado por el total, y sacamos el progreso real
-			if total_children_value > 0
-				self.progress = (total_children_value_extolled.to_f / total_children_value.to_f).to_f
+
+	# Progreso real hoy
+	def progress
+		if resources_type == 0
+			real_progress_function(Time.now, false)
+		else
+			real_progress_function(Time.now, true)
+		end
+	end
+
+	# Progrso estimado hoy
+	def expected_progress
+		if resources_type == 0
+			expected_progress_function(Time.now, false)
+		else
+			expected_progress_function(Time.now, true)
+		end
+	end
+
+	# Formula que entrega el avance real segun fecha y unidad especificada
+	# date = datetime
+	# in_resources = boolean	
+	def real_progress_function(date, in_resources)
+		if date < Time.now
+			if !has_children?
+				if reports.count > 0
+					last_report_before(date).progress
+				else
+					0
+				end
 			else
-				self.progress = 0
-			end
-			self.save
-		end
-	end
+				total_children_value = 0
+				total_children_value_extolled = 0
 
-
-	# Metodo que actualiza los recursos del proyecto segun sus hijos
-	def update_resources_and_duration_from_children
-		if resources
-			if has_children?
-				# recursos de los hijos
-				total_children_resources = 0
-				self.children.each do |c|
-					total_children_resources += c.resources
+				if !in_resources
+					children.each do |c|
+						total_children_value += c.duration
+						total_children_value_extolled += c.real_progress_function(date, in_resources) * c.duration
+					end
+				else
+					children.each do |c|
+						total_children_value += c.resources_cost
+						total_children_value_extolled += c.real_progress_function(date, in_resources) * c.resources_cost_from_children
+					end
 				end
 
-				# Actualizamos el costo total del proyecto
-				cost = total_children_resources
+				return (total_children_value_extolled/total_children_value).to_f.round(1)
 			end
+		else
+			return nil
 		end
 	end
 
-	# actualizamos las fechas de inicio y termino esperado segun las fechas de lo hijos
-	def update_dates_from_children
-		if has_children?
-			# Tomamos la primera fecha de inicio de los hijos como la fecha de inicio del padre
-			expected_start_date = (children.sort_by &:expected_start_date).first.expected_start_date
-			# Tomamos la ultima fecha de termino de los hijos como la fecha de termino del padre
-			expected_end_date = (children.sort_by &:expected_end_date).last.expected_end_date
+	# Formula que entrega el avance esperado segun fecha y unidad especificada
+	# date = datetime
+	# in_resources = boolean
+	def expected_progress_function(date, in_resources)
+		if !has_children?
+			if date > expected_end_date
+				100
+			elsif  full_duration > 0
+				((days_from_start(date).to_f/duration)*100).round(1)
+			else
+				0
+			end
+		else
+			total_children_value = 0
+			total_children_value_extolled = 0
+
+			# si lo piden en tiempo
+			if !in_resources
+				children.each do |c|
+					total_children_value += c.duration
+					total_children_value_extolled += c.expected_progress_function(date, in_resources) * c.duration
+				end
+			# si lo piden en recursos
+			else
+				children.each do |c|
+					total_children_value += c.resources_cost
+					total_children_value_extolled += c.expected_progress_function(date, in_resources) * c.resources_cost_from_children
+				end
+			end
+
+
+			return (total_children_value_extolled/total_children_value).to_f.round(1)
 		end
 	end
+
+
+	# Costo calculado dinamicamente segun los hijos
+	def resources_cost_from_children
+		if !has_children?
+			resources_cost
+		else
+			suma = 0
+			children.each do |c|
+				suma += c.resources_cost_from_children
+			end
+
+			return suma 
+		end
+	end
+
+	def reports
+		array = []
+		tasks.each do |t|
+			t.reports.each do |r|
+				array << r
+			end
+		end 
+
+		array.sort_by{ |report| report.created_at }
+	end
+
+	def last_report
+		reports.last
+	end
+
+	def full_duration
+		d = (expected_start_date.to_date..expected_end_date.to_date).select {|d| (1..5).include?(d.wday) }.size
+		d != 0 ? d : 1
+	end
+
+	def f_resources_type
+		case resources_type
+			when 0
+			  return "Tiempo"
+			when 1
+			  return "USD"
+			when 2
+			  return "UF"
+			when 3
+			  return "H/H"
+		end
+	end
+
 
 	private
 
@@ -448,7 +520,4 @@ class Project < ActiveRecord::Base
 			c.destroy_without_callback
 		end
 	end
-
-
-
 end

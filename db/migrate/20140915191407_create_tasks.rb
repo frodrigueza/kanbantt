@@ -7,13 +7,10 @@ class CreateTasks < ActiveRecord::Migration
       t.datetime :expected_start_date
       t.datetime :expected_end_date
       t.integer :level
-      t.decimal :progress, default: 0.0
       t.text :description
       t.boolean :deleted
       t.boolean :urgent
-      t.decimal :resources, default: 0.0
       t.decimal :resources_cost, default: 0.0
-      t.decimal :duration, default: 0.0
       t.integer :map_uid
 
       t.belongs_to :parent, index: true

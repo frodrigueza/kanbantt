@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222163719) do
+ActiveRecord::Schema.define(version: 20141228234824) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -73,6 +73,20 @@ ActiveRecord::Schema.define(version: 20141222163719) do
   create_table "enterprises", force: true do |t|
     t.text     "name"
     t.integer  "boss_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "indicators", force: true do |t|
+    t.datetime "date"
+    t.decimal  "real_days_progress"
+    t.decimal  "expected_days_progress"
+    t.decimal  "real_resources_progress"
+    t.decimal  "expected_resources_progress"
+    t.decimal  "real_used_resources"
+    t.decimal  "expected_used_resources"
+    t.integer  "project_id"
+    t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,13 +157,10 @@ ActiveRecord::Schema.define(version: 20141222163719) do
     t.datetime "expected_start_date"
     t.datetime "expected_end_date"
     t.integer  "level"
-    t.decimal  "progress",            default: 0.0
     t.text     "description"
     t.boolean  "deleted"
     t.boolean  "urgent"
-    t.decimal  "resources",           default: 0.0
     t.decimal  "resources_cost",      default: 0.0
-    t.decimal  "duration",            default: 0.0
     t.integer  "map_uid"
     t.integer  "parent_id"
     t.integer  "project_id"

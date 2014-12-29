@@ -4,6 +4,47 @@
   </div>
 </div>
 
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Recursos</th>
+          <th>Avance</th>
+          <th>Avance esperado</th>
+          <th>Inicio esperado</th>
+          <th>Término esperado</th>
+          <th>Fecha inicio</th>
+          <th>Fecha término</th>
+          <th>Ultimo reporte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |p| %>
+          <tr>
+            <td><%= link_to p.name, p %></td>
+            <td><%= p.f_resources_type %></td>
+            <td><%= p.progress.to_f %> %</td>
+            <td><%= p.expected_progress.to_f %> %</td>
+            <td><%= f_date(p.expected_start_date) %></td>
+            <td><%= f_date(p.expected_end_date) %></td>
+            <td><%= f_date(p.start_date) %></td>
+            <td><%= f_date(p.end_date) %></td>
+            <% if p.last_report %>
+              <td><%= f_date(p.last_report.created_at) %> <br> <%= p.last_report.user ? p.last_report.user.f_name : 'Importación' %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+            <td><%= link_to 'Indicadores', project_indicators_path(p) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <% if current_user.is_boss %>
   <div class="row">
     <div class="col-md-12">
@@ -11,16 +52,3 @@
     </div>
   </div>
 <% end %>
-
-<div class="row">
-  <% @projects.each do |p| %>
-    <%= render 'project', project: p %>
-  <% end %>
-</div>
-
-
-
-
-
-
-

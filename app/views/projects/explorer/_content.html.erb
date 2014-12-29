@@ -1,0 +1,15 @@
+<div class="toggle-done-reporter">
+	<% if !task.has_children? && task.progress != 100 %>
+		<% if !task.project.resources_reporting %>
+			<%= link_to '<span class="glyphicon glyphicon-check"></span>'.html_safe, task_fast_report_path(task, user_id: current_user.id), remote: true %>
+		<% else %>
+			<%= link_to_modal '<span class="glyphicon glyphicon-check"></span>'.html_safe, new_report_path(task, user_id: current_user.id, task_id: task.id, progress: 100) %>
+		<% end %>
+	<% end %>
+</div>
+<div class="full task_name">
+	<!-- link remoto que llama al modal task_show -->
+	<%= link_to_modal task.name, task %> | <%= task.duration%> | <%= task.project.resources_type != 0 ? task.resources_cost_from_children.to_s + ' ' + task.project.f_resources_type : nil %>
+</div>
+<!-- tiempos restantes y progresos de la tarea -->
+<%= render 'tasks/task_times', task: task %>

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   # para todo los controladores, se definen los objetos segun los params (DRY)
-  before_action :set_objects
+  before_action :set_objects, :test
 
   #maneja la excepcion de cuando un usuario no tiene permiso a cierta accion
   rescue_from CanCan::AccessDenied do |exception|
@@ -39,9 +39,11 @@ class ApplicationController < ActionController::Base
     if params[:user_id]
       @user = User.find(params[:user_id])
     end
+  end
 
-
-      
+  # Metodo utilizado para testear con debugger alguna funcionalidad
+  def test
+    
   end
 
 
