@@ -43,7 +43,6 @@ class Importer
 		hash = @hash["Project"]["Tasks"]["Task"]
 		Task.transaction do
 			# Primero se crea el proyecto
-			# p = Project.create(name:hash[1]["Name"], start_date:(hash[1]["Start"]).to_date, end_date:(hash[1]["Finish"]).to_date, xml_file:@upload_path)
 			project.name = hash[1]["Name"]
 			project.expected_start_date = hash[1]["Start"].to_date
 			project.expected_end_date = hash[1]["Finish"].to_date

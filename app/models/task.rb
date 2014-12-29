@@ -120,6 +120,10 @@ class Task < ActiveRecord::Base
 	   self.level = parent ? parent.level + 1 : 1
 	end
 
+	def enterprise
+		project.enterprise
+	end
+
 	def f_dates
 		array = []
 		array << expected_start_date.strftime("%d %b")

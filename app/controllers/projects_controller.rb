@@ -68,6 +68,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # vista de confirmacion
+  def delete
+    @project = Project.find(params[:project_id])    
+  end
+
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy

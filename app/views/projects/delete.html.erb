@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1>Eliminar proyecto</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<table class="table">
+			<tr>
+				<th>Nombre</th>
+				<td><%= @project.name %></td>
+			</tr>
+			<tr>
+				<th>Número de tareas</th>
+				<td><%= @project.tasks.count %></td>
+			</tr>
+			<tr>
+				<th>Número de reportes</th>
+				<td><%= @project.reports.count %></td>
+			</tr>
+			<tr>
+				<th>Avance</th>
+				<td><%= @project.progress.to_f.round(1) %> % </td>
+			</tr>
+			<% if @project.resources_reporting %>
+				<tr>
+					<th>Recursos gastados</th>
+					<td><%= @project.resources_cost_from_children %></td>
+				</tr>
+			<% end %>
+			<tr>
+				<td></td>
+				<td><%= button_to 'Eliminar proyecto definitivamente', @project, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+			</tr>
+		</table>
+	</div>
+</div>
+

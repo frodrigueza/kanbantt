@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
   #Resources genera todas las rutas CRUD para cada uno de estos objetos
   resources :projects do
+    get 'delete'
     get 'tree_view'
     get 'add_tree_view_column'
     get 'indicators'

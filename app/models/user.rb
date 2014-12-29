@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 	end
 
 	def role_in_project(project)
-		if !is_boss
+		if !is_boss && !super_admin
 			role = Assignment.where(user_id: id, project_id: project.id).first.role
 			if role == 1
 				return 'Administrador'
@@ -179,5 +179,49 @@ class User < ActiveRecord::Base
 	end
 
 	######################## FIN KANBAN
+
+	# PERMISOS
+	def can_edit_task(task)
+		if super_admin
+			return true
+		elsif is_boss && task.enterprise == enterprise 
+			return true
+		elsif a = Assignment.where(user_id: id, project_id: task.project.id).first
+			if a.role == 1
+				return true
+			end
+		else
+			return false
+		end
+	end
+
+	def can_report_task(task)
+		if a = Assignment.where(user_id: id, project_id: task.project.id).first
+			# El admin puede reportar cualquier tarea
+			if a.role == 1
+				return true
+
+			# El lastplanner puede reportar solo sus propias tareas
+			elsif task.user == self
+				return true
+			end
+		else
+			return false
+		end
+	end
+
+	def can_edit_project(project)
+		if super_admin
+			return true
+		elsif is_boss && project.enterprise == enterprise 
+			return true
+		elsif a = Assignment.where(user_id: id, project_id: task.project.id).first
+			if a.role == 1
+				return true
+			end
+		else
+			return false
+		end
+	end
 
 end

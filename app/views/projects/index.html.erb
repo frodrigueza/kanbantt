@@ -19,6 +19,7 @@
           <th>Fecha inicio</th>
           <th>Fecha término</th>
           <th>Ultimo reporte</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +38,9 @@
             <% else %>
               <td></td>
             <% end %>
-            <td><%= link_to 'Indicadores', project_indicators_path(p) %></td>
+            <% if current_user.can_edit_project(p) %>
+              <td><%= link_to_modal 'X', project_delete_path(p) %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

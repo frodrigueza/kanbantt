@@ -34,7 +34,7 @@
 				<tr>
 					<td class="option" id="menu_4"><i class="fa fa-clock-o iconmodal"></i>Historial de reportes</td>
 				</tr>
-				<% if current_user.role_in_project(@task.project) != 2 %>
+				<% if current_user.can_edit_task(@task) %>
 					<tr>
 						<td class="option" id="menu_5"><i class="fa fa-wrench iconmodal"></i>Configuración</td>
 					</tr>
@@ -55,7 +55,7 @@
 			<div id="content_menu_4" class="content_menu full" style="display: none">
 				<%= render "tasks/task_show_historial" %>
 			</div>
-			<% if current_user.role_in_project(@task.project) != 2 %>
+			<% if current_user.can_edit_task(@task) %>
 				<div id="content_menu_5" class="content_menu full" style="display: none">
 					<%= render "tasks/task_show_config" %>
 				</div>
