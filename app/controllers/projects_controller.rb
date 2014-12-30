@@ -21,6 +21,10 @@ class ProjectsController < ApplicationController
     
   end
 
+  def second_indicators
+    
+  end
+
   # GET /projects/new
   def new
     @project = Project.new

@@ -18,7 +18,7 @@
 	<!--  fin de los forms -->
 	
 	<!-- Por cada hijo de la variable parent, se hace render de un item de la columna -->
-	<div class="full">
+	<div class="full" id="children_of_<%= parent.id %>">
 		<% parent.children.sort_by{ |task| task.progress }.each do |t| %>
 			<%= render 'projects/explorer/tree_view_column_item', locals: {task: t}%>
 		<% end %>

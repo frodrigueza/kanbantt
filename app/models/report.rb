@@ -10,5 +10,13 @@ class Report < ActiveRecord::Base
 		task.project
 	end
 
+	def user_f_name
+		if user
+			user.f_name
+		else
+			'Importacion'
+		end
+	end
+
 	private
 end

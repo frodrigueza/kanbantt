@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@task) do |f| %>
+<%= bootstrap_form_for(@task, remote: true) do |f| %>
 
     <!-- Nombre -->
     <%= f.text_area :name, :required => true, :label => 'Nombre' %>

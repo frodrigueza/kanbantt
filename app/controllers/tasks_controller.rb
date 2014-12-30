@@ -44,11 +44,12 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
+    @project = @task.project
     respond_to do |format|
       if @task.save
-        format.html { redirect_to project_tree_view_path(@task.project) }
+        format.html { redirect_to request.referer }
         format.json { render :show, status: :created, location: @task }
-        format.js 
+        format.js { render 'add_task.js.erb' }
       else
         format.html { redirect_to request.referer }
         format.json { render json: @task.errors, status: :unprocessable_entity }

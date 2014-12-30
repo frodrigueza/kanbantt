@@ -1,0 +1,4 @@
+// actualizamos todos lo items del tree_view 
+<% @project.tasks.each do |t| %>
+	$('#content_<%= t.id %>').html('<%= escape_javascript(render "projects/explorer/content", task: t) %>');
+<% end %>

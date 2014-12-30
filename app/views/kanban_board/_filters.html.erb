@@ -1,7 +1,7 @@
 <table class="kanban_filters">
 	<tr>
 		<td>Buscar: <%= text_field_tag 'search_field', '',{ class:'search_field'} %></td>
-		<td id="date_select_filter_td">Periodo: <%= select_tag 'date_select_filter', options_for_select(time_filter_options, 'Una semana'), { id:'date_select_filter'} %></td>
+		<td id="date_select_filter_td">Periodo: <%= select_tag 'date_select_filter', options_for_select(time_filter_options, 'Todos'), { id:'date_select_filter'} %></td>
 		<td>Condicion: <%= select_tag 'status_select_filter', options_for_select(status_filter_options, 'Todos'), { id:'status_select_filter'} %></td>
 	</tr>
 </table>

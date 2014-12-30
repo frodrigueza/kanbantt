@@ -12,7 +12,7 @@
 				<!-- Posee un link_to remoto que llama a un archivo AJAX ubicado en projects -->
 				<!-- La class: slow_ajax es para que se bloquee la pantalla al hacer click en él y se desbloquee al tener una respuesta del servidor -->
 				<td class="helper">
-					<%= link_to '<div class="arrow"><span class="glyphicon glyphicon-chevron-right"></span></div>'.html_safe, project_add_tree_view_column_path(parent_id: task.id), {remote: true, id: 'item_' + task.id.to_s + '_link', class:'slow_ajax'}%>
+					<%= link_to '<div class="arrow"><span class="glyphicon glyphicon-chevron-right"></span></div>'.html_safe, project_add_tree_view_column_path(task.project, parent_id: task.id), {remote: true, id: 'item_' + task.id.to_s + '_link', class:'slow_ajax'}%>
 				</td>
 			</tr>
 		</table>

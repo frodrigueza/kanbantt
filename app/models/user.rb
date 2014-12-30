@@ -196,7 +196,9 @@ class User < ActiveRecord::Base
 	end
 
 	def can_report_task(task)
-		if a = Assignment.where(user_id: id, project_id: task.project.id).first
+		if super_admin
+			true
+		elsif a = Assignment.where(user_id: id, project_id: task.project.id).first
 			# El admin puede reportar cualquier tarea
 			if a.role == 1
 				return true
