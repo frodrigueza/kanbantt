@@ -12,6 +12,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @report = Report.new
     respond_to do |format|
       format.html
       format.js

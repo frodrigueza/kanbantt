@@ -12,6 +12,8 @@ class Project < ActiveRecord::Base
 
 	has_many :indicators, dependent: :destroy
 
+	belongs_to :enterprise
+
 	#que el nombre este presente al crear/editar el proyecto y tenga largo minimo 3
 	validates :name, presence: true, length: { minimum: 3 }
 	#validacion para que la fecha de fin sea posterior a la de comienzo
@@ -512,6 +514,16 @@ class Project < ActiveRecord::Base
 		end
 	end
 
+	def last_planners
+		array = []
+		self.assignments.each do |a|
+			if a.role == 2
+				array << a.user
+			end
+		end
+
+		array.sort_by { |user| user.last_name }
+	end
 
 	private
 
@@ -520,4 +532,5 @@ class Project < ActiveRecord::Base
 			c.destroy_without_callback
 		end
 	end
+
 end

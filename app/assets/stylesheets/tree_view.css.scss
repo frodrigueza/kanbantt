@@ -89,10 +89,13 @@
 						font-size:14px;
 					}
 				}
-				.toggle-done-reporter{
+				.fast-reporter{
 					position: absolute;
 					right: 0;
 					top: 0;
+					span:hover{
+						color: green;
+					}
 				}
 
 				span{

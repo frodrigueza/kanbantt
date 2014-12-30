@@ -25,11 +25,13 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @project = @report.project
 
     respond_to do |format|
       if @report.save
         format.html { redirect_to request.referer }
         format.json { render :show, status: :created, location: @report }
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @report.errors, status: :unprocessable_entity }
@@ -55,11 +57,12 @@ class ReportsController < ApplicationController
   # DELETE /reports/1.json
   def destroy
     @project = @report.project
+    @report_id = @report.id
     @report.destroy
     respond_to do |format|
       format.html { redirect_to request.referer }
       format.json { head :no_content }
-      format.js { render 'tasks/update_tree_view.js.erb'}
+      format.js 
     end
   end
 

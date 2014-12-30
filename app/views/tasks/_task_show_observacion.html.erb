@@ -8,13 +8,13 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="full">
-			<table class="table">
+			<table class="table info-table">
 				<thead>
 					<tr>
 						<th>Observación</th>
 						<th>Fecha</th>
 						<th>Hora</th>
-						<th></th>
+						<th>Autor</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -25,8 +25,8 @@
 								<td><%= comment.description %></td>
 								<td><%= comment.created_at.strftime("%d %b. %Y") %></td>
 								<td><%= comment.created_at.strftime("%H:%M")%></td>
+								<td><%= comment.user.f_name %></td>
 								<td><%= link_to 'x', project_task_comment_path(@project.id, @task.id, comment), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
-								<td></td>
 							</tr>
 						<% end %>
 					<% end %>
@@ -37,6 +37,7 @@
 			<%= bootstrap_form_for (Comment.new) do |f| %>
 				<%= f.text_area :description, label: 'Descripción' %>
 				<%= f.hidden_field :task_id, value: @task.id %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
 				<%= f.submit "Guardar", :class => "btn-group btn configm" %>
 			<% end %>
 		</div>

@@ -4,7 +4,7 @@
     <%= f.text_area :name, :required => true, :label => 'Nombre' %>
 
     <!-- Responsable -->
-    <%= f.select :user_id, @task.project.users.map{|u| [u.f_name, u.id]}, include_blank: true, label: 'Responsable' %>
+    <%= f.select :user_id, @task.project.last_planners.map{|u| [u.f_name, u.id]}, include_blank: true, label: 'Responsable' %>
 
     <!-- Padre -->
     <%= f.hidden_field :parent_id %>

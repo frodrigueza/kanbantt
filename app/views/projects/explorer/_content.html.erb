@@ -1,10 +1,10 @@
-<div class="toggle-done-reporter">
+<div class="fast-reporter">
 	<% if !task.has_children? && task.progress != 100 %>
 		<% if current_user.can_report_task(task) %>
 			<% if !task.project.resources_reporting %>
-				<%= link_to '<span class="glyphicon glyphicon-check"></span>'.html_safe, task_fast_report_path(task, user_id: current_user.id), remote: true %>
+				<%= link_to '<span class="glyphicon glyphicon-check"></span>'.html_safe, task_fast_report_path(task, user_id: current_user.id), remote: true, title:'Marcar como terminada' %>
 			<% else %>
-				<%= link_to_modal '<span class="glyphicon glyphicon-check"></span>'.html_safe, new_report_path(task, user_id: current_user.id, task_id: task.id, progress: 100) %>
+				<%= link_to_modal '<span class="glyphicon glyphicon-check"></span>'.html_safe, new_report_path(task, user_id: current_user.id, task_id: task.id, progress: 100), title:'Marcar como terminada'  %>
 			<% end %>
 		<% end %>
 	<% end %>
