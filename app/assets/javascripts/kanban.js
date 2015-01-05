@@ -20,33 +20,51 @@ $(function(){
                 var user_id = $('#current_user_id').text();
                 console.log('movido');
 
-                // Si la columna fue la de finalizado se envia un AJAX cambiando el progreso al 100%
+                var new_state;
                 if (column_id == 'done_kanban_column') 
+                {   
+                    new_state = 2;
+                }
+                else if(column_id == 'in_progress_kanban_column')
                 {
-
-                    // antes de enviar el ajax, debemos consultar los recursos utilizados en esa task
-                    var resources = prompt("Ingresa los recursos utilizados en esta task", "100");
-
-                    if (resources != null && $.isNumeric(resources)) 
-                    {
-
-
-                    }   
-                        // $.ajax({
-                        //     url: "/reports",
-                        //     type: "POST",
-                        //     data: {
-                        //         report: {
-                        //              task_id: task_id, 
-                        //              user_id: user_id,
-                        //              progress: 100 
-                        //          }
-                        //     }
-                        // });
-                    else
-                    {
-                        alert('Debes ingresar un input numérico');
+                    new_state = 1;
+                }
+                else if(column_id == 'inactive_kanban_column')
+                {
+                    new_state = 0;
+                }
+                      
+                // actualizamos la task en la base de datos
+                $.ajax({
+                    url: "/tasks/" + task_id,
+                    type: "PUT",
+                    data: {
+                        task: {
+                            state: new_state
+                        }
                     }
+                });
+
+                // actualizamos la vista del item de la task
+                $.ajax({
+                    url: "update_item_partial",
+                    type: "GET",
+                    data: {
+                        task_id: task_id
+                    }
+                });
+
+                    // $.ajax({
+                    //     url: "/reports",
+                    //     type: "POST",
+                    //     data: {
+                    //         report: {
+                    //              task_id: task_id, 
+                    //              user_id: user_id,
+                    //              progress: 100 
+                    //          }
+                    //     }
+                    // });
 
 
 
@@ -55,10 +73,9 @@ $(function(){
                     //     var name = "#reportar" + id_task
                     //     $.unblockUI();
                     //     $(name).modal();
-                };
 
                 // Se actualiza el partial del item arrastrado.
-                $.get('tasks/' + task_id + '/update_item_partial');
+                // $.post('kanban_board/update_item_partial');
 
                 // Actualizamos los contadores
                 updateCounters();

@@ -343,35 +343,63 @@ class Project < ActiveRecord::Base
 	# handle_asynchronously :calculate_progresses
 
 	########################### KANBAN
-	def kanban_inactive_tasks
-		array = []
-		tasks.each do |t|
-			if !t.has_children? && t.progress == 0
-				array << t
+	def kanban
+		tasks_hash = {}
+		inactive_tasks = []
+		in_progress_tasks = []
+		done_tasks = []
+
+		tasks.each do |task|
+			if !task.has_children?
+				if task.state == 0
+					inactive_tasks << task
+
+				elsif task.state == 1
+					in_progress_tasks << task
+
+				elsif task.state == 2
+					done_tasks << task
+				end
 			end
 		end
-		array
+
+		tasks_hash[:inactive_tasks] = inactive_tasks
+		tasks_hash[:in_progress_tasks] = in_progress_tasks
+		tasks_hash[:done_tasks] = done_tasks
+
+		return tasks_hash
 	end
+
+
+	# def kanban_inactive_tasks
+	# 	array = []
+	# 	tasks.each do |t|
+	# 		if !t.has_children? && t.state == 0
+	# 			array << t
+	# 		end
+	# 	end
+	# 	array
+	# end
 	
-	def kanban_in_progress_tasks
-		array = []
-		tasks.each do |t|
-			progress_aux = t.progress
-			if !t.has_children? && progress_aux != 0 && progress_aux !=100
-				array << t
-			end
-		end
-		array
-	end
-	def kanban_done_tasks
-		array = []
-		tasks.each do |t|
-			if !t.has_children? && t.progress == 100
-				array << t
-			end
-		end
-		array
-	end
+	# def kanban_in_progress_tasks
+	# 	array = []
+	# 	tasks.each do |t|
+	# 		progress_aux = t.progress
+	# 		if !t.has_children? && t.state == 1
+	# 			array << t
+	# 		end
+	# 	end
+	# 	array
+	# end
+	# def kanban_done_tasks
+	# 	array = []
+	# 	tasks.each do |t|
+	# 		if !t.has_children? && (t.state == 2 || t.progress == 100)
+	# 			array << t
+	# 		end
+	# 	end
+	# 	array
+	# end
 
 	########################### FIN KANBAN
 
@@ -403,11 +431,7 @@ class Project < ActiveRecord::Base
 	def real_progress_function(date, in_resources)
 		if date < Time.now
 			if !has_children?
-				if reports.count > 0
-					last_report_before(date).progress
-				else
-					0
-				end
+				0
 			else
 				total_children_value = 0
 				total_children_value_extolled = 0

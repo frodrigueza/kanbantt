@@ -92,90 +92,41 @@ class User < ActiveRecord::Base
 	end
 
 	########################### KANBAN
-	def kanban_inactive_tasks
-		array = []
+	def kanban(project)
+		tasks_hash = {}
+		inactive_tasks = []
+		in_progress_tasks = []
+		done_tasks = []
 
-		# EL jefe de la empresa ve todas las tareas de todos los proyectos
-		if is_boss
-			enterprise.projects.each do |p|
-				p.kanban_inactive_tasks.each do |t|
-					array << t
-				end 
-			end 
-
-			return array			
+		project.kanban[:inactive_tasks].each do |t|
+			if role_in_project(project) == 'Administrador' || is_boss
+				inactive_tasks << t
+			elsif role_in_project(project) == 'Last planner' && t.user_id == id
+				inactive_tasks << t
+			end
 		end
 
-		# si no es jefe de la empresa, entonces es admin o lp
-		assignments.each do |a|
-			# es admin
-			a.project.kanban_inactive_tasks.each do |t|
-				if a.role == 1
-					array << t
-				elsif a.role == 2 && t.user_id == id && !t.has_children?
-					array << t
-				end 
-			end 
-		end 
-		
-		return array
-	end
-	def kanban_in_progress_tasks
-		array = []
-
-		# EL jefe de la empresa ve todas las tareas de todos los proyectos
-		if is_boss
-			enterprise.projects.each do |p|
-				p.kanban_in_progress_tasks.each do |t|
-					array << t
-				end 
-			end 
-
-			return array			
+		project.kanban[:in_progress_tasks].each do |t|
+			if role_in_project(project) == 'Administrador' || is_boss
+				in_progress_tasks << t
+			elsif role_in_project(project) == 'Last planner' && t.user_id == id
+				in_progress_tasks << t
+			end
 		end
 
-		# si no es jefe de la empresa, entonces es admin o lp
-		assignments.each do |a|
-			# es admin
-			a.project.kanban_in_progress_tasks.each do |t|
-				if a.role == 1
-					array << t
-				elsif a.role == 2 && t.user_id == id && !t.has_children?
-					array << t
-				end 
-			end 
-		end 
-		
-		return array
-	end
-
-	def kanban_done_tasks
-		array = []
-
-		# EL jefe de la empresa ve todas las tareas de todos los proyectos
-		if is_boss
-			enterprise.projects.each do |p|
-				p.kanban_done_tasks.each do |t|
-					array << t
-				end 
-			end 
-
-			return array			
+		project.kanban[:done_tasks].each do |t|
+			if role_in_project(project) == 'Administrador' || is_boss
+				done_tasks << t
+			elsif role_in_project(project) == 'Last planner' && t.user_id == id
+				done_tasks << t
+			end
 		end
 
-		# si no es jefe de la empresa, entonces es admin o lp
-		assignments.each do |a|
-			# es admin
-			a.project.kanban_done_tasks.each do |t|
-				if a.role == 1
-					array << t
-				elsif a.role == 2 && t.user_id == id && !t.has_children?
-					array << t
-				end 
-			end 
-		end 
-		
-		return array
+		tasks_hash[:inactive_tasks] = inactive_tasks
+		tasks_hash[:in_progress_tasks] = in_progress_tasks
+		tasks_hash[:done_tasks] = done_tasks
+
+		return tasks_hash
 	end
 
 	######################## FIN KANBAN
@@ -217,7 +168,7 @@ class User < ActiveRecord::Base
 			return true
 		elsif is_boss && project.enterprise == enterprise 
 			return true
-		elsif a = Assignment.where(user_id: id, project_id: task.project.id).first
+		elsif a = Assignment.where(user_id: id, project_id: project.id).first
 			if a.role == 1
 				return true
 			end

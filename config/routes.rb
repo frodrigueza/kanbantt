@@ -76,12 +76,11 @@ Rails.application.routes.draw do
     get 'export'
     get 'kanban_board', to: 'kanban_board#index', as: :kanban_board_index
     get 'gantt', to: 'gantt#index'
-    post 'kanban_board/update', to: 'kanban_board#update', as: :kanban_board_update
+
     resources :users, only: [:index]
     resources :tasks do
       resources :reports
       resources :comments
-      get 'update_item_partial', to: 'kanban_board#update_item_partial', as: :kanban_board_update_item_partial
 
     end
   end
@@ -93,15 +92,8 @@ Rails.application.routes.draw do
 
   get 'gantt', to: 'gantt#index'
   get 'update_tree_view', to: 'tasks#update_tree_view'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  #Esta es la ruta que define donde comienza la aplicación (Home page)
-  root 'kanban_board#index'
   
-  get 'kanban_board_index', to: 'kanban_board#index'
+  # get 'kanban_board_index', to: 'kanban_board#index'
   get 'gantt', to: 'gantt#index'
 
   resources :comments
@@ -116,4 +108,13 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  namespace :kanban_board do
+    get 'index'
+    get 'update_item_partial'
+  end
+
+
+
+
+  root 'users#root_router'
 end

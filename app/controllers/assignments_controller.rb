@@ -23,7 +23,8 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(assignment_params)
     @assignment.save
-    respond_with(@assignment)
+    
+    redirect_to request.referer
   end
 
   def update

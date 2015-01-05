@@ -11,8 +11,8 @@
 		<table class>
 			<tr>
 				<td class="<%= css_task_status_color(task) %>"><%= remaining_days(task) %></td>
-				<td class="expected_progress"><%= task.progress %> %</td>
 				<td class="real_progress <%= css_task_status_color(task) %>"><%= task.expected_progress %> %</td>
+				<td class="expected_progress"><%= task.progress %> %</td>
 			</tr>
 		</table>
 	</div>

@@ -4,12 +4,13 @@
   </div>
 </div>
 
-
-<div class="row">
-  <div class="col-md-12">
-    <%= link_to 'Exportar', project_export_path(@project) %>
+<% if current_user.can_edit_project(@project) %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Exportar', project_export_path(@project) %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-12">

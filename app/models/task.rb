@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
 	@@sending = false
 
 	#Una tarea puede tener muchos hijos, y cada tarea tiene a lo más un padre.
-	has_many :children, foreign_key: 'parent_id', class_name: 'Task'
+	has_many :children, foreign_key: 'parent_id', class_name: 'Task', dependent: :destroy
 	belongs_to :parent, class_name: 'Task'
 
 	#Una tarea tiene muchos reportes

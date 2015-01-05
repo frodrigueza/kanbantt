@@ -21,12 +21,12 @@
 				<tbody>
 					<% @task.comments.each do |comment|%>
 						<% if comment.description != '' %>
-							<tr>
+							<tr id="comment_<%= comment.id %>">
 								<td><%= comment.description %></td>
 								<td><%= comment.created_at.strftime("%d %b. %Y") %></td>
 								<td><%= comment.created_at.strftime("%H:%M")%></td>
 								<td><%= comment.user.f_name %></td>
-								<td><%= link_to 'x', project_task_comment_path(@project.id, @task.id, comment), method: :delete, data: { confirm: '¿Estás seguro?' } %></td>
+								<td><%= link_to 'x', project_task_comment_path(@project.id, @task.id, comment), method: :delete, data: { confirm: '¿Estás seguro?' }, remote:true %></td>
 							</tr>
 						<% end %>
 					<% end %>

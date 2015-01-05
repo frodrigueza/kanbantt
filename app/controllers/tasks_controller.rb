@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :update_kanban_item_partial]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to :back }
-        format.js { render 'update_tree_view.js.erb'}
+        format.js { render 'update_tree_view.js.erb' }
       else
         format.html { redirect_to request.referer }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -123,6 +123,6 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :expected_start_date, :expected_end_date,
                                  :start_date, :end_date, :parent_id, :level, :man_hours, :progress,
-                                 :description, :duration, :deleted, :project_id, :user_id, :resources_cost, :resources)
+                                 :description, :duration, :deleted, :project_id, :user_id, :resources_cost, :resources, :state)
   end
 end

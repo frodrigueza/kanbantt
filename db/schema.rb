@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20141228234824) do
     t.datetime "expected_start_date"
     t.datetime "expected_end_date"
     t.integer  "level"
+    t.integer  "state",               default: 0
     t.text     "description"
     t.boolean  "deleted"
     t.boolean  "urgent"

@@ -26,7 +26,8 @@
             </td>
 
             <!-- TAREAS -->
-            <td class="<%= params[:controller] == 'kanban_board' || params[:action] == 'tree_view' ? 'active' : ''%>">
+            <% if @project && @project.id %>
+                <td class="<%= params[:controller] == 'kanban_board' || params[:action] == 'tree_view' ? 'active' : ''%>">
                     <div class="btn-group simple_dropdown">
                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         Tareas <span class="caret"></span>
@@ -38,7 +39,8 @@
                         <% end %>
                       </ul>
                     </div>
-            </td>
+                </td>
+            <% end %>
 
             <!-- GANTT -->
             <td class="<%= params[:controller] == 'gantt' ? 'active' : ''%>">

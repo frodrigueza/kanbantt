@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.includes(:projects)
+    if @project
+      @users = @project.users
+    elsif @enterprise
+      @users = @enterprise.users
+    end
   end
 
   def new
@@ -80,6 +84,16 @@ class UsersController < ApplicationController
       end
     end
 
+  end
+
+  def root_router
+    if current_user.super_admin
+      redirect_to projects_path
+    elsif current_user.is_boss
+      redirect_to enterprise_projects_path(current_user.enterprise)
+    else
+      redirect_to current_user_path
+    end
   end
 
   def user_params
